@@ -127,7 +127,7 @@
 
 
     <main>
-        <h1 id="title"><em>Proposed</em> Linked Data Signatures Working Group Charter</h1>
+        <h1 id="title"><em class=todo>Proposed</em> Linked Data Signatures Working Group Charter</h1>
         <!-- delete PROPOSED after AC review completed -->
 
         <div class=warning>
@@ -137,24 +137,17 @@
                 review.
             </p>
             <p>
-                Any text rendered like <span class=issue>this</span> refer to content that must be finalized before the charter is sent to AC review, preferably before the advance notice on the charter is sent to the AC.
+                Any text rendered like <span class=issue>this</span> refers to content that must be finalized before the charter is sent to AC review, preferably before the advance notice on the charter is sent to the AC.
             </p>
             <p>
-                Any text rendered like <span class=todo>this</span> refer to content that must be updated when the final charter is published at the latest (e.g., adjusting hyperlinks).
+                Any text rendered like <span class=todo>this</span> refers to content that must be updated when the final charter is published at the latest (e.g., adjusting hyperlinks).
             </p>
-        </div>
-
-        <p class="mission">The <strong>mission</strong> of the <a href="" class=todo>Linked Data Signatures Working Group</a> is to define a standard for <em><a href='https://en.wikipedia.org/wiki/Digital_signature'>digital signatures</a></em> of <a href="https://www.w3.org/TR/rdf11-concepts/#h2_section-dataset">RDF Datasets</a>.</p>
-
-        <div class="noprint">
-            <p class="join"><a class=todo href="https://www.w3.org/2004/01/pp-impl/#####/join">Join the Linked Data Signatures Working Group.</a></p>
-        </div>
-
-        <div class=warning>
             <p>
                 This proposed charter is available on <a class=issue href="https://github.com/iherman/ld-signatures-charter">GitHub</a>. Feel free to raise <a class=issue href="https://github.com/iherman/ld-signatures-charter/issues">issues</a></i>.
             </p>
         </div>
+
+        <p class="mission">The <strong>mission</strong> of the <a href="" class=todo>Linked Data Signatures Working Group</a> is to define a standard for <em><a href='https://en.wikipedia.org/wiki/Digital_signature'>digital signatures</a></em> or a unique identification of <a href="https://www.w3.org/TR/rdf11-concepts/#h2_section-dataset">RDF Datasets</a>.</p>
 
         <section id="details">
             <table class="summary-table">
@@ -171,16 +164,14 @@
                         End date
                     </th>
                     <td>
-                        <i class="todo">[30 September 2023]</i> <span class=issue>The duration of the WG must be decided early.</span>
+                        <i class="todo">[30 September 2023]</i> <span class=issue>The duration of the WG must be decided.</span>
                     </td>
                 </tr>
-
                 <tr>
                     <th>Charter extension</th>
                     <td>See <a href="#history">Change History</a>. n/a.
                     </td>
                 </tr>
-
                 <tr>
                     <th>
                         Chairs
@@ -214,11 +205,8 @@
             <h2>Scope</h2>
 
             <p>
-                With the increase in the usage of <a href='https://www.w3.org/standards/semanticweb/data'>Linked Data</a> (a.k.a. <a href='https://www.w3.org/TR/rdf11-concepts/#h2_section-dataset'>RDF Datasets</a>) for a variety of applications, there
-                is a need to be able to verify the authenticity and integrity of Linked Data. Such features are important for the ability to sign documents like <a href="https://www.w3.org/TR/vc-data-model">Verifiable Credentials</a>, to ensure the integrity
-                of health metadata published as RDF Datasets <span class=issue>[find good example reference]</span>, of RDF statements added to a knowledge graphs (e.g., <a href="schema.org">schema.org metadata</a> ), or of the <a href="https://www.w3.org/TR/owl2-overview/">OWL</a>                ontology used to make deductions on a datasets. Technically, what is needed is the ability to provide a <em><a ref='https://en.wikipedia.org/wiki/Digital_signature'>digital signature</a></em> of <a href="https://www.w3.org/TR/rdf11-concepts/#h2_section-dataset">RDF Datasets</a>.
+                With the increase in the usage of <a href='https://www.w3.org/standards/semanticweb/data'>Linked Data</a> (a.k.a. <a href='https://www.w3.org/TR/rdf11-concepts/#h2_section-dataset'>RDF Datasets</a>) for a variety of applications, there is a need to be able to verify the authenticity and integrity of Linked Data. Such features are important for the ability to sign documents like <a href="https://www.w3.org/TR/vc-data-model">Verifiable Credentials</a>, to ensure the integrity of health metadata published as RDF Datasets <span class=issue>[find good example reference?]</span>, of RDF statements added to a knowledge graph, or of the <a href="https://www.w3.org/TR/owl2-overview/">OWL</a> ontology used to make deductions on a datasets. Technically, what is needed is the ability to provide a <em><a ref='https://en.wikipedia.org/wiki/Digital_signature'>digital signature</a></em> or a unique identification of a <a href="https://www.w3.org/TR/rdf11-concepts/#h2_section-dataset">RDF Dataset</a>. 
             </p>
-
             <p>
                 Signing and/or uniquely identify an RDF Dataset <span class='rdf'>R</span> involves several steps, namely:
             </p>
@@ -227,10 +215,10 @@
                 <li>Use a <em>canonicalization</em> function on <span class='rdf'>R</span>, yielding <span class='rdf'>C(R)</span>, such that:
                     <ul>
                         <li>
-                            <span class='rdf'>C(R)</span> is a representation (e.g., a serialization) of an RDF Dataset that is <a href='https://www.w3.org/TR/rdf11-concepts/#section-dataset-isomorphism'>isomorphic</a> to <span class='rdf'>R</span>&#x2009;;
+                            <span class='rdf'>C(R)</span> is a valid representation (e.g., a serialization) of an RDF Dataset that is <a href='https://www.w3.org/TR/rdf11-concepts/#section-dataset-isomorphism'>isomorphic</a> to <span class='rdf'>R</span>;
                         </li>
                         <li>
-                            if <span class='rdf'>R</span> and <span class='rdf'>R'</span> are <a href='https://www.w3.org/TR/rdf11-concepts/#section-dataset-isomorphism'>isomorphic</a> RDF Datasets, then <span class='rdf'>C(R) = C(R')</span>.
+                            if <span class='rdf'>R</span> and <span class='rdf'>R'</span> are <a href='https://www.w3.org/TR/rdf11-concepts/#section-dataset-isomorphism'>isomorphic</a> RDF Datasets, then <span class='rdf'>C(R) = C(R')</span>.
                         </li>
                     </ul>
                 </li>
@@ -238,25 +226,17 @@
                     Apply a digital signature function on, or generate a unique identifier using a hashing function of <span class='rdf'>C(R)</span>.
                 </li>
                 <li>
-                    Express the results of the previous step, together with the exact identification of the canonicalization, signature and/or hashing functions used in the previous step, as separate RDF Graph <span class='rdf'>SR</span> using a standard
-                    RDF vocabulary.
+                    Express the results of the previous step, together with the exact identification of the canonicalization, signature and/or hashing functions used, as separate RDF Graph <span class='rdf'>SR</span> using a standard RDF vocabulary.
                 </li>
             </ol>
-
             <p>
-                <em>The scope of this Working Group is define a Standard for each of the three steps above</em>. This includes the definition of a suitable canonicalization function, specify an RDF vocabulary for expressing the results of the signatures,
-                and representing and referencing the various possible signature functions in a format that can be referred to from an RDF graph. Two working group will also provide standard ways of representing this vocabulary in various RDF serialization
-                formats (e.g., by providing standard <a href='https://www.w3.org/TR/json-ld11/#the-context'>JSON-LD contexts</a> for a JSON-LD serialization.)
+                Although an RDF Dataset can be represented easily in an <em>almost</em> canonical form using a serialization in <a href='https://www.w3.org/TR/n-quads/'>N-quads</a>, the existence of <a href='https://www.w3.org/TR/rdf11-concepts/#section-blank-nodes'>Blank Nodes</a> makes the definition of a canonicalization function mathematically challenging. (See, for example, the introduction of the <a href="http://aidanhogan.com/docs/rdf-canonicalisation.pdf">Adrian Hogan’s paper</a> for a more thorough description of the mathematical challenges.) It is only in recent years that mathematically proven techniques have come to the fore. <em>The central goal of this Working Group is to provide, based on recent research and development results, a Standard RDF Dataset canonicalization algorithm.</em>
             </p>
-
             <p>
-                Although RDF Datasets can be represented easily in an <em>almost</em> canonical form using a serialization in <a href='https://www.w3.org/TR/n-quads/'>N-quads</a>, the existence of <a href='https://www.w3.org/TR/rdf11-concepts/#section-blank-nodes'>Blank Nodes</a>                makes the definition of canonicalization function mathematically challenging. (See, for example, the introduction of the <a href="http://aidanhogan.com/docs/rdf-canonicalisation.pdf">Adrian Hogan’ paper</a> for a more thorough description
-                of the mathematical challenges.) It is only in recent years that mathematically proven techniques have come to the fore. <em>The central goal of this Working Group is to provide, based on recent research and development results, a Standard RDF Dataset canonicalization algorithm.</em>
+                <em>The scope of this Working Group is define a Standard for each of the steps above</em>. This includes the definition of a suitable canonicalization function, specify an RDF vocabulary for expressing the results of the signatures, and representing and referencing the various possible signature functions in a format that can be referred to from an RDF graph. The working group will also provide standard ways of representing this vocabulary in various RDF serialization formats (e.g., by providing standard <a href='https://www.w3.org/TR/json-ld11/#the-context'>JSON-LD contexts</a> for a JSON-LD serialization.)
             </p>
-
             <p>
-                Note that a standard canonicalization algorithm can be used for different purposes, not only for Linked Data signatures. For example, calculating whether the RDF datasets <span class='rdf'>R<sub>1</sub></span> and <span class='rdf'>R<sub>2</sub></span>                are isomorphic may be done by checking whether <span class='rdf'>C(R<sub>1</sub>)=C(R<sub>2</sub>)</span> or whether the signature function values are identical. Although the main goal of the Working Group is to provide a framework for
-                signing Linked Data, these types of applications will also be taken into account.
+                Note that a standard canonicalization algorithm can also be used for other purposes, and not only for Linked Data signatures. For example, calculating whether the RDF datasets <span class='rdf'>R<sub>1</sub></span> and <span class='rdf'>R<sub>2</sub></span> are <a href='https://www.w3.org/TR/rdf11-concepts/#section-dataset-isomorphism'>isomorphic</a> may be done by checking whether <span class='rdf'>C(R<sub>1</sub>) = C(R<sub>2</sub>)</span> or whether the identification of the two datasets are identical. Although the main goal of the Working Group is to provide a framework for signing or identifying Linked Data, these types of applications will also be taken into account in the final specifications.
             </p>
 
             <section id="section-out-of-scope">
@@ -264,7 +244,9 @@
                 <p>The following features are out of scope, and will not be addressed by this Working group.</p>
 
                 <ul>
-                    <li><em>Definition of new signature or encryption functions.</em> This Working Group will only define suitable terms to <em>identify</em> such functions that the community has developed, or will develop in future.</li>
+                    <li>
+                        <em>Definition of new signature or encryption functions.</em> This Working Group will only define suitable terms to <em>identify</em> such functions that the community has developed, or will develop in future.
+                    </li>
                 </ul>
             </section>
 
@@ -274,13 +256,12 @@
             <h2>
                 Deliverables
             </h2>
-
             <p>
                 More detailed milestones and updated publication schedules are available on the <a href="@@@@" class=todo>group publication status page</a>.
             </p>
-
-            <p><i>Draft state</i> indicates the state of the deliverable at the time of the charter approval. <i>Expected completion</i> indicates when the deliverable is projected to become a Recommendation, or otherwise reach a stable state.</p>
-
+            <p>
+                <i>Draft state</i> indicates the state of the deliverable at the time of the charter approval. <i>Expected completion</i> indicates when the deliverable is projected to become a Recommendation, or otherwise reach a stable state.
+            </p>
             <p>
                 Note that the titles of the documents are tentative and not final. The Working Group may also decide to either split some of those documents or, conversely, merge some of them.
             </p>
@@ -300,7 +281,7 @@
                         </p>
 
                         <p class="draft-status">
-                            <b>Draft State:</b> to be adopted from <a href="https://json-ld.github.io/normalization/spec/index.html">RDF Dataset Normalization</a>, eds. Dave Longley, Manu Sporny, W3C Draft Community Group Report, 2019.
+                            <b>Draft State</b> to be adopted from: <a href="https://json-ld.github.io/normalization/spec/index.html">RDF Dataset Normalization</a>, eds. Dave Longley, Manu Sporny, W3C Draft Community Group Report, 2019.
                         </p>
 
                         <p class="draft-status">
@@ -315,12 +296,12 @@
                                 p. 22:1-22:62, 2017.
                             </li>
                         </ol>
-                        <p class="milestone" class='todo'><b>Expected completion:</b> <span class=todo>Q3 2023</span></p>
-
+                        <p class="milestone" class='todo'>
+                            <b>Expected completion:</b> <span class=todo>Q3 2023</span>.
+                        </p>
                         <p class="draft-status">
                             <b>Adopted Draft:</b> none.
                         </p>
-
                         <p class="draft-status">
                             <b>Exclusion Draft:</b> none.
                         </p>
@@ -328,24 +309,20 @@
                     <dt id="signatures" class="spec">Linked Data Identification or Signatures (LDIS)</dt>
                     <dd>
                         <p>
-                            This specification defines the detailed processing steps, starting from an arbitrary RDF Dataset to the generation of a unique identifier or a digital signature, making use of the canonicalization
-                            function defined in a the “RDF Dataset Canonicalization” deliverable.
+                            This specification defines the detailed processing steps, starting from an arbitrary RDF Dataset to the generation of a unique identifier or a digital signature, making use of the canonicalization function defined in a the “RDF Dataset Canonicalization” deliverable.
                         </p>
-
                         <p class="draft-status">
-                            <b>Draft State:</b> to be adopted from <a href="https://w3c-ccg.github.io/ld-proofs/">Linked Data Proofs 1.0</a>, eds. Dave Longley, Manu Sporny, W3C Draft Community Group Report, 2020.
+                            <b>Draft State</b> to be adopted from: <a href="https://w3c-ccg.github.io/ld-proofs/">Linked Data Proofs 1.0</a>, eds. Dave Longley, Manu Sporny, W3C Draft Community Group Report, 2020.
                         </p>
-
-                        <p class="milestone" class='todo'><b>Expected completion:</b> <span class=todo>Q3 2023</span></p>
-
+                        <p class="milestone" class='todo'>
+                            <b>Expected completion:</b> <span class=todo>Q3 2023</span>.
+                        </p>
                         <p class="draft-status">
                             <b>Adopted Draft:</b> none.
                         </p>
-
                         <p class="draft-status">
                             <b>Exclusion Draft:</b> none.
                         </p>
-
                     </dd>
                     <dt id="vocabulary" class="spec">Expressing Linked Data Identification or Signature  (ELDIS)</dt>
                     <dd>
@@ -354,15 +331,14 @@
                         </p>
 
                         <p class="draft-status">
-                            <b>Draft State:</b> to be adopted from <a href="https://w3c-ccg.github.io/security-vocab/">The Security Vocabulary</a>, ed. Manu Sporny, Orie Steele, Tobias Looker, W3C Draft Community Group Report, 2020..
+                            <b>Draft State</b> to be adopted from: <a href="https://w3c-ccg.github.io/security-vocab/">The Security Vocabulary</a>, ed. Manu Sporny, Orie Steele, Tobias Looker, W3C Draft Community Group Report, 2020.
                         </p>
-
-                        <p class="milestone" class='todo'><b>Expected completion:</b> <span class=todo>Q3 2023</span></p>
-
+                        <p class="milestone" class='todo'>
+                            <b>Expected completion:</b> <span class=todo>Q3 2023</span>.
+                        </p>
                         <p class="draft-status">
                             <b>Adopted Draft:</b> none.
                         </p>
-
                         <p class="draft-status">
                             <b>Exclusion Draft:</b> none.
                         </p>
@@ -378,9 +354,15 @@
                     Other non-normative documents may be created such as:
                 </p>
                 <ul>
-                    <li>Linked Data Cryptosuite Registry, containing Linked Data related cryptographic terms, including, although not restricted to, terms used for Linked Data Identification or Signatures.</li>
-                    <li>Test suite and implementation report for the specification.</li>
-                    <li class=issue>Primer or Best Practice documents to support web developers when designing applications.</li>
+                    <li>
+                        A Linked Data cryptosuite registry, containing Linked Data related cryptographic terms, including, although not restricted to, terms used for Linked Data Identification or Signatures.
+                    </li>
+                    <li>
+                        Test suite and implementation report for the specification.
+                    </li>
+                    <li class=issue>
+                        Primer or Best Practice documents to support web developers when designing applications.
+                    </li>
                 </ul>
             </section>
 
@@ -402,13 +384,12 @@
             <p>
                 In order to advance to <a href="https://www.w3.org/Consortium/Process/#RecsPR" title="Proposed Recommendation">Proposed Recommendation</a>, each specification is expected to have <a href="https://www.w3.org/Consortium/Process/#implementation-experience">at least two independent implementations</a>  of each of feature defined in the specification.
             </p> 
-            
             <p>
                 Each specification should contain a section detailing all known security and privacy implications for implementers, Web authors, and end users.
             </p>
-
-            <p>There should be testing plans for each specification, starting from the earliest drafts.</p>
-
+            <p>
+                There should be testing plans for each specification, starting from the earliest drafts.
+            </p>
             <p>
                 To promote interoperability, all changes made to specifications should have
                 <a href='https://www.w3.org/2019/02/testing-policy.html'>tests</a>.
@@ -418,18 +399,11 @@
         <section id="coordination">
             <h2>Coordination</h2>
             <p>
-                For all specifications, this Working Group will seek <a href="https://www.w3.org/Guide/process/charter.html#horizontal-review">horizontal review</a> for accessibility, internationalization, performance, privacy, and security with the relevant
-                Working and Interest Groups, and with the <a href="https://www.w3.org/2001/tag/" title="Technical Architecture Group">TAG</a>. Invitation for review must be issued during each major standards-track document transition, including <a href="https://www.w3.org/Consortium/Process/#RecsWD"
-                    title="First Public Working Draft">FPWD</a>. The Working Group is encouraged to engage collaboratively with the horizontal review groups throughout development of each specification. The Working Group is advised to seek a review at least
-                3 months before first entering <a href="https://www.w3.org/Consortium/Process/#RecsCR" title="Candidate Recommendation">CR</a> and is encouraged to proactively notify the horizontal review groups when major changes occur in a specification
-                following a review.
+                For all specifications, this Working Group will seek <a href="https://www.w3.org/Guide/process/charter.html#horizontal-review">horizontal review</a> for accessibility, internationalization, performance, privacy, and security with the relevant Working and Interest Groups, and with the <a href="https://www.w3.org/2001/tag/" title="Technical Architecture Group">TAG</a>. Invitation for review must be issued during each major standards-track document transition, including <a href="https://www.w3.org/Consortium/Process/#RecsWD" title="First Public Working Draft">FPWD</a>. The Working Group is encouraged to engage collaboratively with the horizontal review groups throughout development of each specification. The Working Group is advised to seek a review at least 3 months before first entering <a href="https://www.w3.org/Consortium/Process/#RecsCR" title="Candidate Recommendation">CR</a> and is encouraged to proactively notify the horizontal review groups when major changes occur in a specification following a review.
             </p>
-
             <p>
                 Additional technical coordination with the following Groups will be made, per the <a href="https://www.w3.org/Consortium/Process/#WGCharter">W3C Process Document</a>:
             </p>
-
-
             <section>
                 <h3 id="w3c-coordination">W3C Groups</h3>
                 <dl>
@@ -439,24 +413,28 @@
                     <dd>
                         To synchronize on cryto related vocabularies, definitions.
                     </dd>
+
                     <dt>
                         <a href="https://www.w3.org/2017/vc/WG/">Verifiable Claims Working Group</a>
                     </dt>
                     <dd>
                         To synchronize on cryto related vocabularies, definitions.
                     </dd>
+
                     <dt>
                         <a href="https://www.w3.org/2017/dxwg/wiki/Main_Page">Dataset Exchange Working Group</a>
                     </dt>
                     <dd>
                         To synchronize on the needs and requirements of dataset publications and exchange regarding canonicalization and signatures.
                     </dd>
+
                     <dt>
                         <a href="https://www.w3.org/WoT/WG/">Web of Things Working Group</a>
                     </dt>
                     <dd>
                         To synchronize on the needs and requirements of the WoT community, in particular on the subject of WoT Thing Descriptions, regarding canonicalization and signatures.
                     </dd>
+
                     <dt>
                         <a href="https://w3c-ccg.github.io/">Credentials Community Group</a>
                     </dt>
@@ -468,9 +446,9 @@
 
             <section>
                 <h3 id="external-coordination">External Organizations</h3>
-                
-                <p><span class=issue>None</span></p>
-
+                <p>
+                    <span class=issue>None.</span>
+                </p>
 
                 <!-- <dl>
                     <dt><a href=""><i class="todo">[other name]</i> Working Group</a></dt>
@@ -484,15 +462,14 @@
                 Participation
             </h2>
             <p>
-                To be successful, this Working Group is expected to have 6 or more active participants for its duration, including representatives from the key implementors of this specification, and active Editors and Test Leads for each specification. The Chairs, specification
-                Editors, and Test Leads are expected to contribute half of a working day per week towards the Working Group. There is no minimum requirement for other Participants.
+                To be successful, this Working Group is expected to have 6 or more active participants for its duration, including representatives from the key implementors of this specification, and active Editors and Test Leads for each specification. The Chairs, specification Editors, and Test Leads are expected to contribute half of a working day per week towards the Working Group. There is no minimum requirement for other Participants.
             </p>
             <p>
-                The group encourages questions, comments and issues on its public mailing lists and document repositories, as described in <a href='#communication'>Communication</a>. </p>
+                The group encourages questions, comments and issues on its public mailing lists and document repositories, as described in <a href='#communication'>Communication</a>.
+            </p>
             <p>
                 The group also welcomes non-Members to contribute technical submissions for consideration upon their agreement to the terms of the <a href="https://www.w3.org/Consortium/Patent-Policy/">W3C Patent Policy</a>.
             </p>
-
             <p>
                 Participants in the group are required (by the <a href="https://www.w3.org/Consortium/Process/#ParticipationCriteria">W3C Process</a>) to follow the W3C <a href="https://www.w3.org/Consortium/cepc/">Code of Ethics and Professional Conduct</a>.
             </p>
@@ -505,9 +482,7 @@
                 Communication
             </h2>
             <p id="public">
-                Technical discussions for this Working Group are conducted in <a href="https://www.w3.org/Consortium/Process/#confidentiality-levels">public</a>: the meeting minutes from teleconference and face-to-face meetings will be archived for public
-                review, and technical discussions and issue tracking will be conducted in a manner that can be both read and written to by the general public. Working Drafts and Editor's Drafts of specifications will be developed on a public repository
-                and may permit direct public contribution requests. The meetings themselves are not open to public participation, however.
+                Technical discussions for this Working Group are conducted in <a href="https://www.w3.org/Consortium/Process/#confidentiality-levels">public</a>: the meeting minutes from teleconference and face-to-face meetings will be archived for public review, and technical discussions and issue tracking will be conducted in a manner that can be both read and written to by the general public. Working Drafts and Editor's Drafts of specifications will be developed on a public repository and may permit direct public contribution requests. The meetings themselves are not open to public participation, however.
             </p>
             <p>
                 Information about the group (including details about deliverables, issues, actions, status, participants, and meetings) will be available from the <a href="" class=todo>Linked Data Signatures Working Group home page.</a> </p>
@@ -522,22 +497,18 @@
             </p>
         </section>
 
-
-
         <section id="decisions">
             <h2>
                 Decision Policy
             </h2>
             <p>
-                This group will seek to make decisions through consensus and due process, per the <a href="https://www.w3.org/Consortium/Process/#Consensus"> W3C Process Document (section 3.3</a>). Typically, an editor or other participant makes an initial
-                proposal, which is then refined in discussion with members of the group and other reviewers, and consensus emerges with little formal voting being required.</p>
+                This group will seek to make decisions through consensus and due process, per the <a href="https://www.w3.org/Consortium/Process/#Consensus"> W3C Process Document (section 3.3</a>). Typically, an editor or other participant makes an initial proposal, which is then refined in discussion with members of the group and other reviewers, and consensus emerges with little formal voting being required.
+            </p>
             <p>
                 However, if a decision is necessary for timely progress and consensus is not achieved after careful consideration of the range of views presented, the Chairs may call for a group vote and record a decision along with any objections.
             </p>
             <p>
-                To afford asynchronous decisions and organizational deliberation, any resolution (including publication decisions) taken in a face-to-face meeting or teleconference will be considered provisional. A call for consensus (CfC) will be issued for all resolutions
-                (for example, via email and/or web-based survey), with a response period from <span id='cfc'>one week to 10 working days</span>, depending on the chair's evaluation of the group consensus on the issue. If no objections
-                are raised on the mailing list by the end of the response period, the resolution will be considered to have consensus as a resolution of the Working Group.
+                To afford asynchronous decisions and organizational deliberation, any resolution (including publication decisions) taken in a face-to-face meeting or teleconference will be considered provisional. A call for consensus (CfC) will be issued for all resolutions (for example, via email and/or web-based survey), with a response period from <span id='cfc'>one week to 10 working days</span>, depending on the chair's evaluation of the group consensus on the issue. If no objections are raised on the mailing list by the end of the response period, the resolution will be considered to have consensus as a resolution of the Working Group.
             </p>
             <p>
                 All decisions made by the group should be considered resolved unless and until new information becomes available or unless reopened at the discretion of the Chairs or the Director.
@@ -547,19 +518,14 @@
             </p>
         </section>
 
-
         <section id="patentpolicy">
             <h2>
                 Patent Policy
             </h2>
             <p>
-                This Working Group operates under the <a href="https://www.w3.org/Consortium/Patent-Policy/">W3C Patent Policy</a> (Version of 15 September 2020). To promote the widest adoption of Web standards, W3C seeks to issue
-                Recommendations that can be implemented, according to this policy, on a Royalty-Free basis. For more information about disclosure obligations for this group, please see the <a href="https://www.w3.org/2004/01/pp-impl/">W3C Patent Policy Implementation</a>.
+                This Working Group operates under the <a href="https://www.w3.org/Consortium/Patent-Policy/">W3C Patent Policy</a> (Version of 15 September 2020). To promote the widest adoption of Web standards, W3C seeks to issue Recommendations that can be implemented, according to this policy, on a Royalty-Free basis. For more information about disclosure obligations for this group, please see the <a href="https://www.w3.org/2004/01/pp-impl/">W3C Patent Policy Implementation</a>.
             </p>
-
         </section>
-
-
 
         <section id="licensing">
             <h2>Licensing</h2>
@@ -568,24 +534,19 @@
             </p>
         </section>
 
-
-
         <section id="about">
             <h2>
                 About this Charter
             </h2>
             <p>
-                This charter has been created according to <a href="https://www.w3.org/Consortium/Process/#GAGeneral">section 5.2</a> of the <a href="https://www.w3.org/Consortium/Process/">Process Document</a>. In the event of a conflict between this
-                document or the provisions of any charter and the W3C Process, the W3C Process shall take precedence.
+                This charter has been created according to <a href="https://www.w3.org/Consortium/Process/#GAGeneral">section 5.2</a> of the <a href="https://www.w3.org/Consortium/Process/">Process Document</a>. In the event of a conflict between this document or the provisions of any charter and the W3C Process, the W3C Process shall take precedence.
             </p>
 
             <section id="history">
-                <h3>
-                    Charter History
-                </h3>
-
-                <p>The following table lists details of all changes from the initial charter, per the <a href="https://www.w3.org/Consortium/Process/#CharterReview">W3C Process Document (section 5.2.3)</a>:</p>
-
+                <h3>Charter History</h3>
+                <p>
+                    The following table lists details of all changes from the initial charter, per the <a href="https://www.w3.org/Consortium/Process/#CharterReview">W3C Process Document (section 5.2.3)</a>:
+                </p>
                 <table class="history">
                     <tbody>
                         <tr>
@@ -643,8 +604,8 @@
                             <td>
                                 <p class="todo">[description of change to charter, with link to new deliverable item in charter] <b>Note:</b> use the class <code>new</code> for all new deliverables, for ease of recognition.</p>
                             </td>
-                        </tr>
-                    </tbody> -->
+                        </tr> -->
+                    </tbody>
                 </table>
             </section>
         </section>
@@ -653,21 +614,14 @@
     <hr>
 
     <footer>
-        <address>
-        <a href="mailto:ivan@w3.org">Ivan Herman</a>
-      </address>
-
+        <address><a href="mailto:ivan@w3.org">Ivan Herman</a></address>
         <p class="copyright">
-            <a href="https://www.w3.org/Consortium/Legal/ipr-notice#Copyright">Copyright</a> © 2021
-            <a href="https://www.w3.org/"><abbr title="World Wide Web Consortium">W3C</abbr></a><sup>®</sup> (<a href="https://www.csail.mit.edu/"><abbr title="Massachusetts Institute of Technology">MIT</abbr></a>,
-            <a href="https://www.ercim.eu/"><abbr title="European Research Consortium for Informatics and Mathematics">ERCIM</abbr></a>,
-            <a href="https://www.keio.ac.jp/">Keio</a>,
-            <a href="https://ev.buaa.edu.cn/">Beihang</a>), All Rights Reserved.
-
-            <abbr title="World Wide Web Consortium">W3C</abbr> <a href="https://www.w3.org/Consortium/Legal/ipr-notice#Legal_Disclaimer">liability</a>, <a href="https://www.w3.org/Consortium/Legal/ipr-notice#W3C_Trademarks">trademark</a> and <a href="https://www.w3.org/Consortium/Legal/copyright-documents">document use</a> rules apply.
+            <a href="https://www.w3.org/Consortium/Legal/ipr-notice#Copyright">Copyright</a> © 2021 <a href="https://www.w3.org/"><abbr title="World Wide Web Consortium">W3C</abbr></a><sup>®</sup> (<a href="https://www.csail.mit.edu/"><abbr title="Massachusetts Institute of Technology">MIT</abbr></a>, <a href="https://www.ercim.eu/"><abbr title="European Research Consortium for Informatics and Mathematics">ERCIM</abbr></a>, <a href="https://www.keio.ac.jp/">Keio</a>, <a href="https://ev.buaa.edu.cn/">Beihang</a>), All Rights Reserved. <abbr title="World Wide Web Consortium">W3C</abbr> <a href="https://www.w3.org/Consortium/Legal/ipr-notice#Legal_Disclaimer">liability</a>, <a href="https://www.w3.org/Consortium/Legal/ipr-notice#W3C_Trademarks">trademark</a> and <a href="https://www.w3.org/Consortium/Legal/copyright-documents">document use</a> rules apply.
         </p>
         <hr>
-        <p><a href="https://github.com/iherman/ld-signatures-charter" class=issue>Yes, it's on GitHub!</a>.</p>
+        <p>
+            <a href="https://github.com/iherman/ld-signatures-charter" class="issue">Yes, it's on GitHub!</a>.
+        </p>
     </footer>
 
 </body>
