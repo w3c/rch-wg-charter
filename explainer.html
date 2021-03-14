@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>Linked Data Signatures Working Group Charter—Explainer</title>
+    <script src="https://www.w3.org/Tools/respec/respec-w3c" class="remove" defer></script>
+    <script class="remove">
+        // All config options at https://respec.org/docs/
+        var respecConfig = {
+            specStatus: "base",
+            editors: [{
+                name: "Ivan Herman",
+                url: "https://www.w3.org/People/Ivan/",
+                company: "W3C",
+                w3cid: 7382,
+                orcid: "0000-0003-0782-2704",
+                companyURL: "https://www.w3.org",
+            }],
+            github: "iherman/ld-signatures-charter",
+            localBiblio: {
+                "aidan-2017" : {
+                    title: "Canonical Forms for Isomorphic and Equivalent RDF Graphs: Algorithms for Leaning and Labelling Blank Nodes",
+                    authors: [
+                        "Aidan Hogan"
+                    ],
+                    href : "http://aidanhogan.com/docs/rdf-canonicalisation.pdf",
+                    publisher: "ACM Transactions on the Web",
+                    date : 2017
+                },
+                "rdf-dataset-normalization": {
+                    title: "RDF Dataset Normalization",
+                    editors : [
+                        "Dave Longley",
+                        "Manu Sporny"
+                    ],
+                    href: "https://json-ld.github.io/normalization/spec/index.html",
+                    publisher: "W3C",
+                    status: "W3C Community Group Report",
+                    date : 2021
+                }
+            }
+        };
+    </script>
+    <style>
+        .issue {
+            background: teal !important;
+            color:  #FFC !important ;
+        }
+
+        .issue::before {
+            content: "\2009";
+        }
+
+        .issue::after {
+            content: "\2009";
+        }
+        
+        .todo {
+            color: #900 !important;
+            background-color: #FFC !important;
+        }
+
+        .rdf {
+            font-style: italic;
+            font-family: cursive;
+        }
+    </style>
+</head>
+
+<body>
+    <section id="abstract">
+        <p>Auxiliary document for the proposed <a href="index.html">Linked Data Signatures Working Group Charter</a>, providing some extra information and explanation.</p>
+    </section>
+
+    <section id='canonicalize'>
+        <h2>RDF Canonicalization</h2>
+
+        <p>For a precise definition for the various terms and notions, the reader should refer to the formal RDF specification [[rdf11-concepts]].</p>
+
+        <section>
+            <h2>Terminology</h2>
+            <dl>
+                <dt>RDF Datasets</dt>
+                <dd>
+                    <p>
+                        <span class='rdf'>R</span>, <span class='rdf'>R’</span>,&nbsp; etc., denote an <a href="https://www.w3.org/TR/rdf11-concepts/#section-dataset">RDF Dataset</a> [[rdf11-concepts]].
+                    </p>
+                    <p>
+                        The term “named graphs” is also used in literature or in applications.
+                    </p>
+                </dd>
+
+                <dt>Identical RDF Datasets</dt>
+                <dd>
+                    <p>
+                        <span class='rdf'>R = R‘&nbsp;</span> denotes two <em>identical</em> RDF Datasets.
+                    </p>
+                    <p>
+                        Identical RDF Datasets consists of the same <a href="https://www.w3.org/TR/rdf11-concepts/#section-rdf-graph">RDF Graphs</a> (where “the same” means they are the same set of triples) with the same <a href="https://www.w3.org/TR/rdf11-concepts/#section-dataset">Graph Names</a>.
+                    </p>
+                </dd>
+
+                <dt>Isomorphic RDF Datasets</dt>
+                <dd>
+                    <p>
+                        <span class='rdf'>R ≈ R‘&nbsp;</span> denotes two <a href='https://www.w3.org/TR/rdf11-concepts/#section-dataset-isomorphism'><em>isomorphic</em></a> RDF Datasets.
+                    </p>
+                    <p>
+                        The structure of two isomorphic Datasets are identical: URIs and literals are all character-wise identical, and it is possible to relabel the blank nodes of <span class='rdf'>R</span> to the blank nodes of <span class='rdf'>R‘&nbsp;</span> without changing the topology of the graph.
+                    </p>
+                </dd>
+
+                <dt id="canonical_form">Canonical Form</dt>
+                <dd>
+                    <p>
+                        For an RDF Dataset <span class='rdf'>R</span>, a <em>canonical form</em> of <span class='rdf'>R</span> is a dataset <span class='rdf'>R<sub>C</sub></span> such that <span class='rdf'>R<sub>C</sub> = R’<sub>C</sub>&nbsp;</span> if and only if <span class='rdf'>R ≈ R’</span>.
+                    </p>
+                </dd>
+
+                <dt id='canonicalization'>Canonicalization</dt>
+                <dd>
+                    <p>
+                        Canonicalization is a function <span class='rdf'>C&nbsp;</span> on RDF Datasets such that <span class='rdf'>C(R)</span> is a Canonical Form for <span class='rdf'>R</span>
+                    </p>
+                    <p>
+                        Definition of a canonicalization function means, in practice, to define a deterministic re-labeling of <em>all</em> blank nodes of an RDF Dataset without changing the structure of the graph.
+                    </p>
+                </dd>
+            </dl>
+        </section>
+
+        <p>
+            Defining a generalized canonicalization function was an unsolved mathematical problem until the last decade. Over the past 10 years, at least two generalized approaches have been proposed:
+        </p>
+        
+        <ol>
+            <li>
+                The algorithms defined Aidan Hogan in [[aidan-2017]], vetted through the scholarly peer review process.
+            </li>
+            <li>
+                The algorithm defined and implemented Dave Longley, see [[rdf-dataset-normalization]]. <span class=issue>we will need references to the algorithmic description and the referees reviews</span>
+            </li>
+        </ol>
+
+        <p>
+            The introduction of <a href="http://aidanhogan.com/docs/rdf-canonicalisation.pdf">Adrian Hogan’s paper</a> [[aidan-2017]] also contains a more thorough description of the mathematical challenges.
+        </p>
+    </section>
+
+    <section id=sign>
+        <h2>Identifying and/or Signing RDF Datasets</h2>
+
+        <p>Signing an RDF Dataset follows, roughly, the same approach as [[xmldsig-core1]]. For an RDF Dataset <span class='rdf'>R</span>:</p>
+
+        <ol>
+            <li>use an RDF Dataset Canonicalization function <span class='rdf'>C</span> to generate the canonical form <span class='rdf'>C(R)&nbsp;</span>;</li>
+
+            <li>deterministically serialize <span class='rdf'>C(R)&nbsp;</span> using [[n-quads]]; </li>
+
+            <li>apply a hashing function <span class='rdf'>H</span> on the result of the serialization to yield <span class='rdf'>H(R)&nbsp;</span>;</li>
+
+            <li>apply a digital signature function on <span class='rdf'>H(R)&nbsp;</span>;</li>
+
+            <li>
+                express the results of the previous step, together with the exact identification of the canonicalization, signature and/or hashing functions used, as separate RDF Graph <span class='rdf'>S<sub>R</sub></span> using a standard RDF vocabulary.
+            </li>
+        </ol>
+
+        <p>The value of <span class='rdf'>H(R)&nbsp;</span> is also a unique identification for the RDF Dataset <span class='rdf'>R</span>. Some applications may use this value without calculating a signature.</p>
+
+
+        <p>
+            Note that the separate algorithmic steps may have their own usage, without necessarily applying a digital signature. For example, calculating whether the RDF datasets <span class='rdf'>R<sub>1</sub>&nbsp;</span> and <span class='rdf'>R<sub>2</sub>&nbsp;</span> are <a href='https://www.w3.org/TR/rdf11-concepts/#section-dataset-isomorphism'>isomorphic</a> may be done by checking whether <span class='rdf'>C(R<sub>1</sub>) = C(R<sub>2</sub>)&nbsp;</span> or whether <span class='rdf'>H(R) = H(R’)&nbsp;</span>. Although the main goal of the Working Group is to provide a framework for signing Linked Data, these types of applications will also be taken into account in the final specifications.
+        </p>
+    </section>
+</body>
+
+</html>

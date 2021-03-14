@@ -147,7 +147,7 @@
             </p>
         </div>
 
-        <p class="mission">The <strong>mission</strong> of the <a href="" class=todo>Linked Data Signatures Working Group</a> is to define a standard for <em><a href='https://en.wikipedia.org/wiki/Digital_signature'>digital signatures</a></em> or a unique identification of <a href="https://www.w3.org/TR/rdf11-concepts/#h2_section-dataset">RDF Datasets</a>.</p>
+        <p class="mission">The <strong>mission</strong> of the <a href="" class=todo>Linked Data Signatures Working Group</a> is to define a standard for <em><a href='https://en.wikipedia.org/wiki/Digital_signature'>digital signatures</a></em> or <em>unique identifications</em> of <a href="https://www.w3.org/TR/rdf11-concepts/#h2_section-dataset">RDF Datasets</a>.</p>
 
         <section id="details">
             <table class="summary-table">
@@ -205,38 +205,11 @@
             <h2>Scope</h2>
 
             <p>
-                With the increase in the usage of <a href='https://www.w3.org/standards/semanticweb/data'>Linked Data</a> (a.k.a. <a href='https://www.w3.org/TR/rdf11-concepts/#h2_section-dataset'>RDF Datasets</a>) for a variety of applications, there is a need to be able to verify the authenticity and integrity of Linked Data. Such features are important for the ability to sign documents like <a href="https://www.w3.org/TR/vc-data-model">Verifiable Credentials</a>, to ensure the integrity of health metadata published as RDF Datasets <span class=issue>[find good example reference?]</span>, of RDF statements added to a knowledge graph, or of the <a href="https://www.w3.org/TR/owl2-overview/">OWL</a> ontology used to make deductions on a datasets. Technically, what is needed is the ability to provide a <em><a ref='https://en.wikipedia.org/wiki/Digital_signature'>digital signature</a></em> or a unique identification of a <a href="https://www.w3.org/TR/rdf11-concepts/#h2_section-dataset">RDF Dataset</a>. 
-            </p>
-            <p>
-                Signing and/or uniquely identify an RDF Dataset <span class='rdf'>R</span> involves several steps, namely:
+                With the increase in the usage of <a href='https://www.w3.org/standards/semanticweb/data'>Linked Data</a> (a.k.a. <a href='https://www.w3.org/TR/rdf11-concepts/#h2_section-dataset'>RDF Datasets</a>) for a variety of applications, there is a need to be able to verify the authenticity and integrity of Linked Data. Such features are important for the ability to sign documents like <a href="https://www.w3.org/TR/vc-data-model">Verifiable Credentials</a>, to ensure the integrity of health metadata published as RDF Datasets <span class=issue>[find good example reference?]</span>, of RDF statements added to a knowledge graph, or of the <a href="https://www.w3.org/TR/owl2-overview/">OWL</a> ontology used to make deductions on a datasets. Technically, what is needed is the ability to provide a <em><a ref='https://en.wikipedia.org/wiki/Digital_signature'>digital signature</a></em> of a <a href="https://www.w3.org/TR/rdf11-concepts/#h2_section-dataset">RDF Dataset</a>. See the separate <a href="./explainer.html">explainer</a> for the underlying terminology and a more detailed problem description.
             </p>
 
-            <ol>
-                <li>Use a <em>canonicalization</em> function on <span class='rdf'>R</span>, yielding <span class='rdf'>C(R)</span>, such that:
-                    <ul>
-                        <li>
-                            <span class='rdf'>C(R)</span> is a valid representation (e.g., a serialization) of an RDF Dataset that is <a href='https://www.w3.org/TR/rdf11-concepts/#section-dataset-isomorphism'>isomorphic</a> to <span class='rdf'>R</span>;
-                        </li>
-                        <li>
-                            if <span class='rdf'>R</span> and <span class='rdf'>R'</span> are <a href='https://www.w3.org/TR/rdf11-concepts/#section-dataset-isomorphism'>isomorphic</a> RDF Datasets, then <span class='rdf'>C(R) = C(R')</span>.
-                        </li>
-                    </ul>
-                </li>
-                <li>
-                    Apply a digital signature function on, or generate a unique identifier using a hashing function of <span class='rdf'>C(R)</span>.
-                </li>
-                <li>
-                    Express the results of the previous step, together with the exact identification of the canonicalization, signature and/or hashing functions used, as separate RDF Graph <span class='rdf'>SR</span> using a standard RDF vocabulary.
-                </li>
-            </ol>
             <p>
-                Although an RDF Dataset can be represented easily in an <em>almost</em> canonical form using a serialization in <a href='https://www.w3.org/TR/n-quads/'>N-quads</a>, the existence of <a href='https://www.w3.org/TR/rdf11-concepts/#section-blank-nodes'>Blank Nodes</a> makes the definition of a canonicalization function mathematically challenging. (See, for example, the introduction of <a href="http://aidanhogan.com/docs/rdf-canonicalisation.pdf">Adrian Hogan’s paper</a> for a more thorough description of the mathematical challenges.) It is only in recent years that mathematically proven techniques have come to the fore. <em>The central goal of this Working Group is to provide, based on recent research and development results, a Standard RDF Dataset canonicalization algorithm.</em>
-            </p>
-            <p>
-                <em>The scope of this Working Group is to define a Standard for each of the steps above</em>. This includes the definition of a suitable canonicalization function, specify an RDF vocabulary for expressing the results of the signatures, and representing and referencing the various possible signature functions in a format that can be referred to from an RDF graph. The working group will also provide standard ways of representing this vocabulary in various RDF serialization formats (e.g., by providing standard <a href='https://www.w3.org/TR/json-ld11/#the-context'>JSON-LD contexts</a> for a JSON-LD serialization.)
-            </p>
-            <p>
-                Note that a standard canonicalization algorithm can also be used for other purposes, and not only for Linked Data signatures. For example, calculating whether the RDF datasets <span class='rdf'>R<sub>1</sub></span> and <span class='rdf'>R<sub>2</sub></span> are <a href='https://www.w3.org/TR/rdf11-concepts/#section-dataset-isomorphism'>isomorphic</a> may be done by checking whether <span class='rdf'>C(R<sub>1</sub>) = C(R<sub>2</sub>)</span> or whether the identification of the two datasets are identical. Although the main goal of the Working Group is to provide a framework for signing or identifying Linked Data, these types of applications will also be taken into account in the final specifications.
+                The scope of this Working Group is to define a Standard to <a href='./explainer.html#canonicalize'>canonicalize</a>,  <a href='./explainer.html#sign'>sign</a>, or <a href='./explainer.html#sign'>uniquely identify</a> RDF Datasets. This includes the definition of a standard <a href='./explainer.html#canonicalization'>canonicalization function</a>, an RDF vocabulary for expressing the results of the signatures or identifications, and representing and referencing the various possible signature functions in a format that can be referred to from an RDF Graph. The working group will also provide standard ways of representing this vocabulary in various RDF serialization formats (e.g., by providing standard <a href='https://www.w3.org/TR/json-ld11/#the-context'>JSON-LD contexts</a> for a JSON-LD serialization.)
             </p>
 
             <section id="section-out-of-scope">
@@ -277,7 +250,7 @@
                     <dt id="canonicalization" class="spec">RDF Dataset Canonicalization (RDC)</dt>
                     <dd>
                         <p>
-                            This specification defines an algorithm to produce the canonical representation of an arbitrary RDF Dataset.
+                            This specification defines an algorithm to produce the <a href="./explainer.html#canonical_form">canonical form</a> of an arbitrary RDF Dataset.
                         </p>
 
                         <p class="draft-status">
@@ -309,7 +282,7 @@
                     <dt id="signatures" class="spec">Linked Data Identification or Signatures (LDIS)</dt>
                     <dd>
                         <p>
-                            This specification defines the detailed processing steps, starting from an arbitrary RDF Dataset to the generation of a unique identifier or a digital signature, making use of the canonicalization function defined in a the “RDF Dataset Canonicalization” deliverable.
+                            This specification defines the detailed processing steps, starting from an arbitrary RDF Dataset to the generation of a digital signature or a unique identifier, making use of the canonicalization function defined in a the “RDF Dataset Canonicalization” deliverable. 
                         </p>
                         <p class="draft-status">
                             <b>Draft State</b> to be adopted from: <a href="https://w3c-ccg.github.io/ld-proofs/">Linked Data Proofs 1.0</a>, eds. Dave Longley, Manu Sporny, W3C Draft Community Group Report, 2020.
@@ -327,7 +300,7 @@
                     <dt id="vocabulary" class="spec">Expressing Linked Data Identification or Signature  (ELDIS)</dt>
                     <dd>
                         <p>
-                            This specification defines an RDF Vocabulary to express the results of the Linked Data Identification or Signature process and its parameters in an RDF Graph. The specification also includes a preferred JSON-LD Context document to be used by the JSON-LD serialization of such identifications or signatures.
+                            This specification defines an RDF Vocabulary to express the results of the Linked Data Signature process and its parameters in an RDF Graph. The specification also includes a preferred JSON-LD Context document to be used by the JSON-LD serialization of such identifications or signatures.
                         </p>
 
                         <p class="draft-status">
