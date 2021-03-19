@@ -76,56 +76,64 @@
     <section id='canonicalize'>
         <h2>RDF Canonicalization</h2>
 
-        <p>For a precise definition for the various terms and notions, the reader should refer to the formal RDF specification [[rdf11-concepts]].</p>
+        <p>For a precise definition for the various terms and notions, the reader should refer to the formal RDF specification [[rdf11-concepts]]. Note also that, for this note, the term “Linked Data” is used as a synonym to “RDF Datasets”.</p>
 
         <section>
             <h2>Terminology</h2>
             <dl>
-                <dt>RDF Datasets</dt>
+                <dt id='dataset'>RDF Datasets</dt>
                 <dd>
                     <p>
-                        <span class='rdf'>R</span>, <span class='rdf'>R’</span>,&nbsp; etc., denote an <a href="https://www.w3.org/TR/rdf11-concepts/#section-dataset">RDF Dataset</a> [[rdf11-concepts]].
+                        <span class='rdf'>R</span>, <span class='rdf'>S</span>,&nbsp; etc., denote an <a href="https://www.w3.org/TR/rdf11-concepts/#section-dataset">RDF Dataset</a> [[rdf11-concepts]].
                     </p>
                     <p>
-                        The term “named graphs” is also used in literature or in applications.
+                        The term “named graphs” is also used in literature or in applications. 
                     </p>
                 </dd>
 
-                <dt>Identical RDF Datasets</dt>
+                <dt id='identical'>Identical RDF Datasets</dt>
                 <dd>
                     <p>
-                        <span class='rdf'>R = R‘&nbsp;</span> denotes two <em>identical</em> RDF Datasets.
+                        <span class='rdf'>R = S</span> denotes two <em>identical</em> RDF Datasets.
                     </p>
                     <p>
                         Identical RDF Datasets consists of the same <a href="https://www.w3.org/TR/rdf11-concepts/#section-rdf-graph">RDF Graphs</a> (where “the same” means they are the same set of triples) with the same <a href="https://www.w3.org/TR/rdf11-concepts/#section-dataset">Graph Names</a>.
                     </p>
                 </dd>
 
-                <dt>Isomorphic RDF Datasets</dt>
+                <dt id='isomorphic'>Isomorphic RDF Datasets</dt>
                 <dd>
                     <p>
-                        <span class='rdf'>R ≈ R‘&nbsp;</span> denotes two <a href='https://www.w3.org/TR/rdf11-concepts/#section-dataset-isomorphism'><em>isomorphic</em></a> RDF Datasets.
+                        <span class='rdf'>R ≈ S</span> denotes two <a href='https://www.w3.org/TR/rdf11-concepts/#section-dataset-isomorphism'><em>isomorphic</em></a> RDF Datasets.
                     </p>
                     <p>
-                        The structure of two isomorphic Datasets are identical: URIs and literals are all character-wise identical, and it is possible to relabel the blank nodes of <span class='rdf'>R</span> to the blank nodes of <span class='rdf'>R‘&nbsp;</span> without changing the topology of the graph.
+                        The structure of two isomorphic Datasets are identical: URIs and literals are all character-wise identical, and it is possible to relabel the blank nodes of <span class='rdf'>R</span> to the blank nodes of <span class='rdf'>S</span> without changing the topology of the graph.
                     </p>
                 </dd>
 
                 <dt id="canonical_form">Canonical Form</dt>
                 <dd>
                     <p>
-                        For an RDF Dataset <span class='rdf'>R</span>, a <em>canonical form</em> of <span class='rdf'>R</span> is a dataset <span class='rdf'>R<sub>C</sub></span> such that <span class='rdf'>R<sub>C</sub> = R’<sub>C</sub>&nbsp;</span> if and only if <span class='rdf'>R ≈ R’</span>.
+                        For an RDF Dataset <span class='rdf'>R</span>, a <em>canonical form</em> of <span class='rdf'>R</span> is a dataset <span class='rdf'>R<sub>C</sub></span> such that <span class='rdf'>R<sub>C</sub> = S<sub>C</sub></span> if and only if <span class='rdf'>R ≈ S</span>.
                     </p>
                 </dd>
 
                 <dt id='canonicalization'>Canonicalization</dt>
                 <dd>
                     <p>
-                        Canonicalization is a function <span class='rdf'>C&nbsp;</span> on RDF Datasets such that <span class='rdf'>C(R)</span> is a Canonical Form for <span class='rdf'>R</span>
+                        Canonicalization is a function <span class='rdf'>C</span> on RDF Datasets such that <span class='rdf'>C(R)</span> is a Canonical Form for <span class='rdf'>R</span>.
                     </p>
                     <p>
-                        Definition of a canonicalization function means, in practice, to define a deterministic re-labeling of <em>all</em> blank nodes of an RDF Dataset without changing the structure of the graph.
+                        Definition of a canonicalization function means, in practice, to define a <em>deterministic</em> re-labeling of <em>all</em> blank nodes of an RDF Dataset without changing the topology of the graph.
                     </p>
+                </dd>
+
+                <dt id='ld-hash'>RDF Dataset Hash (or RDF Dataset Hash function)</dt>
+                <dd>
+                    <p>
+                        A <a href="https://en.wikipedia.org/wiki/Hash_function">hash function</a> <span class='rdf'>h</span> defined on RDF Datasets which has the additional propperty that for the RDF Datasets  <span class='rdf'>R</span> and <span class='rdf'>S</span>, the relation <span class='rdf'>R&nbsp;≈&nbsp;S</span> implies <span class='rdf'>h(R)&nbsp;=&nbsp;h(S)</span>.
+                    </p>
+
                 </dd>
             </dl>
         </section>
@@ -136,7 +144,7 @@
         
         <ol>
             <li>
-                The algorithms defined Aidan Hogan in [[aidan-2017]], vetted through the scholarly peer review process.
+                The algorithms defined Aidan Hogan in [[aidan-2017]], reviewed through the scholarly peer review process.
             </li>
             <li>
                 The algorithm defined and implemented Dave Longley, see [[rdf-dataset-normalization]]. <span class=issue>we will need references to the algorithmic description and the referees reviews</span>
@@ -144,35 +152,58 @@
         </ol>
 
         <p>
-            The introduction of <a href="http://aidanhogan.com/docs/rdf-canonicalisation.pdf">Adrian Hogan’s paper</a> [[aidan-2017]] also contains a more thorough description of the mathematical challenges.
+            The introduction of <a href="http://aidanhogan.com/docs/rdf-canonicalisation.pdf">Adrian Hogan’s paper</a>&nbsp;[[aidan-2017]] also contains a more thorough description of the underlying mathematical challenges.
         </p>
     </section>
 
-    <section id=sign>
-        <h2>Identifying and/or Signing RDF Datasets</h2>
+    <section id=goals>
+        <h2>Defining an RDF Dataset Hash and/or Signing RDF Datasets</h2>
 
-        <p>Signing an RDF Dataset follows, roughly, the same approach as [[xmldsig-core1]]. For an RDF Dataset <span class='rdf'>R</span>:</p>
+        <p>Signing an RDF Dataset follows, roughly, the same approach as&nbsp;[[xmldsig-core1]]. For an RDF Dataset <span class='rdf'>R</span> this implies two steps:</p>
 
-        <ol>
-            <li>use an RDF Dataset Canonicalization function <span class='rdf'>C</span> to generate the canonical form <span class='rdf'>C(R)&nbsp;</span>;</li>
-
-            <li>deterministically serialize <span class='rdf'>C(R)&nbsp;</span> using [[n-quads]]; </li>
-
-            <li>apply a hashing function <span class='rdf'>H</span> on the result of the serialization to yield <span class='rdf'>H(R)&nbsp;</span>;</li>
-
-            <li>apply a digital signature function on <span class='rdf'>H(R)&nbsp;</span>;</li>
-
-            <li>
-                express the results of the previous step, together with the exact identification of the canonicalization, signature and/or hashing functions used, as separate RDF Graph <span class='rdf'>S<sub>R</sub></span> using a standard RDF vocabulary.
-            </li>
+        <ol id=sign>
+            <li>use an <a href="#ld-hash">RDF Dataset Hash function</a> <span class='rdf'>h</span> to calculate <span class='rdf'>h(R)</span>;</li>
+            <li>apply a digital signature function on <span class='rdf'>h(R)</span>.</li>
         </ol>
 
-        <p>The value of <span class='rdf'>H(R)&nbsp;</span> is also a unique identification for the RDF Dataset <span class='rdf'>R</span>. Some applications may use this value without calculating a signature.</p>
+        <p>
+            Whereas step (2) may rely on well documented methods, standards, and libraries developed by the cryptography community, step (1) requires more complex steps:
+        </p>
 
+        <ol id=hash type="i">
+            <li>use an <a href="#canonicalization">RDF Dataset Canonicalization function</a> <span class='rdf'>C</span> to generate the canonical form <span class='rdf'>C(R)</span>;</li>
+
+            <li>deterministically serialize <span class='rdf'>C(R)</span> using&nbsp;[[n-quads]]; </li>
+
+            <li>apply a hashing function <span class='rdf'>H</span> on the result of the serialization to yield <span class='rdf'>h(R)</span>.</li>
+        </ol>
 
         <p>
-            Note that the separate algorithmic steps may have their own usage, without necessarily applying a digital signature. For example, calculating whether the RDF datasets <span class='rdf'>R<sub>1</sub>&nbsp;</span> and <span class='rdf'>R<sub>2</sub>&nbsp;</span> are <a href='https://www.w3.org/TR/rdf11-concepts/#section-dataset-isomorphism'>isomorphic</a> may be done by checking whether <span class='rdf'>C(R<sub>1</sub>) = C(R<sub>2</sub>)&nbsp;</span> or whether <span class='rdf'>H(R) = H(R’)&nbsp;</span>. Although the main goal of the Working Group is to provide a framework for signing Linked Data, these types of applications will also be taken into account in the final specifications.
+            The main challenge for the Working Group is to provide a standard for the <a href="#canonicalization">RDF Dataset Canonicalization function</a>. That paves the way for defining RDF Dataset Hash functions, as well as methods to sign RDF Datasets.
         </p>
+    </section>
+
+    <section id=usage>
+        <h2>Typical Use Cases</h2>
+
+        <p>
+            Some typical use cases for RDF Dataset Hash and/or signatures are:
+        </p>
+
+        <ul>
+            <li>
+                Assign a hash value to a dataset or a vocabulary when stored in a relevant repository, e.g., <a href="https://lov.linkeddata.es/dataset/lov">Linked Open Data</a> repository. (This makes it possible to use an approach akin to <a href='https://www.w3.org/TR/SRI/'>subresource integrity</a> when referring to such a set data set or a vocabulary.)
+            </li>
+            <li>
+                A <a href="https://www.w3.org/TR/vc-data-model">Verifiable Credential</a> used, e.g., in a vaccination passport is signed by its issuer.
+            </li>
+            <li>
+                A set of statements added to a knowledge graph, or as metadata to a Web page encoded in schema.org, is signed to prove its origin.
+            </li>
+            <li>
+                Use the value of the RDF Dataset Hash function as a globally unique identifier for an RDF Dataset. 
+            </li>
+        </ul>
     </section>
 </body>
 

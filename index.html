@@ -147,7 +147,9 @@
             </p>
         </div>
 
-        <p class="mission">The <strong>mission</strong> of the <a href="" class=todo>Linked Data Signatures Working Group</a> is to define a standard for <em><a href='https://en.wikipedia.org/wiki/Digital_signature'>digital signatures</a></em> or <em>unique identifications</em> of <a href="https://www.w3.org/TR/rdf11-concepts/#h2_section-dataset">RDF Datasets</a>.</p>
+        <p class="mission">
+            The <strong>mission</strong> of the <a href="https://www.w3.org/2021/lds-wg/" class=todo>Linked Data Signatures Working Group</a> is to define a standard for <a href="explainer.html#ld-hash">RDF Dataset Hash functions</a> as well as  <a href='https://en.wikipedia.org/wiki/Digital_signature'>digital signatures</a> on <a href="https://www.w3.org/TR/rdf11-concepts/#h2_section-dataset">RDF Datasets</a> (a.k.a. Linked Data).
+        </p>
 
         <section id="details">
             <table class="summary-table">
@@ -205,7 +207,7 @@
             <h2>Scope</h2>
 
             <p>
-                With the increase in the usage of <a href='https://www.w3.org/standards/semanticweb/data'>Linked Data</a> (a.k.a. <a href='https://www.w3.org/TR/rdf11-concepts/#h2_section-dataset'>RDF Datasets</a>) for a variety of applications, there is a need to be able to verify the authenticity and integrity of Linked Data. Such features are important for the ability to sign documents like <a href="https://www.w3.org/TR/vc-data-model">Verifiable Credentials</a>, to ensure the integrity of health metadata published as RDF Datasets <span class=issue>[find good example reference?]</span>, of RDF statements added to a knowledge graph, or of the <a href="https://www.w3.org/TR/owl2-overview/">OWL</a> ontology used to make deductions on a datasets. Technically, what is needed is the ability to provide a <em><a ref='https://en.wikipedia.org/wiki/Digital_signature'>digital signature</a></em> of a <a href="https://www.w3.org/TR/rdf11-concepts/#h2_section-dataset">RDF Dataset</a>. See the separate <a href="./explainer.html">explainer</a> for the underlying terminology and a more detailed problem description.
+                With the increase in the usage of <a href='https://www.w3.org/standards/semanticweb/data'>Linked Data</a> (a.k.a. <a href='https://www.w3.org/TR/rdf11-concepts/#h2_section-dataset'>RDF Datasets</a>) for a variety of applications, there is a need to be able to verify the authenticity and integrity of the Data. This is important for the ability to sign documents like <a href="https://www.w3.org/TR/vc-data-model">Verifiable Credentials</a>, or to ensure the integrity of vocabularies in a vocabulary repository. (See the <a href="explainer.html#usage">separate document</a> for some more examples.) Technically, what is needed is the ability to provide a hash function, as well as a <a ref='https://en.wikipedia.org/wiki/Digital_signature'>digital signature</a>, on a <a href="https://www.w3.org/TR/rdf11-concepts/#h2_section-dataset">RDF Dataset</a>. See the separate <a href="./explainer.html">explainer</a> for the underlying terminology and a more detailed problem description. 
             </p>
 
             <p>
