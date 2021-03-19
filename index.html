@@ -148,7 +148,7 @@
         </div>
 
         <p class="mission">
-            The <strong>mission</strong> of the <a href="https://www.w3.org/2021/lds-wg/" class=todo>Linked Data Signatures Working Group</a> is to define a standard for <a href="explainer.html#ld-hash">RDF Dataset Hash functions</a> as well as  <a href='https://en.wikipedia.org/wiki/Digital_signature'>digital signatures</a> on <a href="https://www.w3.org/TR/rdf11-concepts/#h2_section-dataset">RDF Datasets</a> (a.k.a. Linked Data).
+            The <strong>mission</strong> of the <a href="https://www.w3.org/2021/lds-wg/" class=todo>Linked Data Signatures Working Group</a> is to define a standard for <a href="explainer.html#ld-hash">RDF Dataset Hash functions</a> and  <a href='https://en.wikipedia.org/wiki/Digital_signature'>digital signatures</a> on <a href="https://www.w3.org/TR/rdf11-concepts/#h2_section-dataset">RDF Datasets</a> (a.k.a. Linked Data).
         </p>
 
         <section id="details">
@@ -207,11 +207,11 @@
             <h2>Scope</h2>
 
             <p>
-                With the increase in the usage of <a href='https://www.w3.org/standards/semanticweb/data'>Linked Data</a> (a.k.a. <a href='https://www.w3.org/TR/rdf11-concepts/#h2_section-dataset'>RDF Datasets</a>) for a variety of applications, there is a need to be able to verify the authenticity and integrity of the Data. This is important for the ability to sign documents like <a href="https://www.w3.org/TR/vc-data-model">Verifiable Credentials</a>, or to ensure the integrity of vocabularies in a vocabulary repository. (See the <a href="explainer.html#usage">separate document</a> for some more examples.) Technically, what is needed is the ability to provide a hash function, as well as a <a ref='https://en.wikipedia.org/wiki/Digital_signature'>digital signature</a>, on a <a href="https://www.w3.org/TR/rdf11-concepts/#h2_section-dataset">RDF Dataset</a>. See the separate <a href="./explainer.html">explainer</a> for the underlying terminology and a more detailed problem description. 
+                With the increase in the usage of <a href='https://www.w3.org/standards/semanticweb/data'>Linked Data</a> (a.k.a. <a href='https://www.w3.org/TR/rdf11-concepts/#h2_section-dataset'>RDF Datasets</a>) for a variety of applications, there is a need to be able to verify the authenticity and integrity of the data. This is important for the ability to sign documents like <a href="https://www.w3.org/TR/vc-data-model">Verifiable Credentials</a>, or to ensure the integrity of vocabularies in a repository. (See the <a href="explainer.html#usage">separate document</a> for some more examples.) Technically, what is needed is the ability to provide a hash function, as well as a <a ref='https://en.wikipedia.org/wiki/Digital_signature'>digital signature</a>, on an <a href="https://www.w3.org/TR/rdf11-concepts/#h2_section-dataset">RDF Dataset</a>. See the separate <a href="./explainer.html">explainer</a> for the underlying terminology and a more detailed problem description. 
             </p>
 
             <p>
-                The scope of this Working Group is to define a Standard to <a href='./explainer.html#canonicalize'>canonicalize</a>,  <a href='./explainer.html#sign'>sign</a>, or <a href='./explainer.html#sign'>uniquely identify</a> RDF Datasets. This includes the definition of a standard <a href='./explainer.html#canonicalization'>canonicalization function</a>, an RDF vocabulary for expressing the results of the signatures or identifications, and representing and referencing the various possible signature functions in a format that can be referred to from an RDF Graph. The working group will also provide standard ways of representing this vocabulary in various RDF serialization formats (e.g., by providing standard <a href='https://www.w3.org/TR/json-ld11/#the-context'>JSON-LD contexts</a> for a JSON-LD serialization.)
+                The scope of this Working Group is to define standards to <a href='index.html#canonicalization'>canonicalize</a>, <a href='explainer.html#ld-hash'>hash</a>, and <a href='explainer.html#sign'>sign</a> an RDF Dataset. This includes the definition of a standard <a href='./explainer.html#canonicalization'>canonicalization function</a>, an RDF vocabulary for expressing the results of the hash and of the signatures, representing and referencing the various cryptographic signature functions in a format that can be referred to from an RDF Graph. The working group will also provide standard ways of representing this vocabulary in various RDF serialization formats (e.g., by providing standard <a href='https://www.w3.org/TR/json-ld11/#the-context'>JSON-LD contexts</a> for a JSON-LD serialization.)
             </p>
 
             <section id="section-out-of-scope">
@@ -232,7 +232,7 @@
                 Deliverables
             </h2>
             <p>
-                More detailed milestones and updated publication schedules are available on the <a href="@@@@" class=todo>group publication status page</a>.
+                More detailed milestones and updated publication schedules are available on the <a href="https://www.w3.org/2021/lds-wg/PublStatus" class=todo>group publication status page</a>.
             </p>
             <p>
                 <i>Draft state</i> indicates the state of the deliverable at the time of the charter approval. <i>Expected completion</i> indicates when the deliverable is projected to become a Recommendation, or otherwise reach a stable state.
@@ -252,7 +252,7 @@
                     <dt id="canonicalization" class="spec">RDF Dataset Canonicalization (RDC)</dt>
                     <dd>
                         <p>
-                            This specification defines an algorithm to produce the <a href="./explainer.html#canonical_form">canonical form</a> of an arbitrary RDF Dataset.
+                            This specification defines an algorithm to produce a <a href="./explainer.html#canonical_form">canonical form</a> of an arbitrary RDF Dataset.
                         </p>
 
                         <p class="draft-status">
@@ -264,7 +264,7 @@
                         </p>
                         <ol>
                             <li>
-                                <span class=issue>[Reference to the separate publication by Longley et al, as well as the review results]</span>
+                                <span class=issue>[Reference to the separate publication by Longley et al]</span>
                             </li>
                             <li>
                                 <a href="http://aidanhogan.com/docs/rdf-canonicalisation.pdf">Canonical Forms for Isomorphic and Equivalent RDF Graphs: Algorithms for Leaning and Labelling Blank Nodes</a>, Aidan Hogan, ACM Trans. Web, vol. 11, no. 4,
@@ -281,10 +281,10 @@
                             <b>Exclusion Draft:</b> none.
                         </p>
                     </dd>
-                    <dt id="signatures" class="spec">Linked Data Identification or Signatures (LDIS)</dt>
+                    <dt id="signatures" class="spec">Linked Data Hash and Signature (LDHS)</dt>
                     <dd>
                         <p>
-                            This specification defines the detailed processing steps, starting from an arbitrary RDF Dataset to the generation of a digital signature or a unique identifier, making use of the canonicalization function defined in a the “RDF Dataset Canonicalization” deliverable. 
+                            This specification defines the detailed processing steps, starting from an arbitrary RDF Dataset to the generation of a Linked Data Hash and of a Signature, making use of the canonicalization function defined in a the “RDF Dataset Canonicalization” deliverable. 
                         </p>
                         <p class="draft-status">
                             <b>Draft State</b> to be adopted from: <a href="https://w3c-ccg.github.io/ld-proofs/">Linked Data Proofs 1.0</a>, eds. Dave Longley, Manu Sporny, W3C Draft Community Group Report, 2020.
@@ -299,10 +299,10 @@
                             <b>Exclusion Draft:</b> none.
                         </p>
                     </dd>
-                    <dt id="vocabulary" class="spec">Expressing Linked Data Identification or Signature  (ELDIS)</dt>
+                    <dt id="vocabulary" class="spec">Expressing Linked Data Hash or Signature  (ELDHS)</dt>
                     <dd>
                         <p>
-                            This specification defines an RDF Vocabulary to express the results of the Linked Data Signature process and its parameters in an RDF Graph. The specification also includes a preferred JSON-LD Context document to be used by the JSON-LD serialization of such identifications or signatures.
+                            This specification defines an RDF Vocabulary to express the results of the Linked Data Hash and Signature processes and their parameters in an RDF Graph. The specification also defines a preferred JSON-LD Context document to be used by the JSON-LD serialization.
                         </p>
 
                         <p class="draft-status">
@@ -330,7 +330,7 @@
                 </p>
                 <ul>
                     <li>
-                        A Linked Data cryptosuite registry, containing Linked Data related cryptographic terms, including, although not restricted to, terms used for Linked Data Identification or Signatures.
+                        A Linked Data cryptosuite registry, containing Linked Data related cryptographic terms, including, although not restricted to, terms used for Linked Data Hash or Signatures.
                     </li>
                     <li>
                         Test suite and implementation report for the specification.
@@ -348,8 +348,8 @@
                     <li><span class=todo>October 2021</span>: First teleconference</li>
                     <li><span class=issue>January 2022</span>: First face-to-face meeting </li>
                     <li><span class=issue>February 2022</span>: FPWD for RDC</li>
-                    <li><span class=issue>May 2022</span>: FPWD for LDS and ELDIS</li>
-                    <li><span class=issue>December 2021</span>: CR for RDC, LDS, and ELDIS</li>
+                    <li><span class=issue>May 2022</span>: FPWD for LDHS and ELDHS</li>
+                    <li><span class=issue>December 2021</span>: CR for RDC, LDHS, and ELDHS</li>
                 </ul>
             </section>
         </section>
@@ -383,17 +383,17 @@
                 <h3 id="w3c-coordination">W3C Groups</h3>
                 <dl>
                     <dt>
-                        <a href="https://www.w3.org/2019/did-wg/">Decentralized Idenfiier Working Group</a>
+                        <a href="https://www.w3.org/2019/did-wg/">Decentralized Identifier Working Group</a>
                     </dt>
                     <dd>
-                        To synchronize on cryto related vocabularies, definitions.
+                        To synchronize on crypto related vocabularies, definitions.
                     </dd>
 
                     <dt>
                         <a href="https://www.w3.org/2017/vc/WG/">Verifiable Claims Working Group</a>
                     </dt>
                     <dd>
-                        To synchronize on cryto related vocabularies, definitions.
+                        To synchronize on crypto related vocabularies, definitions.
                     </dd>
 
                     <dt>
