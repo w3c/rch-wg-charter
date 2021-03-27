@@ -234,36 +234,47 @@ no more than 3 per year.
       <h2>Scope</h2>
 
       <p>
-With the increase in the usage of <a
-href='https://www.w3.org/standards/semanticweb/data'>Linked Data</a> (a.k.a. <a
-href='https://www.w3.org/TR/rdf11-concepts/#h2_section-dataset'>RDF
-Datasets</a>) for a variety of applications, there is a need to be able to
-verify the authenticity and integrity of the data. This is important for the
-ability to sign documents like <a
-href="https://www.w3.org/TR/vc-data-model">Verifiable Credentials</a>, or to
-ensure the integrity of vocabularies in a repository. (See the <a
-href="explainer.html#usage">separate document</a> for some more examples.)
-Technically, what is needed is the ability to provide a hash function, as well
-as a <a ref='https://en.wikipedia.org/wiki/Digital_signature'>digital
-signature</a>, on an <a
-href="https://www.w3.org/TR/rdf11-concepts/#h2_section-dataset">RDF Dataset</a>.
-See the separate <a href="./explainer.html">explainer</a> for the underlying
-terminology and a more detailed problem description.
+The deployment of <a
+href='https://www.w3.org/standards/semanticweb/data'>Linked Data</a> is
+<a href="http://webdatacommons.org/structureddata/#toc3">
+increasing at a rapid pace</a>. There are a variety of established use cases,
+such as <a href="https://www.w3.org/TR/vc-data-model">Verifiable Credentials</a>,
+the publication of biological and pharmaceutical data, consumption of
+mission critical RDF vocabularies, and others that depend on the ability to
+verify the authenticity and integrity of the data being consumed (see the <a
+href="explainer.html#usage">explainer</a> for more examples).
+In order to achieve these use cases, a standard way to process
+<a
+href="https://www.w3.org/TR/rdf11-concepts/#section-dataset">RDF Datasets</a>
+is needed. More specifically, the ability to
+<a href="https://en.wikipedia.org/wiki/Graph_canonization">
+canonicalize</a>,
+<a href="https://en.wikipedia.org/wiki/Cryptographic_hash_function">
+cryptographically hash</a>,
+<a href="https://en.wikipedia.org/wiki/Digital_signature">digitally sign</a>,
+and encode the result of that process on an
+<a
+href="https://www.w3.org/TR/rdf11-concepts/#section-dataset">RDF Dataset</a>
+is required.
       </p>
 
       <p>
 The scope of this Working Group is to define standards to <a
-href='index.html#canonicalization'>canonicalize</a>, <a
-href='explainer.html#ld-hash'>hash</a>, and <a
-href='explainer.html#sign'>sign</a> an RDF Dataset. This includes the definition
-of a standard <a href='./explainer.html#canonicalization'>canonicalization
-function</a>, an RDF vocabulary for expressing the results of the hash and of
-the signatures, representing and referencing the various cryptographic signature
-functions in a format that can be referred to from an RDF Graph. The working
-group will also provide standard ways of representing this vocabulary in various
-RDF serialization formats (e.g., by providing standard <a
-href='https://www.w3.org/TR/json-ld11/#the-context'>JSON-LD contexts</a> for a
-JSON-LD serialization.)
+href="#canonicalization">canonicalize</a>, <a
+href="https://en.wikipedia.org/wiki/Cryptographic_hash_function">
+cryptographically hash</a>, and <a href='explainer.html#sign'>digitally sign</a>
+an <a href="https://www.w3.org/TR/rdf11-concepts/#section-dataset">RDF
+Dataset</a>. This includes the definition of a standard <a
+href='./explainer.html#canonicalization'>canonicalization algorithm</a>, a
+generic algorithm for generating and verifying a digital proof using existing
+cryptographic primitives, an RDF vocabulary for  expressing the results of
+digital proof generation algorithm, and  a way of representing and referencing
+specific existing cryptographic proof algorithms and parameters in a format
+that can be referred to from an RDF Dataset. The Working Group will also
+provide standard ways to represent this vocabulary in various RDF serialization
+formats, such as by providing <a
+href='https://www.w3.org/TR/json-ld11/#the-context'>JSON-LD contexts</a> for
+JSON-LD serializations.
       </p>
 
       <section id="section-out-of-scope">
