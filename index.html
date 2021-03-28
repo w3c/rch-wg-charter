@@ -308,7 +308,9 @@ merge some of them.
 The Working Group will deliver the following W3C normative specifications:
         </p>
         <dl>
-          <dt id="canonicalization" class="spec">RDF Dataset Canonicalization (RDC)</dt>
+          <dt id="canonicalization" class="spec">
+RDF Dataset Canonicalization (RDC)
+          </dt>
           <dd>
             <p>
 This specification defines an algorithm to produce a <a
@@ -318,8 +320,8 @@ Dataset.
 
             <p class="draft-status">
 <b>Draft State</b> to be adopted from: <a
-href="https://json-ld.github.io/normalization/spec/index.html">RDF Dataset
-Normalization</a>, eds. Dave Longley, Manu Sporny, W3C Draft Community Group
+href="https://json-ld.github.io/rdf-dataset-canonicalization/">RDF Dataset
+Canonicalization</a>, eds. Dave Longley, Manu Sporny, W3C Draft Community Group
 Report, 2019.
             </p>
 
@@ -340,7 +342,7 @@ Blank Nodes</a>, Aidan Hogan, ACM Trans. Web, vol. 11, no. 4, p. 22:1-22:62,
               </li>
             </ol>
             <p class="milestone" class='todo'>
-              <b>Expected completion:</b> <span class=todo>Q3 2023</span>.
+<b>Expected completion:</b> <span class=todo>WG-START + 24 months</span>.
             </p>
             <p class="draft-status">
               <b>Adopted Draft:</b> none.
@@ -349,21 +351,23 @@ Blank Nodes</a>, Aidan Hogan, ACM Trans. Web, vol. 11, no. 4, p. 22:1-22:62,
               <b>Exclusion Draft:</b> none.
             </p>
           </dd>
-          <dt id="signatures" class="spec">Linked Data Hash and Signature (LDHS)</dt>
+          <dt id="signatures" class="spec">Linked Data Security (LDS)</dt>
           <dd>
             <p>
-This specification defines the detailed processing steps, starting from an
-arbitrary RDF Dataset to the generation of a Linked Data Hash and of a
-Signature, making use of the canonicalization function defined in a the “RDF
-Dataset Canonicalization” deliverable.
+This specification details the processing steps for securing an arbitrary RDF
+Dataset including: 1) the generation of a canonicalized form using the algorithm
+specified in the “RDF Dataset Canonicalization” deliverable, 2) the generation
+of a cryptographic hash, 3) the generation of a digital proof, such as a digital
+signature, and 4) the expression of the result in an RDF Dataset in a way that
+enables a 3rd party to verify the digital proof.
             </p>
             <p class="draft-status">
 <b>Draft State</b> to be adopted from: <a
-href="https://w3c-ccg.github.io/ld-proofs/">Linked Data Proofs 1.0</a>, eds.
+href="https://w3c-ccg.github.io/ld-security/">Linked Data Security 1.0</a>, eds.
 Dave Longley, Manu Sporny, W3C Draft Community Group Report, 2020.
             </p>
             <p class="milestone" class='todo'>
-              <b>Expected completion:</b> <span class=todo>Q3 2023</span>.
+<b>Expected completion:</b> <span class=todo>WG-START + 24 months</span>.
             </p>
             <p class="draft-status">
               <b>Adopted Draft:</b> none.
@@ -372,13 +376,15 @@ Dave Longley, Manu Sporny, W3C Draft Community Group Report, 2020.
               <b>Exclusion Draft:</b> none.
             </p>
           </dd>
-          <dt id="vocabulary" class="spec">Expressing Linked Data Hash or Signature (ELDHS)</dt>
+          <dt id="vocabulary" class="spec">
+Linked Data Security Vocabulary (LDSV)
+          </dt>
           <dd>
             <p>
 This specification defines an RDF Vocabulary to express the results of the
-Linked Data Hash and Signature processes and their parameters in an RDF Graph.
-The specification also defines a preferred JSON-LD Context document to be used
-by the JSON-LD serialization.
+Linked Data Security processes and their parameters in an RDF Dataset in a  way
+that enables a 3rd party to verify the result. The specification also defines a
+preferred JSON-LD Context document to be used by the JSON-LD serialization.
             </p>
 
             <p class="draft-status">
@@ -388,7 +394,7 @@ ed. Manu Sporny, Orie Steele, Tobias Looker, W3C Draft Community Group Report,
 2020.
             </p>
             <p class="milestone" class='todo'>
-              <b>Expected completion:</b> <span class=todo>Q3 2023</span>.
+<b>Expected completion:</b> <span class=todo>WG-START + 24 months</span>.
             </p>
             <p class="draft-status">
               <b>Adopted Draft:</b> none.
@@ -407,9 +413,9 @@ Other non-normative documents may be created such as:
         </p>
         <ul>
           <li>
-A Linked Data cryptosuite registry, containing Linked Data related cryptographic
-terms, including, although not restricted to, terms used for Linked Data Hash or
-Signatures.
+A Linked Data Security Registry, containing Linked Data related cryptographic
+terms, including, but not limited to, terms used for RDF Dataset
+Canonicalization, Linked Data Proofs, and Linked Data Signatures.
           </li>
           <li>
 Test suite and implementation report for the specification.
