@@ -17,6 +17,25 @@ var respecConfig = {
     orcid: "0000-0003-0782-2704",
     companyURL: "https://www.w3.org",
   }],
+  authors: [{
+    name: "Ivan Herman",
+    url: "https://www.w3.org/People/Ivan/",
+    company: "W3C",
+    w3cid: 7382,
+    orcid: "0000-0003-0782-2704",
+    companyURL: "https://www.w3.org",
+  }, {
+    name: "Manu Sporny",
+    url: "http://manu.sporny.org/",
+    company: "Digital Bazaar",
+    companyURL: "https://digitalbazaar.com/",
+    w3cid: 41758
+  }, {
+    name: "Alan Karp",
+    url: "https://alanhkarp.com/",
+    company: "Earth Computing",
+    companyURL: "https://www.earthcomputing.io/",
+  }],
   github: "iherman/ld-signatures-charter",
   localBiblio: {
     "aidan-2017" : {
@@ -70,9 +89,11 @@ var respecConfig = {
 
 <body>
   <section id="abstract">
-<p>Auxiliary document for the proposed <a href="index.html">Linked Data
-Signatures Working Group Charter</a>, providing some extra information and
-explanation.</p>
+    <p>
+This is a supporting document for the proposed <a href="index.html">Linked Data
+Signatures Working Group Charter</a>, providing some extra explanation of
+the problem space and associated use cases and requirements.
+    </p>
   </section>
 
   <section id='canonicalize'>
@@ -164,7 +185,7 @@ implies <span class='rdf'>h(R)&nbsp;=&nbsp;h(S)</span>.
     </dl>
 
     <section>
-      <h2>Some Background</h2>
+      <h2>The General Problem Space</h2>
       <p>
 Defining a generalized canonicalization function was an unsolved mathematical
 problem until the last decade. Over the past 10 years, at least two generalized
@@ -243,33 +264,62 @@ Datasets.
   </section>
 
   <section id=usage>
-    <h2>Typical Use Cases</h2>
+    <h2>Use Cases and Requirements</h2>
 
     <p>
-Some typical use cases for RDF Dataset Hash and/or signatures are:
+Some typical use cases for RDF Dataset Canonicalization and/or signatures are:
     </p>
 
-    <ul>
-      <li>
-Assign a hash value to a dataset or a vocabulary when stored in a repository,
-e.g., the <a href="https://lov.linkeddata.es/dataset/lov">Linked Open Data</a>
-repository. (This makes it possible to use an approach akin to <a
-href='https://www.w3.org/TR/SRI/'>subresource integrity</a> when referring to
-such a set data set or a vocabulary.)
-      </li>
-      <li>
-A <a href="https://www.w3.org/TR/vc-data-model">Verifiable Credential</a> used
-in, e.g., a vaccination passport is signed by its issuer.
-      </li>
-      <li>
-A set of statements added to a knowledge graph, or as metadata to a Web page
-encoded in schema.org, is signed to prove its origin.
-      </li>
-      <li>
-Use the value of the RDF Dataset Hash function as a globally unique identifier
-for an RDF Dataset.
-      </li>
-    </ul>
+    <dl>
+      <dt>Detecting changes in Datasets</dt>
+      <dd>
+When processing RDF Datasets over a period of time, determining if information
+has changed is helpful. For example, knowing if information has changed helps
+with data cache invalidation, detecting if expected data has been tampered with
+or modified, or when debugging unexpected changes in source RDF Datasets.
+Requirement: An RDF Dataset Canonicalization algorithm.
+      </dd>
+      <dt>Space-efficient verification of the contents of Datasets</dt>
+      <dd>
+If unique identification of RDF Datasets is possible, one can cryptographically
+hash the information to establish a storage-efficient way to verify that the
+information has not changed over time. One property of cryptographic digests is
+that one can verify data integrity. For example, a small device sending an RDF
+Dataset to a remote storage location can compute a cryptographic digest for
+later use in verifying that all the data arrived intact and has not been
+tampered with. Requirement: An RDF Dataset Canonicalization algorithm whose
+output can be used as input a cryptographic digest function.
+      </dd>
+      <dt>Secret confirmation of the contents of Datasets</dt>
+      <dd>
+Since a cryptographic digest is a one-way function, and serves as an
+abbreviation for the entire RDF Dataset, one can use it in places where secrecy
+is desired. For example, when ensuring that the transaction history on a
+distributed ledger is the same between two services, two systems could keep
+track of the list of transactions in their respective ledgers. Canonicalizing
+and cryptographically hashing the list of transactions should result in the same
+cryptographic hash without either party needing to share the list of
+transactions with the other. Requirement: An RDF Dataset Canonicalization
+algorithm whose cryptographic digest can be shared to establish the unique
+identity of the RDF Dataset.
+      </dd>
+      <dt>
+Annotating Datasets with digital signatures and other digital proofs
+      </dt>
+      <dd>
+When publishing or transmitting an RDF Dataset, clearly articulating the entity
+that asserted the data and protecting it from undetected modification is useful
+for mission critical systems. For example, understanding the issuer of a
+Verifiable Credential and ensuring that it is evident when a Verifiable
+Presentation has been tampered with underlies the trustworthiness of the encoded
+information. Requirement: A way of encoding and verifying a digital signature on
+an RDF Dataset.
+      </dd>
+      <dt></dt>
+      <dd>
+
+      </dd>
+    </dl>
   </section>
 </body>
 
