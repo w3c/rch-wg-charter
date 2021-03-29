@@ -150,14 +150,15 @@ particular set of blank node labels used in the Dataset.
         </p>
       </dd>
 
-      <dt id='ld-hash'>RDF Dataset Hash (or Linked Data Hash)</dt>
+      <dt id='canonicalization'>RDF Dataset Canonicalization</dt>
       <dd>
         <p>
-A <a href="https://en.wikipedia.org/wiki/Hash_function">hash function</a> <span
-class='rdf'>h</span> defined on RDF Datasets which has the additional property
+A <a href="https://en.wikipedia.org/wiki/Graph_canonization">
+graph canonicalization function</a> <span
+class='rdf'>C</span> defined on RDF Datasets which has the additional property
 that for any RDF Datasets <span class='rdf'>R</span> and <span
 class='rdf'>S</span>, the relation <span class='rdf'>R&nbsp;≈&nbsp;S</span>
-implies <span class='rdf'>h(R)&nbsp;=&nbsp;h(S)</span>.
+implies <span class='rdf'>C(R)&nbsp;=&nbsp;C(S)</span>.
         </p>
 
       </dd>
@@ -203,11 +204,11 @@ implies two steps:
 
     <ol id=sign>
       <li>
-use an <a href="#ld-hash">RDF Dataset Hash function</a> <span
-class='rdf'>h</span> to calculate <span class='rdf'>h(R)</span>;
+use an <a href="#canonicalization">RDF Dataset Canonicalization</a> function
+<span class='rdf'>C</span> to calculate <span class='rdf'>C(R)</span>;
       </li>
       <li>
-apply a digital signature function on <span class='rdf'>h(R)</span>.
+apply a digital signature function on <span class='rdf'>C(R)</span>.
       </li>
     </ol>
 
@@ -229,16 +230,16 @@ resulting set of quads;
       </li>
 
       <li>
-apply a (traditional) hashing function <span class='rdf'>H</span> on the result
-of the serialization to yield <span class='rdf'>h(R)</span>.
+apply a (traditional) hashing function <span class='rdf'>h</span> on the result
+of the serialization to yield <span class='rdf'>h(C(R))</span>.
       </li>
     </ol>
 
     <p>
 The main challenge for the Working Group is to provide a standard for the <a
 href="#canonicalization">RDF Dataset Canonicalization function</a>. That paves
-the way for defining RDF Dataset Hash functions, as well as methods to sign RDF
-Datasets.
+the way for uniquely identifying RDF Datasets, as well as methods to
+digitally sign RDF Datasets.
     </p>
   </section>
 
