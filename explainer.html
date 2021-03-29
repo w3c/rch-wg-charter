@@ -51,14 +51,13 @@ var respecConfig = {
     },
     "rdf-dataset-normalization": {
       title: "RDF Dataset Normalization",
-      editors : [
-        "Dave Longley",
-        "Manu Sporny"
+      authors : [
+        "Rachel Arnold",
+        "Dave Longley"
       ],
-      href: "https://json-ld.github.io/normalization/spec/index.html",
+      href: "https://lists.w3.org/Archives/Public/public-credentials/2021Mar/att-0220/RDFDatasetCanonicalization-2020-10-09.pdf",
       publisher: "W3C",
-      status: "W3C Community Group Report",
-      date : 2021
+      date : "2020-10-09"
     }
   }
 };
@@ -197,13 +196,13 @@ approaches have been proposed:
 
       <ol>
         <li>
-The algorithms defined Aidan Hogan in [[aidan-2017]], reviewed through the
-scholarly peer review process.
+The algorithms defined by Aidan Hogan in [[aidan-2017]], reviewed through the
+scholarly peer review process, implemented by the author.
         </li>
         <li>
-The algorithm defined and implemented Dave Longley, see
-[[rdf-dataset-normalization]]. <span class=issue>we will need references to the
-algorithmic description and the referees reviews</span>
+The algorithm defined by Rachel Arnold and Dave Longley, see
+[[rdf-dataset-normalization]], <span class="issue">publicly reviewed by @@@</span>, implemented and deployed via, e.g.,
+the <a href="https://github.com/digitalbazaar/jsonld-signatures">JSON-LD Signatures package</a> used in several JSON-LD Signature suites. 
         </li>
       </ol>
 
@@ -280,7 +279,7 @@ When processing RDF Datasets over a period of time, determining if information
 has changed is helpful. For example, knowing if information has changed helps
 with data cache invalidation, detecting if expected data has been tampered with
 or modified, or when debugging unexpected changes in source RDF Datasets.
-Requirement: An RDF Dataset Canonicalization algorithm.
+<br>Requirement: An RDF Dataset Canonicalization algorithm.
       </dd>
       <dt>Space-efficient verification of the contents of Datasets</dt>
       <dd>
@@ -290,7 +289,7 @@ information has not changed over time. One property of cryptographic digests is
 that one can verify data integrity. For example, a small device sending an RDF
 Dataset to a remote storage location can compute a cryptographic digest for
 later use in verifying that all the data arrived intact and has not been
-tampered with. Requirement: An RDF Dataset Canonicalization algorithm whose
+tampered with. <br>Requirement: An RDF Dataset Canonicalization algorithm whose
 output can be used as input a cryptographic digest function.
       </dd>
       <dt>Secret confirmation of the contents of Datasets</dt>
@@ -302,7 +301,7 @@ distributed ledger is the same between two services, two systems could keep
 track of the list of transactions in their respective ledgers. Canonicalizing
 and cryptographically hashing the list of transactions should result in the same
 cryptographic hash without either party needing to share the list of
-transactions with the other. Requirement: An RDF Dataset Canonicalization
+transactions with the other. <br>Requirement: An RDF Dataset Canonicalization
 algorithm whose cryptographic digest can be shared to establish the unique
 identity of the RDF Dataset.
       </dd>
@@ -315,7 +314,7 @@ that asserted the data and protecting it from undetected modification is useful
 for mission critical systems. For example, understanding the issuer of a
 Verifiable Credential and ensuring that it is evident when a Verifiable
 Presentation has been tampered with underlies the trustworthiness of the encoded
-information. Requirement: A way of encoding and verifying a digital signature on
+information. <br>Requirement: A way of encoding and verifying a digital signature on
 an RDF Dataset.
       </dd>
     </dl>
