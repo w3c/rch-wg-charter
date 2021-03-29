@@ -224,38 +224,24 @@ XML&nbsp;[[xmldsig-core1]]. For an RDF Dataset <span class='rdf'>R</span> this
 implies two steps:
     </p>
 
-    <ol id=sign>
+    <ol>
       <li>
 use an <a href="#canonicalization">RDF Dataset Canonicalization</a> function
 <span class='rdf'>C</span> to calculate <span class='rdf'>C(R)</span>;
       </li>
       <li>
-apply a digital signature function on <span class='rdf'>C(R)</span>.
+        serialize <span class='rdf'>C(R)</span> to quads&nbsp;[[n-quads]] and sort the
+        resulting set of quads;
+      </li>
+      <li id=hash>
+        apply a (traditional) hashing function <span class='rdf'>h</span> on the result
+        of the serialization to yield <span class='rdf'>h(R)</span> (the cryptographic hash of the Dataset). 
+      </li>
+      <li d=sign>
+apply a digital signature function on <span class='rdf'>h(R)</span>.
       </li>
     </ol>
 
-    <p>
-Whereas step (2) may rely on well documented methods, standards, and libraries
-developed by the cryptography community, step (1) requires more complex steps:
-    </p>
-
-    <ol id=hash type="i">
-      <li>
-use an <a href="#canonicalization">RDF Dataset Canonicalization function</a>
-<span class='rdf'>C</span>&nbsp; to generate the canonical form <span
-class='rdf'>C(R)</span>;
-      </li>
-
-      <li>
-serialize <span class='rdf'>C(R)</span> to quads&nbsp;[[n-quads]] and sort the
-resulting set of quads;
-      </li>
-
-      <li>
-apply a (traditional) hashing function <span class='rdf'>h</span> on the result
-of the serialization to yield <span class='rdf'>h(C(R))</span>.
-      </li>
-    </ol>
 
     <p>
 The main challenge for the Working Group is to provide a standard for the <a
