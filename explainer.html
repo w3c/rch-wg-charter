@@ -16,28 +16,18 @@ var respecConfig = {
     w3cid: 7382,
     orcid: "0000-0003-0782-2704",
     companyURL: "https://www.w3.org",
-  }],
-  authors: [{
-    name: "Ivan Herman",
-    url: "https://www.w3.org/People/Ivan/",
-    company: "W3C",
-    w3cid: 7382,
-    orcid: "0000-0003-0782-2704",
-    companyURL: "https://www.w3.org",
   }, {
     name: "Manu Sporny",
     url: "http://manu.sporny.org/",
     company: "Digital Bazaar",
     companyURL: "https://digitalbazaar.com/",
     w3cid: 41758
-  }
-//            , {
+  }],
 //    name: "Alan Karp",
 //    url: "https://alanhkarp.com/",
 //    company: "Earth Computing",
 //    companyURL: "https://www.earthcomputing.io/",
 //  }
-  ],
   github: "iherman/ld-signatures-charter",
   localBiblio: {
     "aidan-2017" : {
@@ -291,6 +281,7 @@ Dataset to a remote storage location can compute a cryptographic digest for
 later use in verifying that all the data arrived intact and has not been
 tampered with. <br>Requirement: An RDF Dataset Canonicalization algorithm whose
 output can be used as input a cryptographic digest function.
+<br>(Contributed by <a href="https://alanhkarp.com/">Alan Karp.)</a>
       </dd>
       <dt>Secret confirmation of the contents of Datasets</dt>
       <dd>
@@ -304,6 +295,7 @@ cryptographic hash without either party needing to share the list of
 transactions with the other. <br>Requirement: An RDF Dataset Canonicalization
 algorithm whose cryptographic digest can be shared to establish the unique
 identity of the RDF Dataset.
+<br>(Contributed by <a href="https://alanhkarp.com/">Alan Karp.)</a>
       </dd>
       <dt>
 Annotating Datasets with digital signatures and other digital proofs
