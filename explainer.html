@@ -132,8 +132,9 @@ RDF Datasets.
         <p>
 The structure of two isomorphic Datasets are identical: URIs and literals are
 all character-wise identical, and it is possible to relabel the blank nodes of
-<span class='rdf'>R</span> to the blank nodes of <span class='rdf'>S</span>
-without changing the topology of the graph.
+<span class='rdf'>R</span> to the blank nodes of <span class='rdf'>S</span>,
+generating an RDF dataset <span class='rdf'>R'</span> such that 
+<span class='rdf'>R' = S</span>.
         </p>
       </dd>
 
@@ -142,7 +143,8 @@ without changing the topology of the graph.
         <p>
 For an RDF Dataset <span class='rdf'>R</span>, a <em>canonical form</em> of
 <span class='rdf'>R</span> is a dataset <span class='rdf'>R<sub>C</sub></span>
-such that <span class='rdf'>R<sub>C</sub> = S<sub>C</sub></span> if and only if
+such that <span class='rdf'>R ≈ R<sub>C</sub></span> and 
+<span class='rdf'>R<sub>C</sub> = S<sub>C</sub></span> if and only if
 <span class='rdf'>R ≈ S</span>.
         </p>
       </dd>
