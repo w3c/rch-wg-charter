@@ -9,4 +9,4 @@ Any text in this repository should be considered as a draft of a draft. The proc
 
 At this point, we are in the course of achieving (1)…
 
-The [properly rendered version](https://iherman.github.io/ld-signatures-charter/) is also available. 
+The [properly rendered version](https://w3c.github.io/lds-wg-charter/) is also available. 
