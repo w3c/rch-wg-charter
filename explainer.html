@@ -91,7 +91,7 @@ the problem space and associated use cases and requirements.
     <h2>Terminology</h2>
 
     <p>
-For a precise definition for the various terms and notions, the reader should
+For a precise definition of the various terms and ceonepts, the reader should
 refer to the formal RDF specification [[rdf11-concepts]].
     </p>
 
@@ -108,14 +108,17 @@ href="https://www.w3.org/TR/rdf11-concepts/#section-dataset">RDF Dataset</a>
       <dt id='identical'>Identical RDF Datasets</dt>
       <dd>
         <p>
-          <span class='rdf'>R = S</span> denotes that <span class='rdf'>R</span> and <span class='rdf'>S</span> are <em>identical</em> RDF Datasets. 
-          We can also say that <span class='rdf'>R</span> and <span class='rdf'>S</span> are the same RDF Dataset.
+<span class='rdf'>R = S</span> denotes that <span class='rdf'>R</span> and <span class='rdf'>S</span> are <em>identical</em> RDF Datasets. 
         </p>
         <p>
 Two RDF Datasets are identical if and only if they have the same <a
 href="https://www.w3.org/TR/rdf11-concepts/#section-dataset">default graph</a>
-and the same set of <a
-href="https://www.w3.org/TR/rdf11-concepts/#section-dataset">named graphs</a>.
+(under set equality) and the same set of <a
+href="https://www.w3.org/TR/rdf11-concepts/#section-dataset">named graphs</a>
+(under set equality).
+        </p>
+         <p>
+If <span class='rdf'>R</span> and <span class='rdf'>S</span> identical, we may equivalently say that they are the <em>same</em> RDF Dataset. 
         </p>
       </dd>
 
