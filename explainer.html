@@ -191,8 +191,10 @@ scholarly peer review process, implemented by the author.
         </li>
         <li>
 The algorithm defined by Rachel Arnold and Dave Longley, see
-[[arnold-longley-2020]], <span class="issue">publicly reviewed by @@@</span>, implemented and deployed via, e.g.,
-the <a href="https://github.com/digitalbazaar/jsonld-signatures">JSON-LD Signatures package</a> used in several JSON-LD Signature suites. 
+[[arnold-longley-2020]], <span class="issue">publicly reviewed by @@@</span>,
+implemented and deployed via, e.g., the <a
+href="https://github.com/digitalbazaar/jsonld-signatures">JSON-LD Signatures
+package</a> used in several JSON-LD Signature suites.
         </li>
       </ol>
 
@@ -220,12 +222,13 @@ use an <a href="#canonicalization">RDF Dataset Canonicalization</a> function
 <span class='rdf'>C</span> to calculate <span class='rdf'>C(R)</span>;
       </li>
       <li>
-        serialize <span class='rdf'>C(R)</span> to quads&nbsp;[[n-quads]] and sort the
-        resulting set of quads;
+serialize <span class='rdf'>C(R)</span> to quads&nbsp;[[n-quads]] and sort the
+resulting set of quads;
       </li>
       <li id=hash>
-        apply a (traditional) hashing function <span class='rdf'>h</span> on the result
-        of the serialization to yield <span class='rdf'>h(R)</span> (the cryptographic hash of the Dataset). 
+apply a (traditional) hashing function <span class='rdf'>h</span> on the result
+of the serialization to yield <span class='rdf'>h(R)</span> (the cryptographic
+hash of the Dataset).
       </li>
       <li d=sign>
 apply a digital signature function on <span class='rdf'>h(R)</span>.
