@@ -22,6 +22,12 @@ var respecConfig = {
     company: "Digital Bazaar",
     companyURL: "https://digitalbazaar.com/",
     w3cid: 41758
+  }, {
+    name: "Aidan Hogan",
+    url: "http://aidanhogan.com/",
+    company: "DCC, Universidad de Chile",
+    companyURL: "https://www.dcc.uchile.cl/",
+    orcid: "0000-0001-9482-1982"
   }],
 //    name: "Alan Karp",
 //    url: "https://alanhkarp.com/",
@@ -91,99 +97,81 @@ the problem space and associated use cases and requirements.
     <h2>Terminology</h2>
 
     <p>
-For a precise definition for the various terms and notions, the reader should
-refer to the formal RDF specification [[rdf11-concepts]]. Note also that the
-term “Linked Data” is used as a synonym to “RDF Datasets”.
+For a precise definition of the various terms and concepts, the reader should
+refer to the formal RDF specification [[rdf11-concepts]].
     </p>
 
     <dl>
       <dt id='dataset'>RDF Datasets</dt>
       <dd>
         <p>
-<span class='rdf'>R</span>, <span class='rdf'>S</span>,&nbsp; etc., denote an <a
+<span class='rdf'>R</span>, <span class='rdf'>R'</span> and <span class='rdf'>S</span> each denote an <a
 href="https://www.w3.org/TR/rdf11-concepts/#section-dataset">RDF Dataset</a>
 [[rdf11-concepts]].
-        </p>
-        <p>
-The term “named graphs” is also used in literature or in applications.
         </p>
       </dd>
 
       <dt id='identical'>Identical RDF Datasets</dt>
       <dd>
         <p>
-<span class='rdf'>R = S</span> denotes two <em>identical</em> RDF Datasets.
+<span class='rdf'>R = S</span> denotes that <span class='rdf'>R</span> and <span class='rdf'>S</span> are <em>identical</em> RDF Datasets. 
         </p>
         <p>
-Identical RDF Datasets consists of the same <a
-href="https://www.w3.org/TR/rdf11-concepts/#section-rdf-graph">RDF Graphs</a>
-(where “the same” means they are the same set of triples) with the same <a
-href="https://www.w3.org/TR/rdf11-concepts/#section-dataset">Graph Names</a>.
+Two RDF Datasets are identical if and only if they have the same <a
+href="https://www.w3.org/TR/rdf11-concepts/#section-dataset">default graph</a>
+(under set equality) and the same set of <a
+href="https://www.w3.org/TR/rdf11-concepts/#section-dataset">named graphs</a>
+(under set equality).
+        </p>
+         <p>
+If <span class='rdf'>R</span> and <span class='rdf'>S</span> are identical, we may equivalently say that they are the <em>same</em> RDF Dataset. 
         </p>
       </dd>
 
       <dt id='isomorphic'>Isomorphic RDF Datasets</dt>
       <dd>
         <p>
-<span class='rdf'>R ≈ S</span> denotes two <a
-href='https://www.w3.org/TR/rdf11-concepts/#section-dataset-isomorphism'><em>isomorphic</em></a>
-RDF Datasets.
+          <span class='rdf'>R ≈ S</span> denotes that <span class='rdf'>R</span> and <span class='rdf'>S</span> are <a href='https://www.w3.org/TR/rdf11-concepts/#section-dataset-isomorphism'><em>isomorphic</em></a> RDF Datasets. 
         </p>
         <p>
-The structure of two isomorphic Datasets are identical: URIs and literals are
-all character-wise identical, and it is possible to relabel the blank nodes of
-<span class='rdf'>R</span> to the blank nodes of <span class='rdf'>S</span>,
-generating an RDF dataset <span class='rdf'>R'</span> such that 
-<span class='rdf'>R' = S</span>.
+Two isomorphic RDF Datasets are identical except for differences in how their individual blank nodes are labeled. 
+In particular, <span class='rdf'>R</span> is isomorphic with <span class='rdf'>S</span> if and only if
+it is possible to map the blank nodes of <span class='rdf'>R</span> to the blank nodes of 
+<span class='rdf'>S</span> in a one-to-one manner, generating an RDF dataset 
+<span class='rdf'>R'</span> such that <span class='rdf'>R' = S</span>.
         </p>
       </dd>
-
-      <dt id="canonical_form">Canonical Form</dt>
-      <dd>
-        <p>
-For an RDF Dataset <span class='rdf'>R</span>, a <em>canonical form</em> of
-<span class='rdf'>R</span> is a dataset <span class='rdf'>R<sub>C</sub></span>
-such that <span class='rdf'>R ≈ R<sub>C</sub></span> and 
-<span class='rdf'>R<sub>C</sub> = S<sub>C</sub></span> if and only if
-<span class='rdf'>R ≈ S</span>.
-        </p>
-      </dd>
-
-      <dt id='canonicalization'>Canonicalization</dt>
-      <dd>
-        <p>
-Canonicalization is a function <span class='rdf'>C</span> on RDF Datasets such
-that <span class='rdf'>C(R)</span> is a Canonical Form for <span
-class='rdf'>R</span>.
-        </p>
-        <p>
-Definition of a canonicalization function means, in practice, to define a
-deterministic re-labeling procedure of all blank nodes of an RDF Dataset without
-changing the topology of the graph, and whose result is not dependent on the
-particular set of blank node labels used in the Dataset.
-        </p>
-      </dd>
-
+      
       <dt id='canonicalization'>RDF Dataset Canonicalization</dt>
       <dd>
         <p>
-A <a href="https://en.wikipedia.org/wiki/Graph_canonization">
-graph canonicalization function</a> <span
-class='rdf'>C</span> defined on RDF Datasets which has the additional property
-that for any RDF Datasets <span class='rdf'>R</span> and <span
-class='rdf'>S</span>, the relation <span class='rdf'>R&nbsp;≈&nbsp;S</span>
-implies <span class='rdf'>C(R)&nbsp;=&nbsp;C(S)</span>.
+RDF Dataset Canonicalization is a function <span class='rdf'>C</span> 
+that maps an RDF Dataset to an RDF Dataset in a manner that satisfies the following
+two properties for all RDF Datasets <span class='rdf'>R</span> and <span class='rdf'>S</span>:
         </p>
-
+        <ul>
+          <li> <span class='rdf'>R ≈ C(R)</span>; and</li> 
+          <li> <span class='rdf'>C(R) = C(S)</span> if and only if <span class='rdf'>R ≈ S</span>.</li>
+        </ul>
+        <p id="canonical_form">
+We may refer to <span class='rdf'>C(R)</span> as the <em>canonical form</em> of 
+<span class='rdf'>R</span> (under <span class='rdf'>C</span>&nbsp;).
+        </p>
+        <p>
+Such a canonicalization function can be implemented, in practice, as a
+procedure that deterministically re-labels all blank nodes of an RDF Dataset
+in a one-to-one manner, without depending on the particular set of blank node 
+labels used in the input RDF Dataset.
+        </p>
       </dd>
     </dl>
 
     <section>
       <h2>The General Problem Space</h2>
       <p>
-Defining a generalized canonicalization function was an unsolved mathematical
-problem until the last decade. Over the past 10 years, at least two generalized
-approaches have been proposed:
+Though canonical labeling procedures for directed and undirected graphs have
+been studied for several decades, only in the past 10 years have two generalized
+approaches been proposed for RDF Graphs and RDF Datasets:
       </p>
 
       <ol>
@@ -202,7 +190,7 @@ package</a> used in several JSON-LD Signature suites.
 
       <p>
 The introduction of <a
-href="http://aidanhogan.com/docs/rdf-canonicalisation.pdf">Adrian Hogan’s
+href="http://aidanhogan.com/docs/rdf-canonicalisation.pdf">Aidan Hogan’s
 paper</a>&nbsp;[[aidan-2017]] also contains a more thorough description of the
 underlying mathematical challenges.
       </p>
