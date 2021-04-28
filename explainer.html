@@ -220,7 +220,7 @@ var respecConfig = {
     </p>
 
     <dl>
-      <dt>Detecting changes in Datasets</dt>
+      <dt id="detectingChanges">Detecting changes in Datasets</dt>
       <dd>
         When processing RDF Datasets over a period of time, determining if information has changed is helpful. For example, knowing if information has changed helps with data cache invalidation, detecting if expected data has been tampered with or modified, or when debugging unexpected changes in source RDF Datasets.
         <br>Requirement: An RDF Dataset Canonicalization algorithm.
@@ -259,6 +259,11 @@ var respecConfig = {
       <dd>The <a href="#spaceEfficient">space-efficient</a> and <a href="#dSig">digital proofs</a> use cases above both hint at scenarios where data transfer is severely constrained. Such transfer might be achieved using an optical data carrier, such as a QR code or Data Matrix, or a radio frequency data carrier such as an NFC tag.
         <br>
         Requirement: Lossless conversion between highly compact and less compact forms of informationally identical RDF Datasets.</dd>
+      <dt id="semanticConsistency">Semantic consistency of multi-part datasets</dt>
+      <dd>The <a href="#detectingChanges">detecting changes</a> and <a href="#spaceEfficient">space-efficient verification</a> use-cases above can be leveraged in situations where a graph or dataset semantically relies on one or several other graph(s), which it refers to through links. Attaching cryptographic hashes to these links would allow to verify the overall integrity of the set of interconnected graphs. One such example is the <a href="https://www.w3.org/TR/owl2-primer/#a_imports">import mechanism of OWL</a>: the ontology consumer may wish to verify that the imported ontology is the same as the one used by the author of the importing ontology, otherwise the resulting inferences may differ. Another such example are <a href="https://www.w3.org/TR/EARL10-Schema/">EARL test reports</a>: the consumer may wish to ensure that the test description pointed to by the report is the one that was actually used for the test.
+        <br>
+        Requirement: A standard way of computing and attaching a cryptographic hash to a graph or dataset.
+      </dd>
     </dl>
   </section>
 
