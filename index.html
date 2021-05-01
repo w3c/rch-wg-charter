@@ -278,10 +278,25 @@
                             <b>Expected completion:</b> WG-START + 24 months.
                         </p>
                     </dd>
-                    <dt id="signatures" class="spec">Linked Data Security (LDS)</dt>
+
+                    <dt id="hash" class="spec">Linked Data Hash (LDH)</dt>
                     <dd>
                         <p>
-                            This specification details the processing steps for securing an arbitrary RDF Dataset including: 1) the generation of a canonicalized form using the algorithm specified in the “RDF Dataset Canonicalization” deliverable, 2) the generation of a cryptographic hash, 3) the generation of a digital proof, such as a digital signature, and 4) the expression of the result in an RDF Dataset in a way that enables a 3rd party to verify the digital proof.
+                            This specification details the processing steps of a hash function for an arbitrary RDF Dataset. These step include (1) the generation of a <a href="./explainer.html#canonical_form">canonical form</a> using the algorithm specified in the “RDF Dataset Canonicalization” deliverable, (2) sorting the <a href="https://www.w3.org/TR/n-quads/">N-Quads</a> serialization of the canonical form generated in the previous step, and (3) application of a cryptographic hash function on the sorted <a href="https://www.w3.org/TR/n-quads/">N-Quads</a> representation. 
+                        </p>
+
+                        <p class="draft-status">
+                            <b>Draft State</b> to be adopted from: <a href="https://w3c-ccg.github.io/ld-proofs/">Linked Data Proofs 1.0</a>, eds. Dave Longley, Manu Sporny, W3C Draft Community Group Report, 2020.
+                        </p>
+                        <p class="milestone">
+                            <b>Expected completion:</b> WG-START + 24 months.
+                        </p>
+                    </dd>
+
+                    <dt id="integrity" class="spec">Linked Data Integrity (LDI)</dt>
+                    <dd>
+                        <p>
+                            This specification defines a generic framework for expressing proofs of integrity of Linked Datasets via, for example, digital signatures, proofs of work, or proofs of existence. Beyond the generic (normative) framework, this deliverable also provides a normative definition for Linked Data Signatures, as well as a means to express these proofs in an RDF Dataset in a way that enables a 3rd party to verify the integrity of the data.
                         </p>
                         <p class="draft-status">
                             <b>Draft State</b> to be adopted from: <a href="https://w3c-ccg.github.io/ld-proofs/">Linked Data Proofs 1.0</a>, eds. Dave Longley, Manu Sporny, W3C Draft Community Group Report, 2020.
@@ -290,10 +305,11 @@
                             <b>Expected completion:</b> WG-START + 24 months.
                         </p>
                     </dd>
+
                     <dt id="vocabulary" class="spec">Linked Data Security Vocabulary (LDSV)</dt>
                     <dd>
                         <p>
-                            This specification defines an RDF Vocabulary to express the results of the Linked Data Security processes and their parameters in an RDF Dataset in a way that enables a 3rd party to verify the result. The specification also defines a preferred JSON-LD Context document to be used by the JSON-LD serialization.
+                            This specification defines a formal RDF Vocabulary for the terms defined in the Linked Data Integrity deliverable. The specification may also define one or more <a href="https://www.w3.org/TR/json-ld11/#the-context">JSON-LD Context</a> documents to be used by a JSON-LD serialization.
                         </p>
 
                         <p class="draft-status">
@@ -313,13 +329,18 @@
                 </p>
                 <ul>
                     <li>
-                        A Linked Data Security Registry, containing Linked Data related cryptographic terms, including, but not limited to, terms used for RDF Dataset Canonicalization, Linked Data Proofs, and Linked Data Signatures.
+                        <p>
+                            A Linked Data Security Registry, containing Linked Data related cryptographic terms, including, but not limited to, the terms defined in the Linked Data Security Vocabulary (LDSV), as well as terms for the definition of other Linked Data Integrity related proof methods.
+                        </p>    
+                        <p>
+                            If, during the chartered period of the Working Group, the <a href="https://www.w3.org/Consortium/Process/Drafts/">next version of the W3C Process</a> is adopted, incorporating the concept of a <a href="https://www.w3.org/Consortium/Process/Drafts/#registries">Registry Track</a>, the Working Group will consider publishing the Linked Data Security Vocabulary Recommendation with an additional <a href="https://www.w3.org/Consortium/Process/Drafts/#registry-section">Registry Section</a> incorporating the terms planned in this deliverable.
+                        </p>    
                     </li>
                     <li>
-                        Test suite and implementation report for the specification.
+                        <p>Test suite and implementation report for the specification.</p>
                     </li>
                     <li>
-                        Primer or Best Practice documents to support web developers when designing applications.
+                        <p>Primer or Best Practice documents to support web developers when designing applications.</p>
                     </li>
                 </ul>
             </section>
@@ -334,13 +355,13 @@
                         WG-START +3 months: FPWD for RDC
                     </li>
                     <li>
-                        WG-START +6 months: FPWD for LDS and LDSV
+                        WG-START +6 months: FPWD for LDH, LDI, and LDSV
                     </li>
                     <li>
                         WG-START +15 months: CR for RDC
                     </li>
                     <li>
-                        WG-START +18 months: CR for LDS and LDSV
+                        WG-START +18 months: CR for LDH, LDI, and LDSV
                     </li>
                     <li>
                         WG-START +24 months: REC for all standards-track documents
