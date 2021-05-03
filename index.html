@@ -151,7 +151,7 @@
         </div>
 
         <p class="mission">
-            The <strong>mission</strong> of the <a href="https://www.w3.org/2021/lds-wg/" class=todo>Linked Data Signatures Working Group</a> is to define a standard for uniquely identifying and securing <a href='https://www.w3.org/standards/semanticweb/data'>Linked Data</a> used in use cases such as <a href="https://www.w3.org/TR/vc-data-model">Verifiable Credentials</a>. The work will include defining <a href="explainer.html#canonicalization"> RDF Dataset Canonicalization</a> algorithms as well as algorithms and vocabularies for encoding digital proofs, such as <a href='https://en.wikipedia.org/wiki/Digital_signature'>digital signatures</a>, and with that secure information expressed in serializations such as <a href="https://www.w3.org/TR/json-ld/">JSON-LD</a>, <a href="https://www.w3.org/TR/trig/">TriG</a>, and <a href="https://www.w3.org/TR/n-quads/">N-Quads</a>.
+            The <strong>mission</strong> of the <a href="https://www.w3.org/2021/lds-wg/" class=todo>Linked Data Signatures Working Group</a> is to define a standard for uniquely identifying and securing <a href='https://www.w3.org/standards/semanticweb/data'>Linked Data</a> used in use cases such as <a href="https://www.w3.org/TR/vc-data-model">Verifiable Credentials</a>. The work will include defining <a href="explainer.html#canonicalization">RDF Dataset Canonicalization</a> algorithms as well as algorithms and vocabularies for encoding digital proofs, such as <a href='https://en.wikipedia.org/wiki/Digital_signature'>digital signatures</a>, and with that secure information expressed in serializations such as <a href="https://www.w3.org/TR/json-ld/">JSON-LD</a>, <a href="https://www.w3.org/TR/trig/">TriG</a>, and <a href="https://www.w3.org/TR/n-quads/">N-Quads</a>.
         </p>
 
         <section id="details">
@@ -211,11 +211,15 @@
             <h2>Scope</h2>
 
             <p>
+                A terminological note: in what follows in this charter, and in the terminology to be used by the Working Group, the term “Linked Data” is used as a synonym to “RDF”.   
+            </p>
+
+            <p>
                 The deployment of <a href='https://www.w3.org/standards/semanticweb/data'>Linked Data</a> is <a href="http://webdatacommons.org/structureddata/#toc3"> increasing at a rapid pace</a>. There are a variety of established use cases, such as <a href="https://www.w3.org/TR/vc-data-model">Verifiable Credentials</a>, the publication of biological and pharmaceutical data, consumption of mission critical RDF vocabularies, and others, that depend on the ability to verify the authenticity and integrity of the data being consumed (see the <a href="explainer.html#usage">use cases</a> for more examples). In order to achieve these use cases, a standard way to process <a href="https://www.w3.org/TR/rdf11-concepts/#section-dataset">RDF Datasets</a> is needed. More specifically, the ability to <a href="https://en.wikipedia.org/wiki/Graph_canonization"> canonicalize</a>, <a href="https://en.wikipedia.org/wiki/Cryptographic_hash_function"> cryptographically hash</a>, <a href="https://en.wikipedia.org/wiki/Digital_signature">digitally sign</a>, and encode the result of that process on an <a href="https://www.w3.org/TR/rdf11-concepts/#section-dataset">RDF Dataset</a> is required.
             </p>
 
             <p>
-                The scope of this Working Group is to define standards to <a href="./explainer.html#canonicalization">canonicalize</a>, <a href="./explainer.html#hash"> cryptographically hash</a>, and <a href='./explainer.html#sign'>digitally sign</a> an <a href="https://www.w3.org/TR/rdf11-concepts/#section-dataset">RDF Dataset</a>. This includes the definition of a standard <a href='./explainer.html#canonicalization'>canonicalization algorithm</a>, a generic algorithm for generating and verifying a digital proof using existing cryptographic primitives, an RDF vocabulary for expressing the results of digital proof generation algorithm, and a way of representing and referencing specific existing cryptographic proof algorithms and parameters in a format that can be referred to from an RDF Dataset. The Working Group will also provide standard ways to represent this vocabulary in various RDF serialization formats, such as by providing <a href='https://www.w3.org/TR/json-ld11/#the-context'>JSON-LD contexts</a> for JSON-LD serializations. (See the separate <a href="./explainer.html">explainer document</a> for more detailed technical backgrounds and for the terminology used in this context.)
+                The scope of this Working Group is to define standards to <a href="./explainer.html#canonicalization">canonicalize</a>, <a href="./explainer.html#hash">cryptographically hash</a>, and <a href='./explainer.html#sign'>digitally sign</a> an <a href="https://www.w3.org/TR/rdf11-concepts/#section-dataset">RDF Dataset</a>. This includes the definition of a standard <a href='./explainer.html#canonicalization'>canonicalization algorithm</a>, a generic algorithm for generating and verifying a digital proof using existing cryptographic primitives, an RDF vocabulary for expressing the results of digital proof generation algorithm, and a way of representing and referencing specific existing cryptographic proof algorithms and parameters in a format that can be referred to from an RDF Dataset. The Working Group will also provide standard ways to represent this vocabulary in various RDF serialization formats, such as by providing <a href='https://www.w3.org/TR/json-ld11/#the-context'>JSON-LD contexts</a> for JSON-LD serializations. (See the separate <a href="./explainer.html">explainer document</a> for more detailed technical backgrounds and for the terminology used in this context.)
             </p>
 
             <section id="section-out-of-scope">
@@ -226,8 +230,7 @@
 
                 <ul>
                     <li>
-                        Definition of new cryptographic signature or encryption algorithms such as RSA, ECDSA, EdDSA, and AES. This Working Group will only define usage of, and suitable terms to <em>identify</em>, such algorithms. The Working Group will
-                        also define terms for the input and output parameters to those algorithms that the community has developed, or will develop in future.
+                        Definition of new cryptographic signature or encryption algorithms such as RSA, ECDSA, EdDSA, and AES. This Working Group will only define usage of, and suitable terms to <em>identify</em>, such algorithms. The Working Group will also define terms for the input and output parameters to those algorithms that the community has developed, or will develop in future.
                     </li>
                 </ul>
             </section>
@@ -268,7 +271,7 @@
                         </p>
                         <ol>
                             <li>
-                                <a href="https://lists.w3.org/Archives/Public/public-credentials/2021Mar/att-0220/RDFDatasetCanonicalization-2020-10-09.pdf"> RDF Dataset Canonicalization</a>, Rachel Arnold, Dave Longley, W3C Credentials Community Group, 2020.
+                                <a href="https://lists.w3.org/Archives/Public/public-credentials/2021Mar/att-0220/RDFDatasetCanonicalization-2020-10-09.pdf">RDF Dataset Canonicalization</a>, Rachel Arnold, Dave Longley, W3C Credentials Community Group, 2020.
                             </li>
                             <li>
                                 <a href="http://aidanhogan.com/docs/rdf-canonicalisation.pdf">Canonical Forms for Isomorphic and Equivalent RDF Graphs: Algorithms for Leaning and Labelling Blank Nodes</a>, Aidan Hogan, ACM Trans. Web, vol. 11, no. 4, p. 22:1-22:62, 2017.
