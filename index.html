@@ -78,6 +78,19 @@
             background-color: #FFC !important;
         }
         
+        .note {
+		        border-color: #52e052;
+		        background: #e9fbe9;
+		        color: black;
+		        overflow: auto;
+            padding: .5em;
+            border: .5em;
+            border-left-style: solid;
+            border-color: #52e052;
+            page-break-inside: avoid;
+            margin: 1em auto;
+	      }
+        
         .rdf {
             font-style: italic;
             font-family: cursive;
@@ -263,20 +276,22 @@
                             <b>Draft State</b> to be adopted from: <a href="https://json-ld.github.io/rdf-dataset-canonicalization/spec/index.html">RDF Dataset Canonicalization</a>, eds. Dave Longley, Manu Sporny, W3C Draft Community Group Report, 2019.
                         </p>
 
-                        <p class="draft-status">
-                            <b>Additional input documents:</b>
-                        </p>
-                        <ol>
-                            <li>
-                                <a href="https://lists.w3.org/Archives/Public/public-credentials/2021Mar/att-0220/RDFDatasetCanonicalization-2020-10-09.pdf"> RDF Dataset Canonicalization</a>, Rachel Arnold, Dave Longley, W3C Credentials Community Group, 2020.
-                            </li>
-                            <li>
-                                <a href="http://aidanhogan.com/docs/rdf-canonicalisation.pdf">Canonical Forms for Isomorphic and Equivalent RDF Graphs: Algorithms for Leaning and Labelling Blank Nodes</a>, Aidan Hogan, ACM Trans. Web, vol. 11, no. 4, p. 22:1-22:62, 2017.
-                            </li>
-                        </ol>
                         <p class="milestone">
                             <b>Expected completion:</b> WG-START + 24 months.
                         </p>
+                        <div class="note">
+                            <p class="draft-status">
+                                See also the mathematical basis for <a href="https://json-ld.github.io/rdf-dataset-canonicalization/spec/index.html">RDF Dataset Canonicalization</a>:
+                            </p>
+                            <ol>
+                                <li>
+                                    <a href="https://lists.w3.org/Archives/Public/public-credentials/2021Mar/att-0220/RDFDatasetCanonicalization-2020-10-09.pdf"> RDF Dataset Canonicalization</a>, Rachel Arnold, Dave Longley, W3C Credentials Community Group, 2020.
+                                </li>
+                                <li>
+                                    <a href="http://aidanhogan.com/docs/rdf-canonicalisation.pdf">Canonical Forms for Isomorphic and Equivalent RDF Graphs: Algorithms for Leaning and Labelling Blank Nodes</a>, Aidan Hogan, ACM Trans. Web, vol. 11, no. 4, p. 22:1-22:62, 2017.
+                                </li>
+                            </ol>
+                        </div>
                     </dd>
 
                     <dt id="hash" class="spec">RDF Dataset Hash (RDH)</dt>
