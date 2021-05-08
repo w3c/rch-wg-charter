@@ -222,9 +222,12 @@
 
         <section id="scope" class="scope">
             <h2>Scope</h2>
+            <p>
+                (For the usage of the terms “RDF” and “Linked Data", see the <a href="./explainer.html#ld-vs-rdf">terminological note</a> in the explainer document.)                
+            </p>
 
             <p>
-                The deployment of <a href='https://www.w3.org/standards/semanticweb/data'>Linked Data</a> is <a href="http://webdatacommons.org/structureddata/#toc3"> increasing at a rapid pace</a>. There are a variety of established use cases, such as <a href="https://www.w3.org/TR/vc-data-model">Verifiable Credentials</a>, the publication of biological and pharmaceutical data, consumption of mission critical RDF vocabularies, and others, that depend on the ability to verify the authenticity and integrity of the data being consumed (see the <a href="explainer.html#usage">use cases</a> for more examples). In order to achieve these use cases, a standard way to process <a href="https://www.w3.org/TR/rdf11-concepts/#section-dataset">RDF Datasets</a> is needed. More specifically, the ability to <a href="https://en.wikipedia.org/wiki/Graph_canonization"> canonicalize</a>, <a href="https://en.wikipedia.org/wiki/Cryptographic_hash_function"> cryptographically hash</a>, <a href="https://en.wikipedia.org/wiki/Digital_signature">digitally sign</a>, and encode the result of that process on an <a href="https://www.w3.org/TR/rdf11-concepts/#section-dataset">RDF Dataset</a> is required.
+                There are a variety of use cases in the area of Linked Data, such as <a href="https://www.w3.org/TR/vc-data-model">Verifiable Credentials</a>, the publication of biological and pharmaceutical data, or consumption of mission critical RDF vocabularies that depend on the ability to verify the authenticity and integrity of the data being consumed. (See the <a href="explainer.html#usage">use cases</a> for more examples.) In order to achieve these use cases, a standard way to process <a href="https://www.w3.org/TR/rdf11-concepts/#section-dataset">RDF Datasets</a> is needed. 
             </p>
 
             <p>
@@ -239,8 +242,10 @@
 
                 <ul>
                     <li>
-                        Definition of new cryptographic signature or encryption algorithms such as RSA, ECDSA, EdDSA, and AES. This Working Group will only define usage of, and suitable terms to <em>identify</em>, such algorithms. The Working Group will
-                        also define terms for the input and output parameters to those algorithms that the community has developed, or will develop in future.
+                        Definition of new cryptographic signature or encryption algorithms such as RSA, ECDSA, EdDSA, and AES. This Working Group will only define usage of, and suitable terms to <em>identify</em>, such algorithms.
+                    </li>
+                    <li>
+                        Authenticity and trust issues of Web (Data) content that go beyond the exchange and the integration of simple factual data expressed in RDF. 
                     </li>
                 </ul>
             </section>
@@ -352,6 +357,11 @@
                         </p>    
                     </li>
                     <li>
+                        <p>
+                            Note on additional Linked Data Integrity techniques that are not necessarily relying, or only partially, on the specifications developed by this Working Group.
+                        </p>
+                    </li>
+                    <li>
                         <p>Test suite and implementation report for the specification.</p>
                     </li>
                     <li>
@@ -445,9 +455,13 @@
             <section>
                 <h3 id="external-coordination">External Organizations</h3>
                 <dl>
-                    <dt><a href="https://datatracker.ietf.org/rg/cfrg/about/"> Internet Engineering Task Force Crypto Forum Research Group </a> </dt>
+                    <dt><a href="https://datatracker.ietf.org/rg/cfrg/about/">Internet Engineering Task Force Crypto Forum Research Group </a> </dt>
                     <dd>
                         To perform broad horizontal reviews on the output of the Working Group and to ensure that new pairing-based and post-quantum cryptographic algorithms and parameters can be integrated into the Linked Data Security ecosystem.
+                    </dd>
+                    <dt><a href="https://datatracker.ietf.org/group/artart/about/">Internet Engineering Task Force ART Area Review Team</a></dt>
+                    <dd>
+                        To coordinate on the work on the work of <a href="https://datatracker.ietf.org/doc/draft-jordan-jws-ct/">JWS Clear Text JSON Signature Option</a> to ensure that no obstacle should be created for further possible harmonization.
                     </dd>
                     <dt><a href="https://www.nist.gov/"> National Institute of Standards and Technology, U.S. Department of Commerce </a></dt>
                     <dd>

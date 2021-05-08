@@ -94,6 +94,17 @@ var respecConfig = {
   <section id='canonicalize'>
     <h2>Terminology</h2>
 
+    <section id="ld-vs-rdf">
+      <h2>Linked Data and RDF relationships</h2>
+
+      <p>
+        The term “Linked Data” was originally <a href="https://www.w3.org/DesignIssues/LinkedData.html">defined in 2006</a>. However, this was never a formal definition and the term’s use has evolved over time. These days it can encompass resolvable URI schemes other than HTTP (notably <a href="https://www.w3.org/TR/did-core/">Decentralized Identifiers</a>) and may be used informally as a general term for any set of facts linked over the Web. Different communities may use these terms differently, although the underlying data model and semantics are close, if not identical. The work proposed by the charter necessarily focuses specifically on the underlying RDF technology. <em>For this reason, in the <a href="index.html">proposed charter</a> and in the terminology to be used by the Working Group, the terms “Linked Data” and “RDF” are used largely as a synonyms.</em>
+      </p>
+  </section>
+  <section>
+    <h2>Canonicalization terminology</h2>
+
+
     <p>
       For a precise definition of the various terms and concepts, the reader should refer to the formal RDF specification [[rdf11-concepts]].
     </p>
@@ -184,9 +195,7 @@ var respecConfig = {
       </p>
     </section>
     
-    <section id="noProblem"><h2>Where there is no problem</h2>
-      <p>When a digitally signed file is transferred from one system to another and used <em>as is</em>, there is no need for any processing other than checking the digital signature. This is as true for RDF as any other data format and existing signature and other cryptographic proof methods may be used. However, RDF has many serializations for datasets, notably <a href="https://www.w3.org/TR/trig/">TriG</a>, <a href="https://www.w3.org/TR/json-ld/">JSON-LD</a>, <a href="https://www.w3.org/TR/n-quads/">N-quads</a> and, informally, <a href="https://digitalbazaar.github.io/cbor-ld-spec/">CBOR-LD</a>. The same RDF dataset can be transferred in any of those serializations and is typically processed by querying the underlying RDF graph, not by querying the original serialized data. So, yes, you <em>can</em> process JSON-LD as JSON (that's a key design feature) but you can equally extract the triples and work with that, or transform it into CBOR-LD for use in a constrained environment like a QR code etc. It's this range of serializations and usage scenarios that creates the need to be able to sign the underlying dataset, irrespective of its serialization.</p>
-    </section>
+  </section>
   </section>
 
   <section id="goals">
@@ -214,6 +223,10 @@ var respecConfig = {
     <p>
       The main challenge for the Working Group is to provide a standard for the <a href="#canonicalization">RDF Dataset Canonicalization function</a>. That paves the way for uniquely identifying RDF Datasets, as well as methods to digitally sign RDF Datasets.
     </p>
+
+    <div id="noProblem" class=note>
+      <p>When a digitally signed file is transferred from one system to another and used <em>as is</em>, there is no need for any processing other than checking the digital signature. This is as true for RDF as any other data format and existing signature and other cryptographic proof methods may be used. However, RDF has many serializations for datasets, notably <a href="https://www.w3.org/TR/trig/">TriG</a>, <a href="https://www.w3.org/TR/json-ld/">JSON-LD</a>, <a href="https://www.w3.org/TR/n-quads/">N-quads</a> and, informally, <a href="https://digitalbazaar.github.io/cbor-ld-spec/">CBOR-LD</a>. The same RDF dataset can be transferred in any of those serializations and is typically processed by querying the underlying RDF graph, not by querying the original serialized data. So, yes, you <em>can</em> process JSON-LD as JSON (that's a key design feature) but you can equally extract the triples and work with that, or transform it into CBOR-LD for use in a constrained environment like a QR code etc. It's this range of serializations and usage scenarios that creates the need to be able to sign the underlying dataset, irrespective of its serialization.</p>
+    </div>
   </section>
 
   <section id=usage>
