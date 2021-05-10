@@ -316,7 +316,10 @@
                     <dt id="integrity" class="spec">Linked Data Integrity (LDI)</dt>
                     <dd>
                         <p>
-                            This specification defines a generic framework for expressing proofs of integrity of Linked Datasets via, for example, digital signatures, proofs of work, or proofs of existence. Beyond the generic (normative) framework, this deliverable also provides a normative definition for Linked Data Signatures, as well as a means to express these proofs in an RDF Dataset in a way that enables a 3rd party to verify the integrity of the data.
+                            This specification defines a structure for embedding signatures in RDF documents.
+                            The group will define that embedding mechanism to work with RDH, though the hashing algorithm will be identified as an assertion in the structure, allowing the same structure to be used with other hashing algorithms.
+                            This deliverable enables 3rd parties to verify that the data has not changed since it was signed.
+                            Time-permitting, this signature may be designed to express proofs of work or proofs of existance.
                         </p>
                         <p class="draft-status">
                             <b>Draft State</b> to be adopted from: <a href="https://w3c-ccg.github.io/ld-proofs/">Linked Data Proofs 1.0</a>, eds. Dave Longley, Manu Sporny, W3C Draft Community Group Report, 2020.
@@ -324,6 +327,11 @@
                         <p class="milestone">
                             <b>Expected completion:</b> WG-START + 24 months.
                         </p>
+                        <div class="note">
+                            <p>
+                                See <a href="https://www.w3.org/TR/xmldsig-core1/#sec-EnvelopedSignature">XML Signature Enveloped Signature</a> for an example of embedded signatures in XML.
+                            </p>
+                        </div>
                     </dd>
 
                     <dt id="vocabulary" class="spec">Linked Data Security Vocabulary (LDSV)</dt>
