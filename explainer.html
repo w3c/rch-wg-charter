@@ -225,6 +225,29 @@ var respecConfig = {
     </div>
   </section>
 
+  <section id="separation">
+    <h2>Separation of Concepts in the Deliverables</h2>
+    <p>
+      This section provides some background for the structure of <a href="./index.html#deliverables">deliverables</a> in the charter.
+    </p>
+
+    <p>
+      An attentive reader of the <a href="index.html">Linked Data Signatures Working Group Charter</a> may realize that two deliverables (i.e., the <a href="./index.html#hash">“RDF Dataset Hash”</a> and the <a href="./index.html#integrity">“Linked Data Integrity”</a> specifications) rely on the same <a href="https://w3c-ccg.github.io/ld-proofs/">Linked Data Proofs 1.0</a> draft Community Group Report. The main reason is a separation of concepts to make the deliverable structure more readable, but to also reflect different possible use cases. 
+    </p>
+
+    <p>
+      The <a href="./index.html#canonicalization">RDF Dataset Canonicalization</a> forms the basis of the deliverables in this charter. While, in practice, it is usually combined with a hash function and, possibly, a digital signature scheme, it has a usage on its own right, see, for example, the <a href="#skolem">“Generating canonical Skolem IRIs for blank nodes”</a> use case below.
+    </p>
+
+    <p>
+      The <a href="./index.html#hash">RDF Dataset Hash</a> algorithm is necessary for a traditional digital signature that relies on the creation of the calculated hash value. However, a hash can be used directly, see, for example, the <a href="#spaceEfficient">“Space-efficient verification of the contents of Datasets”</a> or the <a href="#semanticConsistency">“Semantic consistency of multi-part datasets”</a> use cases in the next section.
+    </p>
+
+    <p id="bbs">
+      The integrity of Linked Data may be secured by a digital signature, as described in the previous paragraph. But that is not the only possible way of proving data integrity. For example, the <a href="https://w3c-ccg.github.io/ldp-bbs2020/">BBS+ Signatures 2020</a> scheme, used to ensure <a href="https://en.wikipedia.org/wiki/Zero-knowledge_proof">zero knowledge proof</a> disclosure of statements, relies on the canonicalization of an RDF Dataset, but it does <em>not</em> rely on the RDF Dataset Hash. Instead, it has a scheme to hash individual RDF triples. The existence of such schemes is the reason why the <a href="./index.html#integrity">Linked Data Integrity</a> deliverable aims to define a more general framework where such schemes can also be expressed. 
+    </p>
+  </section>
+
   <section id=usage>
     <h2>Use Cases and Requirements</h2>
 
@@ -236,31 +259,38 @@ var respecConfig = {
       <dt id="detectingChanges">Detecting changes in Datasets</dt>
       <dd>
         When processing RDF Datasets over a period of time, determining if information has changed is helpful. For example, knowing if information has changed helps with data cache invalidation, detecting if expected data has been tampered with or modified, or when debugging unexpected changes in source RDF Datasets.
-        <br>Requirement: An RDF Dataset Canonicalization algorithm.
+        <br>Requirement: RDF Dataset Canonicalization and Hash algorithms.
       </dd>
+
       <dt id="spaceEfficient">Space-efficient verification of the contents of Datasets</dt>
       <dd>
-        If unique identification of RDF Datasets is possible, one can cryptographically hash the information to establish a storage-efficient way to verify that the information has not changed over time. One property of cryptographic digests is that one can verify data integrity. For example, a small device sending an RDF Dataset to a remote storage location can compute a cryptographic digest for later use in verifying that all the data arrived intact and has not been tampered with. <br>Requirement: An RDF Dataset Canonicalization algorithm whose output can be used as input a cryptographic digest function.
+        If unique identification of RDF Datasets is possible, one can cryptographically hash the information to establish a storage-efficient way to verify that the information has not changed over time. One property of cryptographic digests is that one can verify data integrity. For example, a small device sending an RDF Dataset to a remote storage location can compute a cryptographic digest for later use in verifying that all the data arrived intact and has not been tampered with. 
+        <br>Requirement: RDF Dataset Canonicalization and Hash algorithms.
         <br>(Contributed by <a href="https://alanhkarp.com/">Alan Karp.)</a>
       </dd>
+
       <dt id="secretConfirmation">Secret confirmation of the contents of Datasets</dt>
       <dd>
-        Since a cryptographic digest is a one-way function, and serves as an abbreviation for the entire RDF Dataset, one can use it in places where secrecy is desired. For example, when ensuring that the transaction history on a distributed ledger is the same between two services, two systems could keep track of the list of transactions in their respective ledgers. Canonicalizing and cryptographically hashing the list of transactions should result in the same cryptographic hash without either party needing to share the list of transactions with the other. <br>Requirement: An RDF Dataset Canonicalization algorithm whose cryptographic digest can be shared to establish the unique identity of the RDF Dataset.
+        Since a cryptographic digest is a one-way function, and serves as an abbreviation for the entire RDF Dataset, one can use it in places where secrecy is desired. For example, when ensuring that the transaction history on a distributed ledger is the same between two services, two systems could keep track of the list of transactions in their respective ledgers. Canonicalizing and cryptographically hashing the list of transactions should result in the same cryptographic hash without either party needing to share the list of transactions with the other. <br>Requirement: RDF Dataset Canonicalization and Hash algorithms.
         <br>(Contributed by <a href="https://alanhkarp.com/">Alan Karp.)</a>
       </dd>
+
       <dt id="dSig">
         Annotating Datasets with digital signatures and other digital proofs
       </dt>
       <dd>
-        When publishing or transmitting an RDF Dataset, clearly articulating the entity that asserted the data and protecting it from undetected modification is useful for mission critical systems. For example, understanding the issuer of a Verifiable Credential and ensuring that it is evident when a Verifiable Presentation has been tampered with underlies the trustworthiness of the encoded information. <br>Requirement: A way of encoding and verifying a digital signature on an RDF Dataset.
+        When publishing or transmitting an RDF Dataset, clearly articulating the entity that asserted the data and protecting it from undetected modification is useful for mission critical systems. For example, understanding the issuer of a Verifiable Credential and ensuring that it is evident when a Verifiable Presentation has been tampered with underlies the trustworthiness of the encoded information. 
+        <br>Requirement: A way of encoding and verifying a digital signature on an RDF Dataset.
       </dd>
+
       <dt id="anchoringOnDLT">
         Anchoring the existence of Datasets to a Distributed Ledger
       </dt>
       <dd>
-        New forms of digital proofs, such as proof of work, proof of stake, proof of existence, and proof of elapsed time, have demonstrated that there are useful forms of cryptographic digital proofs that go beyond digital signatures. For example, anchoring an RDF Dataset that expresses a land deed to a Distributed Ledger (aka blockchain) can establish a proof of existence in a way that does not depend on a single point of failure, such as a local government office.
+        New forms of digital proofs, such as proof of work, proof of stake, proof of existence, and proof of elapsed time, have demonstrated that there are useful forms of cryptographic digital proofs that go beyond digital signatures. For example, anchoring an RDF Dataset that expresses a land deed to a Distributed Ledger can establish a proof of existence in a way that does not depend on a single point of failure, such as a local government office.
         <br>Requirement: A way of encoding and verifying a digital proof that is not a digital signature on an RDF Dataset.
       </dd>
+
       <dt id="skolem">
         Generating canonical Skolem IRIs for blank nodes
       </dt>
@@ -268,10 +298,13 @@ var respecConfig = {
         <a href="https://www.w3.org/TR/rdf11-concepts/#section-skolemization">Skolem IRIs</a> have been proposed in RDF 1.1 as a way to replace blank nodes with IRIs in application scenarios where it is preferable to avoid the use of blank nodes. Rather than using an ad hoc scheme to generate Skolem IRIs to replace blank nodes, an alternative is to generate Skolem IRIs in a deterministic manner, such that compliant implementations will generate the same IRIs to replace the same blank nodes in isomorphic copies of an RDF graph or dataset. Such a procedure will produce a canonical version of a Skolemized RDF graph that can then be used in the context of several of the use-cases mentioned previously.
         <br>Requirement: An RDF Dataset Canonicalization algorithm that produces canonical labels for blank nodes and a convention to compute Skolem IRIs from these labels.
       </dd>
+
       <dt id="qr">Constrained data transfer</dt>
       <dd>The <a href="#spaceEfficient">space-efficient</a> and <a href="#dSig">digital proofs</a> use cases above both hint at scenarios where data transfer is severely constrained. Such transfer might be achieved using an optical data carrier, such as a QR code or Data Matrix, or a radio frequency data carrier such as an NFC tag.
         <br>
-        Requirement: Lossless conversion between highly compact and less compact forms of informationally identical RDF Datasets.</dd>
+        Requirement: Lossless conversion between highly compact and less compact forms of informationally identical RDF Datasets.
+      </dd>
+
       <dt id="semanticConsistency">Semantic consistency of multi-part datasets</dt>
       <dd>The <a href="#detectingChanges">detecting changes</a> and <a href="#spaceEfficient">space-efficient verification</a> use-cases above can be leveraged in situations where a graph or dataset semantically relies on one or several other graph(s), which it refers to through links. Attaching cryptographic hashes to these links would allow to verify the overall integrity of the set of interconnected graphs. One such example is the <a href="https://www.w3.org/TR/owl2-primer/#a_imports">import mechanism of OWL</a>: the ontology consumer may wish to verify that the imported ontology is the same as the one used by the author of the importing ontology, otherwise the resulting inferences may differ. Another such example are <a href="https://www.w3.org/TR/EARL10-Schema/">EARL test reports</a>: the consumer may wish to ensure that the test description pointed to by the report is the one that was actually used for the test.
         <br>
