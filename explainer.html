@@ -321,6 +321,11 @@ var respecConfig = {
         <br>
         Requirement: A standard way of computing and attaching a cryptographic hash to a graph or dataset.
       </dd>
+      
+      <dt id="serializationSwap">Alternative serializations of the same data</dt>
+      <p>RDF is replete with serializations; that is, the same data can be expressed in different ways, and it is possible that the same underlying data will go through transformation from one serialization to another as it's passed from one system to another. The <a href="#qr">constrained data transfer</a> use case provides an example of this, where data is tranferred using an optical or <abbr title="radio frequency">RF</abbr> data carrier. The <a href="#spaceEfficient">space efficient</a> use case, again, points to a need in some circumstances to transform &mdash; usually to minimize &mdash; the data that is transferred. In these scenarios, a signature on the original file, such as a JSON signature on a JSON-LD file, is not appropriate.<br>
+        Requirement: A standard way to transfer and transform data that is independent of its serialization.
+      </dd>
     </dl>
   </section>
 
