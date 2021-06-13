@@ -132,7 +132,7 @@ var respecConfig = {
           <span class='rdf'>R ≈ S</span> denotes that <span class='rdf'>R</span> and <span class='rdf'>S</span> are <a href='https://www.w3.org/TR/rdf11-concepts/#section-dataset-isomorphism'><em>isomorphic</em></a> RDF Datasets. 
         </p>
         <p>
-          Two isomorphic RDF Datasets are identical except for differences in how their individual blank nodes are labeled. In particular, <span class='rdf'>R</span> is isomorphic with <span class='rdf'>S</span> if and only if it is possible to map the blank nodes of <span class='rdf'>R</span> to the blank nodes of <span class='rdf'>S</span> in a one-to-one manner, generating an RDF dataset <span class='rdf'>R'</span> such that <span class='rdf'>R' = S</span>.
+          In particular, <span class='rdf'>R</span> is isomorphic with <span class='rdf'>S</span> if and only if it is possible to map the blank nodes of <span class='rdf'>R</span> to the blank nodes of <span class='rdf'>S</span> in a one-to-one manner, generating an RDF dataset <span class='rdf'>R'</span> such that <span class='rdf'>R' = S</span>.
         </p>
       </dd>
       
@@ -149,7 +149,7 @@ var respecConfig = {
           We may refer to <span class='rdf'>C(R)</span> as the <em>canonical form</em> of <span class='rdf'>R</span> (under <span class='rdf'>C</span>&nbsp;).
         </p>
         <p>
-          Such a canonicalization function can be implemented, in practice, as a procedure that deterministically re-labels all blank nodes of an RDF Dataset in a one-to-one manner, without depending on the particular set of blank node labels used in the input RDF Dataset.
+          Such a canonicalization function can be implemented, in practice, as a procedure that deterministically labels all blank nodes of an RDF Dataset in a one-to-one manner, without depending on the particular set of blank node identifiers used in the serialization of the input RDF Dataset.
         </p>
       </dd>
     </dl>
@@ -164,7 +164,7 @@ var respecConfig = {
       </blockquote>
 
       <p>
-        Canonicalization, as used in the context of this document and the proposed charter, is indeed defined on <em>an abstract data model</em> (i.e., on <a href="https://www.w3.org/TR/rdf11-concepts/#section-dataset">RDF Dataset</a> [[rdf11-concepts]]), regardless of a specific serialization. (It could also be referred to as a “canonical relabelling scheme”).
+        Canonicalization, as used in the context of this document and the proposed charter, is indeed defined on <em>an abstract data model</em> (i.e., on <a href="https://www.w3.org/TR/rdf11-concepts/#section-dataset">RDF Dataset</a> [[rdf11-concepts]]), regardless of a specific serialization. (It could also be referred to as a “canonical labelling scheme”).
         It is therefore very different from the usage of the term in, for example, the “Canonical XML” [[xml-c14n11]] or the “JSON Canonicalization Scheme” [[rfc8785]] specifications. 
         Any comparison with those documents can be misleading.
       </p>
