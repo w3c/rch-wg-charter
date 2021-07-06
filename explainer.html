@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="utf-8" />
-  <title>Linked Data Signatures Working Group Charter—Explainer and Use Cases</title>
+  <title>RDF Dataset Canonicalization and Hash Working Group Charter—Explainer and Use Cases</title>
   <script src="https://www.w3.org/Tools/respec/respec-w3c" class="remove" defer></script>
   <script class="remove">
 // All config options at https://respec.org/docs/
@@ -90,15 +90,6 @@ var respecConfig = {
   <section id='canonicalize'>
     <h2>Terminology</h2>
 
-    <section id="ld-and-rdf">
-      <h2>Linked Data and RDF Relationships</h2>
-
-      <p>
-        The term “Linked Data” was originally <a href="https://www.w3.org/DesignIssues/LinkedData.html">defined in 2006</a>. However, this was never a formal definition and the term’s use has evolved over time. These days it can encompass resolvable URI schemes other than HTTP (notably <a href="https://www.w3.org/TR/did-core/">Decentralized Identifiers</a>) and may be used informally as a general term for any set of facts linked over the Web. Different communities may use these terms differently, although the underlying data model and semantics are close, if not identical. The work proposed by the charter necessarily focuses specifically on the underlying RDF technology. <em>For this reason, in the <a href="index.html">proposed charter</a> and in the terminology to be used by the Working Group, the terms “Linked Data” and “RDF” are used largely as a synonyms.</em>
-      </p>
-
-  </section>
-
   <section>
     <h2>Canonicalization terminology</h2>
 
@@ -180,7 +171,7 @@ var respecConfig = {
 
       <ol>
         <li>
-          The algorithms defined by Aidan Hogan in [[aidan-2017]], reviewed through the anonymous scholarly peer review process, implemented by the author.
+          The algorithms defined by Aidan Hogan in [[aidan-2017]], reviewed through the anonymous scholarly peer review process, and also implemented by the author.
         </li>
         <li>
           The algorithm defined by Rachel Arnold and Dave Longley, see [[arnold-longley-2020]], <a href="https://lists.w3.org/Archives/Public/public-credentials/2021Apr/att-0032/Mirabolic_Graph_Iso_Report_2020_10_19.pdf">reviewed</a> by <a href="https://lists.w3.org/Archives/Public/public-credentials/2021Apr/0032.html">experts at Mirabolic Consulting</a>, implemented and deployed via, e.g., the <a href="https://github.com/digitalbazaar/jsonld-signatures">JSON-LD Signatures package</a> used in several JSON-LD Signature suites.
@@ -196,10 +187,10 @@ var respecConfig = {
   </section>
 
   <section id="goals">
-    <h2>Defining an RDF Dataset Hash and/or Signing RDF Datasets</h2>
+    <h2>Defining an RDF Dataset Hash</h2>
 
     <p>
-      Signing an RDF Dataset follows, roughly, the same approach as for XML&nbsp;[[xmldsig-core1]]. For an RDF Dataset <span class='rdf'>R</span> this implies the following steps:
+      Calculating the hash of an RDF Dataset <span class='rdf'>R</span> implies the following steps:
     </p>
 
     <ol>
@@ -210,54 +201,17 @@ var respecConfig = {
         serialize <span class='rdf'>C(R)</span> to quads&nbsp;[[n-quads]] and sort the resulting set of quads;
       </li>
       <li id=hash>
-        apply a (traditional) hashing function <span class='rdf'>h</span> on the result of the serialization to yield <span class='rdf'>h(R)</span> (the cryptographic hash of the Dataset).
+        apply a (traditional) hashing function <span class='rdf'>h</span> on the result of the serialization to yield <span class='rdf'>h(R)</span>; this can be considered as the cryptographic hash of the Dataset.
       </li>
-      <li id=sign>
-        apply a digital signature function on <span class='rdf'>h(R)</span>.
-      </li>
-    </ol>
+     </ol>
 
     <p>
-      The main challenge for the Working Group is to provide a standard for the <a href="#canonicalization">RDF Dataset Canonicalization function</a>. That paves the way for uniquely identifying RDF Datasets, as well as methods to digitally sign RDF Datasets.
+      The main challenge for the Working Group is to provide a standard for the <a href="#canonicalization">RDF Dataset Canonicalization function</a>. 
     </p>
 
     <div id="noProblem" class=note>
-      <p>When a digitally signed file is transferred from one system to another and used <em>as is</em>, there is no need for any processing other than checking the digital signature. This is as true for RDF as any other data format and existing signature and other cryptographic proof methods may be used. However, RDF has many serializations for datasets, notably <a href="https://www.w3.org/TR/trig/">TriG</a>, <a href="https://www.w3.org/TR/json-ld/">JSON-LD</a>, <a href="https://www.w3.org/TR/n-quads/">N-quads</a> and, informally, <a href="https://digitalbazaar.github.io/cbor-ld-spec/">CBOR-LD</a>. The <a href="#qr">constrained data transfer</a> use case provides an example of this, where data is transferred using an optical or <abbr title="radio frequency">RF</abbr> data carrier. The <a href="#spaceEfficient">space efficient</a> use case, again, points to a need in some circumstances to transform &mdash; usually to minimize &mdash; the data that is transferred. In these scenarios, a signature on the original file, such as a JSON signature on a JSON-LD file, is not appropriate, as the conversion will make it invalid. A signature of the abstract dataset, on the other hand, will still be valid.</p>
+      <p>When the hash of a file is transferred from one system to another and the file is used <em>as is</em>, there is no need for any processing other than checking the value of the hash. This is as true for RDF as for any other data format and existing hashing functions may be used. However, RDF has many serializations for datasets, notably <a href="https://www.w3.org/TR/trig/">TriG</a>, <a href="https://www.w3.org/TR/json-ld/">JSON-LD</a>, <a href="https://www.w3.org/TR/n-quads/">N-quads</a> and, informally, <a href="https://digitalbazaar.github.io/cbor-ld-spec/">CBOR-LD</a>. The <a href="#qr">constrained data transfer</a> use case provides an example of this, where data is transferred using an optical or <abbr title="radio frequency">RF</abbr> data carrier. The <a href="#spaceEfficient">space efficient</a> use case, again, points to a need in some circumstances to transform &mdash; usually to minimize &mdash; the data that is transferred. In these scenarios, a hash on the original file, such as a hash calculated on a JSON-LD file, is not appropriate, as the conversion will make it invalid. A hash of the abstract dataset, on the other hand, will still be valid.</p>
     </div>
-  </section>
-
-  <section id="out-of-scope">
-    <h2>Out-of-scope Issues for the Working Group</h2>
-    <p>
-      Linked Data/RDF is commonly understood to encode descriptions of real world objects and claims about their properties and relationships. Some users of RDF are also aware that, and possibly rely upon, the fact that systems can derive additional claims implied by instance data based on schemas and ontologies. There are also different approaches on how the semantic features of RDF are adapted to RDF Datasets. These are all but a few examples where the complexities around the usage of Linked Data/RDF are real, and may affect the usage patterns of signed RDF content and what the social meaning on those signatures are. 
-    </p>
-    <p>
-      However, <em>these complexities are out of scope for this WG</em>, which concentrates only on data used to exchange and integrate simple factual data expressed in RDF Graphs and Datasets. The approach taken by this WG is that its minimalist deliverables should provide the foundational technology components as building blocks, and tackling the complexities of the more challenging use cases is left to other groups and communities.
-      In particular, the <a href="./index.html#integrity">Linked Data Integrity</a> specification will provide an extensible framework for them to build upon.
-    </p>
-  </section>
-
-  <section id="separation">
-    <h2>Separation of Concepts in the Deliverables</h2>
-    <p>
-      This section provides some background for the structure of <a href="./index.html#deliverables">deliverables</a> in the charter.
-    </p>
-
-    <p>
-      An attentive reader of the <a href="index.html">Linked Data Signatures Working Group Charter</a> may realize that two deliverables (i.e., the <a href="./index.html#hash">“RDF Dataset Hash”</a> and the <a href="./index.html#integrity">“Linked Data Integrity”</a> specifications) rely on the same <a href="https://w3c-ccg.github.io/ld-proofs/">Linked Data Proofs 1.0</a> draft Community Group Report. The main reason is a separation of concepts to make the deliverable structure more readable, but to also reflect different possible use cases. 
-    </p>
-
-    <p>
-      The <a href="./index.html#canonicalization">RDF Dataset Canonicalization</a> forms the basis of the deliverables in this charter. While, in practice, it is usually combined with a hash function and, possibly, a digital signature scheme, it has a usage on its own right, see, for example, the <a href="#skolem">“Generating canonical Skolem IRIs for blank nodes”</a> use case below.
-    </p>
-
-    <p>
-      The <a href="./index.html#hash">RDF Dataset Hash</a> algorithm is necessary for a traditional digital signature that relies on the creation of the calculated hash value. However, a hash can be used directly, see, for example, the <a href="#spaceEfficient">“Space-efficient verification of the contents of Datasets”</a> or the <a href="#semanticConsistency">“Semantic consistency of multi-part datasets”</a> use cases in the next section.
-    </p>
-
-    <p id="bbs">
-      The integrity of Linked Data may be secured by a digital signature, as described in the previous paragraph. But that is not the only possible way of proving data integrity. For example, the <a href="https://w3c-ccg.github.io/ldp-bbs2020/">BBS+ Signatures 2020</a> scheme, used to ensure <a href="https://en.wikipedia.org/wiki/Zero-knowledge_proof">zero knowledge proof</a> disclosure of statements, relies on the canonicalization of an RDF Dataset, but it does <em>not</em> rely on the RDF Dataset Hash. Instead, it has a scheme to hash individual RDF triples. The existence of such schemes is the reason why the <a href="./index.html#integrity">Linked Data Integrity</a> deliverable aims to define a more general framework where such schemes can also be expressed. 
-    </p>
   </section>
 
   <section id=usage>
@@ -271,19 +225,17 @@ var respecConfig = {
       <dt id="detectingChanges">Detecting changes in Datasets</dt>
       <dd>
         When processing RDF Datasets over a period of time, determining if information has changed is helpful. For example, knowing if information has changed helps with data cache invalidation, detecting if expected data has been tampered with or modified, or when debugging unexpected changes in source RDF Datasets.
-        <br>Requirement: RDF Dataset Canonicalization and Hash algorithms.
       </dd>
 
       <dt id="spaceEfficient">Space-efficient verification of the contents of Datasets</dt>
       <dd>
         If unique identification of RDF Datasets is possible, one can cryptographically hash the information to establish a storage-efficient way to verify that the information has not changed over time. One property of cryptographic digests is that one can verify data integrity. For example, a small device sending an RDF Dataset to a remote storage location can compute a cryptographic digest for later use in verifying that all the data arrived intact and has not been tampered with. 
-        <br>Requirement: RDF Dataset Canonicalization and Hash algorithms.
         <br>(Contributed by <a href="https://alanhkarp.com/">Alan Karp.)</a>
       </dd>
 
       <dt id="secretConfirmation">Secret confirmation of the contents of Datasets</dt>
       <dd>
-        Since a cryptographic digest is a one-way function, and serves as an abbreviation for the entire RDF Dataset, one can use it in places where secrecy is desired. For example, when ensuring that the transaction history on a distributed ledger is the same between two services, two systems could keep track of the list of transactions in their respective ledgers. Canonicalizing and cryptographically hashing the list of transactions should result in the same cryptographic hash without either party needing to share the list of transactions with the other. <br>Requirement: RDF Dataset Canonicalization and Hash algorithms.
+        Since a cryptographic digest is a one-way function, and serves as an abbreviation for the entire RDF Dataset, one can use it in places where secrecy is desired. For example, when ensuring that the transaction history on a distributed ledger is the same between two services, two systems could keep track of the list of transactions in their respective ledgers. Canonicalizing and cryptographically hashing the list of transactions should result in the same cryptographic hash without either party needing to share the list of transactions with the other. 
         <br>(Contributed by <a href="https://alanhkarp.com/">Alan Karp.)</a>
       </dd>
 
@@ -291,8 +243,7 @@ var respecConfig = {
         Annotating Datasets with digital signatures and other digital proofs
       </dt>
       <dd>
-        When publishing or transmitting an RDF Dataset, clearly articulating the entity that published the data and protecting it from undetected modification is useful for mission critical systems. For example, understanding the issuer of a Verifiable Credential and ensuring that it is evident when a Verifiable Presentation has been tampered with underlies the trustworthiness of the encoded information. 
-        <br>Requirement: A way of encoding and verifying a digital signature on an RDF Dataset.
+        When publishing or transmitting an RDF Dataset, clearly articulating the entity that published the data and protecting it from undetected modification is useful for mission critical systems. For example, understanding the issuer of a Verifiable Credential and ensuring that it is evident when a Verifiable Presentation has been tampered with underlies the trustworthiness of the encoded information. This process can go through the calculation of the hash of the Verifiable Credential represented as an RDF Dataset, and use some standard cryptographic signature method to ensure the integrity of the hash value.
       </dd>
 
       <dt id="anchoringOnDLT">
@@ -300,7 +251,6 @@ var respecConfig = {
       </dt>
       <dd>
         New forms of digital proofs, such as proof of work, proof of stake, proof of existence, and proof of elapsed time, have demonstrated that there are useful forms of cryptographic digital proofs that go beyond digital signatures. For example, anchoring an RDF Dataset that expresses a land deed to a Distributed Ledger can establish a proof of existence in a way that does not depend on a single point of failure, such as a local government office.
-        <br>Requirement: A way of encoding and verifying a digital proof that is not a digital signature on an RDF Dataset.
       </dd>
 
       <dt id="skolem">
@@ -308,19 +258,14 @@ var respecConfig = {
       </dt>
       <dd>
         <a href="https://www.w3.org/TR/rdf11-concepts/#section-skolemization">Skolem IRIs</a> have been proposed in RDF 1.1 as a way to replace blank nodes with IRIs in application scenarios where it is preferable to avoid the use of blank nodes. Rather than using an ad hoc scheme to generate Skolem IRIs to replace blank nodes, an alternative is to generate Skolem IRIs in a deterministic manner, such that compliant implementations will generate the same IRIs to replace the same blank nodes in isomorphic copies of an RDF graph or dataset. Such a procedure will produce a canonical version of a Skolemized RDF graph that can then be used in the context of several of the use-cases mentioned previously.
-        <br>Requirement: An RDF Dataset Canonicalization algorithm that produces canonical labels for blank nodes and a convention to compute Skolem IRIs from these labels.
       </dd>
 
       <dt id="qr">Constrained data transfer</dt>
       <dd>The <a href="#spaceEfficient">space-efficient</a> and <a href="#dSig">digital proofs</a> use cases above both hint at scenarios where data transfer is severely constrained. Such transfer might be achieved using an optical data carrier, such as a QR code or Data Matrix, or a radio frequency data carrier such as an NFC tag.
-        <br>
-        Requirement: Lossless conversion between highly compact and less compact forms of informationally identical RDF Datasets.
       </dd>
 
       <dt id="semanticConsistency">Semantic consistency of multi-part datasets</dt>
       <dd>The <a href="#detectingChanges">detecting changes</a> and <a href="#spaceEfficient">space-efficient verification</a> use-cases above can be leveraged in situations where a graph or dataset semantically relies on one or several other graph(s), which it refers to through links. Attaching cryptographic hashes to these links would allow to verify the overall integrity of the set of interconnected graphs. One such example is the <a href="https://www.w3.org/TR/owl2-primer/#a_imports">import mechanism of OWL</a>: the ontology consumer may wish to verify that the imported ontology is the same as the one used by the author of the importing ontology, otherwise the resulting inferences may differ. Another such example are <a href="https://www.w3.org/TR/EARL10-Schema/">EARL test reports</a>: the consumer may wish to ensure that the test description pointed to by the report is the one that was actually used for the test.
-        <br>
-        Requirement: A standard way of computing and attaching a cryptographic hash to a graph or dataset.
       </dd>
     </dl>
   </section>
