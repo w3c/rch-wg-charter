@@ -253,10 +253,10 @@
 
                 <ul>
                     <li>
-                        Definition of new cryptographic hashing algorithms such as BLAKE3 or SHA-3. This Working Group will only define usage of such algorithms.
+                        Definition of new cryptographic hashing algorithms. This Working Group will only define the usage of  algorithms such as BLAKE3 or SHA-3.
                     </li>
                     <li>
-                        Definition of higher level protocols, like signature schemes, on top of the deliverables of this Working Group. This work is left to other groups.
+                        Definition of higher level protocols, like signature schemes, which is left to other groups.
                     </li>
                 </ul>
             </section>
@@ -298,7 +298,7 @@
                     <dt id="hash" class="spec">RDF Dataset Hash (RDH)</dt>
                     <dd>
                         <p>
-                            This specification details the processing steps of a hash function for an arbitrary RDF Dataset. These step include (1) the generation of a <a href="./explainer.html#canonical_form">canonical form</a> using the algorithm specified in the “RDF Dataset Canonicalization” deliverable, (2) sorting the <a href="https://www.w3.org/TR/n-quads/">N-Quads</a> serialization of the canonical form generated in the previous step, and (3) application of a cryptographic hash function on the sorted <a href="https://www.w3.org/TR/n-quads/">N-Quads</a> representation. 
+                            This specification details the processing steps of a hash function for an arbitrary RDF Dataset. These step include (1) the generation of a <a href="./explainer.html#canonical_form">canonical form</a> using the algorithm specified in the “RDF Dataset Canonicalization” deliverable, (2) serializing the canonical form generated in the previous step to a byte stream in a deterministic way (e.g. by sorting a representation in <a href="https://www.w3.org/TR/n-quads/">N-Quads</a>), and (3) application of a cryptographic hash function on the aforementioned deterministic byte stream. 
                         </p>
 
                         <p class="milestone">
