@@ -1,4 +1,4 @@
-# Proposed Charter for a Linked Data Signatures Working Group
+# Proposed Charter for an RDF Dataset Canonicalization and Hash Working Group
 
 Any text in this repository should be considered as _a draft of a draft_. The process to get to a charter is:
 
@@ -10,4 +10,6 @@ Any text in this repository should be considered as _a draft of a draft_. The pr
 6. submit the charter for approval to the W3C management;
 7. submit the text to an official review by the AC of W3C.
 
-The [properly rendered version](https://w3c.github.io/lds-wg-charter/) is also available. 
+Note that, in the process, the proposed name of the WG changed (from “Linked Data Signature” to “RDF Dataset Canonicalization and Hash”). This was to align with the discussion happening in step (5) above.
+
+The [properly rendered version](https://w3c.github.io/rch-wg-charter/) is also available. 
