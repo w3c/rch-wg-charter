@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
 
-    <title>Linked Data Signatures Working Group Charter</title>
+    <title>RDF Dataset Canonicalization and Hash Working Group harter</title>
 
     <link rel="stylesheet" type="text/css" media="screen" href="https://www.w3.org/2005/10/w3cdoc.css">
     <link rel="stylesheet" type="text/css" href="https://www.w3.org/OldGuide/pubrules-style.css">
@@ -143,7 +143,7 @@
 
     <main>
         <h1 id="title">
-            <em class=todo>Proposed</em> Linked Data Signatures Working Group Charter
+            <em class=todo>Proposed</em> RDF Dataset Canonicalization and Hash Working Group Charter
         </h1>
         <!-- delete PROPOSED after AC review completed -->
 
@@ -159,12 +159,12 @@
                 Any text rendered like <span class=todo>this</span> refers to content that must be updated when the final charter is published at the latest (e.g., adjusting hyperlinks).
             </p>
             <p>
-                This proposed charter is available on <a href="https://github.com/w3c/lds-wg-charter">GitHub</a>. Feel free to raise <a href="https://github.com/w3c/lds-wg-charter/issues">issues</a></i>.
+                This proposed charter is available on <a href="https://github.com/w3c/rch-wg-charter">GitHub</a>. Feel free to raise <a href="https://github.com/w3c/rch-wg-charter/issues">issues</a></i>.
             </p>
         </div>
 
         <p class="mission">
-            The <strong>mission</strong> of the <a href="https://www.w3.org/2021/lds-wg/" class=todo>Linked Data Signatures Working Group</a> is to define a standard for uniquely identifying and securing <a href='https://www.w3.org/standards/semanticweb/data'>Linked Data</a> in use cases such as <a href="https://www.w3.org/TR/vc-data-model">Verifiable Credentials</a>. The work will include defining <a href="explainer.html#canonicalization"> RDF Dataset Canonicalization</a> algorithms as well as algorithms and vocabularies for encoding digital proofs, such as <a href='https://en.wikipedia.org/wiki/Digital_signature'>digital signatures</a>, and with that secure information expressed using <a href="https://www.w3.org/TR/rdf11-concepts/#dfn-concrete-rdf-syntax">concrete RDF syntaxes</a> such as <a href="https://www.w3.org/TR/json-ld/">JSON-LD</a>, <a href="https://www.w3.org/TR/trig/">TriG</a>, and <a href="https://www.w3.org/TR/n-quads/">N-Quads</a>. Digital proofs apply to the RDF dataset &mdash; the underlying graphs &mdash; not the particular serialization/data file.
+            The <strong>mission</strong> of the <a href="https://www.w3.org/2021/rch-wg/" class=todo>RDF Dataset Canonicalization and Hash Working Group</a> is to define a standard to uniquely and deterministically calculate a hash of RDF Datasets for use cases such as <a href="explainer.html#detectingChanges">Detecting changes in Datasets</a>. The work will include defining <a href="explainer.html#canonicalization"> RDF Dataset Canonicalization</a> algorithms.
         </p>
 
         <section id="details">
@@ -174,7 +174,7 @@
                         Start date
                     </th>
                     <td>
-                        <i class="todo">[30 September 2021] (date of the "Call for Participation", when the charter is approved)</i>
+                        <i class="todo">[dd monthname yyyy] (date of the "Call for Participation", when the charter is approved)</i>
                     </td>
                 </tr>
                 <tr id="CharterEnd">
@@ -182,7 +182,7 @@
                         End date
                     </th>
                     <td>
-                        <i class="todo">[30 September 2023]</i>
+                        <i class="todo">[dd monthname yyyy]</i> (Start date + 2 years)
                     </td>
                 </tr>
                 <tr>
@@ -205,7 +205,7 @@
                         Team Contacts
                     </th>
                     <td>
-                        <a href="mailto:ivan@w3.org">Ivan Herman</a> (0.2 <abbr title="Full-Time Equivalent">FTE</abbr>)
+                        <i class=todo>T.B.D.</i> (0.1 <abbr title="Full-Time Equivalent">FTE</abbr>)
                     </td>
                 </tr>
                 <tr>
@@ -222,17 +222,34 @@
 
         <section id="scope" class="scope">
             <h2>Scope</h2>
+
             <p>
-                (For the usage of the terms “RDF” and “Linked Data", see the <a href="./explainer.html#ld-and-rdf">terminological note</a> in the explainer document.)                
+                There are a variety of use cases that depend on the ability to calculate a unique and deterministic hash value of RDF Datasets, such as <a href="https://www.w3.org/TR/vc-data-model">Verifiable Credentials</a>, the publication of biological and pharmaceutical data, or consumption of mission critical RDF vocabularies that depend on the ability to verify the authenticity and integrity of the data being consumed. See the <a href="explainer.html#usage">use cases</a> for more examples. These use cases require a standard way to process the underlying graphs contained in <a href="https://www.w3.org/TR/rdf11-concepts/#section-dataset">RDF Datasets</a> that is independent of the serialization itself.
             </p>
 
             <p>
-                There are a variety of use cases in the area of Linked Data, such as <a href="https://www.w3.org/TR/vc-data-model">Verifiable Credentials</a>, the publication of biological and pharmaceutical data, or consumption of mission critical RDF vocabularies that depend on the ability to verify the authenticity and integrity of the data being consumed. (See the <a href="explainer.html#usage">use cases</a> for more examples.) In order to achieve these use cases, a standard way is needed to process the underlying graphs contained in <a href="https://www.w3.org/TR/rdf11-concepts/#section-dataset">RDF Datasets</a> that is independent of the serialization itself.
+                The scope of this Working Group is to define standards to <a href="./explainer.html#canonicalization">canonicalize</a> and <a href="./explainer.html#hash"> cryptographically hash</a> an <a href="https://www.w3.org/TR/rdf11-concepts/#section-dataset">RDF Dataset</a>. This includes the definition of a standard <a href='./explainer.html#canonicalization'>canonicalization algorithm</a>. (See the separate <a href="./explainer.html">explainer document</a> for more detailed technical backgrounds and for the terminology used in this context.)
             </p>
 
-            <p>
-                The scope of this Working Group is to define standards to <a href="./explainer.html#canonicalization">canonicalize</a>, <a href="./explainer.html#hash"> cryptographically hash</a>, and <a href='./explainer.html#sign'>digitally sign</a> an <a href="https://www.w3.org/TR/rdf11-concepts/#section-dataset">RDF Dataset</a>. This includes the definition of a standard <a href='./explainer.html#canonicalization'>canonicalization algorithm</a>, a generic algorithm for generating and verifying a digital proof using existing cryptographic primitives, an RDF vocabulary for expressing the results of digital proof generation algorithm, and a way of representing and referencing specific existing cryptographic proof algorithms and parameters in a format that can be referred to from an RDF Dataset. The Working Group will also provide preferred ways to represent this vocabulary in various RDF serialization formats. (See the separate <a href="./explainer.html">explainer document</a> for more detailed technical backgrounds and for the terminology used in this context.)
-            </p>
+            <div class="note">
+                <p class="draft-status">
+                    See also some publications for <a href="https://json-ld.github.io/rdf-dataset-canonicalization/spec/index.html">RDF Dataset Canonicalization</a> that will be used as a mathematical underpinning of the work:
+                </p>
+                <ol>
+                    <li>
+                        <a href="https://lists.w3.org/Archives/Public/public-credentials/2021Mar/att-0220/RDFDatasetCanonicalization-2020-10-09.pdf">RDF Dataset Canonicalization</a>, Rachel Arnold, Dave Longley, W3C Credentials Community Group, 2020.
+                    </li>
+                    <li>
+                        <a href="http://aidanhogan.com/docs/rdf-canonicalisation.pdf">Canonical Forms for Isomorphic and Equivalent RDF Graphs: Algorithms for Leaning and Labelling Blank Nodes</a>, Aidan Hogan, ACM Trans. Web, vol. 11, no. 4, p. 22:1-22:62, 2017.
+                    </li>
+                    <li>
+                        <a href="https://link.springer.com/chapter/10.1007%2F978-3-319-07443-6_11">A Framework for Iterative Signing of Graph Data on the Web</a>, Andreas Kasten, Ansgar Scherp, Peter Schauß, European Semantic Web Conference — ESWC 2014, Springer Verlag, pp. 146-160, 2014.
+                    </li>
+                    <li>
+                        <a href="https://link.springer.com/chapter/10.1007/978-3-540-39718-2_24">Signing RDF Graphs</a>, Jeremy J. Carroll, International Semantic Web Conference — ISWC 2003, Springer Verlag, pp. 369-384, 2003.
+                    </li>
+                </ol>
+            </div>
 
             <section id="section-out-of-scope">
                 <h3 id="out-of-scope">Out of Scope</h3>
@@ -242,10 +259,10 @@
 
                 <ul>
                     <li>
-                        Definition of new cryptographic signature or encryption algorithms such as RSA, ECDSA, EdDSA, and AES. This Working Group will only define usage of, and suitable terms to <em>identify</em>, such algorithms.
+                        Definition of new cryptographic hashing algorithms. This Working Group will only define the usage of  algorithms such as BLAKE3 or SHA-3.
                     </li>
                     <li>
-                        Authenticity and trust issues of Web (Data) content that go beyond the exchange and the integration of simple factual data expressed in RDF. (See also <a href="./explainer.html#out-of-scope">some further considerations</a> in the explainer document.)
+                        Definition of higher level protocols, like signature schemes, which is left to other groups.
                     </li>
                 </ul>
             </section>
@@ -256,14 +273,15 @@
             <h2>Deliverables</h2>
             <p>
                 More detailed milestones and updated publication schedules are available on the
-                <a href="https://www.w3.org/2021/lds-wg/PublStatus" class=todo>group publication status page</a>.
+                <a href="https://www.w3.org/2021/rch-wg/PublStatus" class=todo>group publication status page</a>.
             </p>
             <p>
-                <i><b>Reference</b></i> is to a (draft) specification used as a primary input to the work.
                 <i><b>Expected completion</b></i> indicates when the deliverable is projected to become a Recommendation, or otherwise reach a stable state.
             </p>
+
+
             <p>
-                Note that the titles of the documents are tentative and not final. The Working Group may also decide to either split some of those documents or, conversely, merge some of them. See also a <a href="./explainer.html#separation">note in the explainer</a> for some more backgrounds on the structure and content of the deliverables.
+                Note that the titles of the documents are tentative and not final. The Working Group may also decide to either split some of those documents or, conversely, merge them.
             </p>
 
             <section id="normative">
@@ -278,70 +296,22 @@
                             This specification defines an algorithm to produce a <a href="./explainer.html#canonicalization">canonicalization function</a> of an arbitrary RDF Dataset.
                         </p>
 
-                        <p class="draft-status">
-                            <b>Reference</b>: <a href="https://json-ld.github.io/rdf-dataset-canonicalization/spec/index.html">RDF Dataset Canonicalization</a>, eds. Dave Longley, Manu Sporny, W3C Draft Community Group Report, 2019.
-                        </p>
-
                         <p class="milestone">
                             <b>Expected completion:</b> WG-START + 24 months.
                         </p>
-                        <div class="note">
-                            <p class="draft-status">
-                                See also the mathematical basis for <a href="https://json-ld.github.io/rdf-dataset-canonicalization/spec/index.html">RDF Dataset Canonicalization</a>:
-                            </p>
-                            <ol>
-                                <li>
-                                    <a href="https://lists.w3.org/Archives/Public/public-credentials/2021Mar/att-0220/RDFDatasetCanonicalization-2020-10-09.pdf"> RDF Dataset Canonicalization</a>, Rachel Arnold, Dave Longley, W3C Credentials Community Group, 2020.
-                                </li>
-                                <li>
-                                    <a href="http://aidanhogan.com/docs/rdf-canonicalisation.pdf">Canonical Forms for Isomorphic and Equivalent RDF Graphs: Algorithms for Leaning and Labelling Blank Nodes</a>, Aidan Hogan, ACM Trans. Web, vol. 11, no. 4, p. 22:1-22:62, 2017.
-                                </li>
-                            </ol>
-                        </div>
                     </dd>
 
                     <dt id="hash" class="spec">RDF Dataset Hash (RDH)</dt>
                     <dd>
                         <p>
-                            This specification details the processing steps of a hash function for an arbitrary RDF Dataset. These step include (1) the generation of a <a href="./explainer.html#canonical_form">canonical form</a> using the algorithm specified in the “RDF Dataset Canonicalization” deliverable, (2) sorting the <a href="https://www.w3.org/TR/n-quads/">N-Quads</a> serialization of the canonical form generated in the previous step, and (3) application of a cryptographic hash function on the sorted <a href="https://www.w3.org/TR/n-quads/">N-Quads</a> representation. 
+                            This specification details the processing steps of a hash function for an arbitrary RDF Dataset. These steps include the generation of a <a href="./explainer.html#canonical_form">canonical form</a> of the RDF Dataset using the algorithm specified in the “RDF Dataset Canonicalization” deliverable, and the application of a hash function over a serialization (such as <a href="https://www.w3.org/TR/n-quads/">N-Quads</a>) that has been ordered via an algorithm specified by the WG.
                         </p>
 
-                        <p class="draft-status">
-                            <b>Reference</b>: <a href="https://w3c-ccg.github.io/ld-proofs/">Linked Data Proofs 1.0</a>, eds. Dave Longley, Manu Sporny, W3C Draft Community Group Report, 2020.
-                        </p>
                         <p class="milestone">
                             <b>Expected completion:</b> WG-START + 24 months.
                         </p>
                     </dd>
-
-                    <dt id="integrity" class="spec">Linked Data Integrity (LDI)</dt>
-                    <dd>
-                        <p>
-                            This specification defines a framework for expressing, in an RDF Graph, proofs of integrity of RDF Datasets. Since RDF follows the <a href="https://en.wikipedia.org/wiki/Open-world_assumption">Open World Assumption</a>, it is recognized that 'proof of integrity' cannot apply to arbitrarily large RDF Datasets in all contexts. Nevertheless, there are contexts where the integrity of the data <em>can</em> be assessed with confidence. <a href="https://www.w3.org/TR/vc-data-model/">Verifiable Credentials</a> are a prime example of this, where one or more assertions are made by an identified party concerning an identified subject. In contrast, asserting 'proof of integrity' over the corpus of RDF embedded in billions of Web pages would be meaningless.</p>
-			    <p>The Working Group will define a framework in which meaningful proofs of integrity can be provided. The framework will use <abbr title="RDF Dataset Hash">RDH</abbr> although the hashing algorithm, and other constituents of proofs of integrity including the purpose of the proof, are identified as assertions, allowing the same framework to be used with other algorithms. Beyond the normative framework, this deliverable also provides a normative definition for Linked Data Signatures as a prominent approach used as a proof of integrity. The specification enables a 3rd party to verify the integrity of the data for the purpose in which it is offered and in the context in which the integrity is asserted.
-                        </p>
-                        <p class="draft-status">
-                            <b>Reference</b>: <a href="https://w3c-ccg.github.io/ld-proofs/">Linked Data Proofs 1.0</a>, eds. Dave Longley, Manu Sporny, W3C Draft Community Group Report, 2020.
-                        </p>
-                        <p class="milestone">
-                            <b>Expected completion:</b> WG-START + 24 months.
-                        </p>
-                    </dd>
-
-                    <dt id="vocabulary" class="spec">Linked Data Security Vocabulary (LDSV)</dt>
-                    <dd>
-                        <p>
-                            This specification defines an RDF Vocabulary for the terms defined in the <a href="#integrity">Linked Data Integrity</a> deliverable. The specification may also define one or more <a href="https://www.w3.org/TR/json-ld11/#the-context">JSON-LD Context</a> documents that may be used by a JSON-LD serialization.
-                        </p>
-
-                        <p class="draft-status">
-                            <b>Reference</b>: <a href="https://w3c-ccg.github.io/security-vocab/">The Security Vocabulary</a>, ed. Manu Sporny, Orie Steele, Tobias Looker, W3C Draft Community Group Report, 2020.
-                        </p>
-                        <p class="milestone">
-                            <b>Expected completion:</b> WG-START + 24 months.
-                        </p>
-                    </dd>
-                </dl>
+              </dl>
             </section>
 
             <section id="ig-other-deliverables">
@@ -351,29 +321,7 @@
                 </p>
                 <ul>
                     <li>
-                        <p>
-                            A Linked Data Security Registry, containing Linked Data related cryptographic terms, including, but not limited to, the terms defined in the Linked Data Security Vocabulary (LDSV), as well as terms for the definition of other Linked Data Integrity related proof methods.
-                        </p>    
-                        <p>
-                            If, during the chartered period of the Working Group, the <a href="https://www.w3.org/Consortium/Process/Drafts/">next version of the W3C Process</a> is adopted, incorporating the concept of a <a href="https://www.w3.org/Consortium/Process/Drafts/#registries">Registry Track</a>, the Working Group will consider publishing the Linked Data Security Vocabulary Recommendation with an additional <a href="https://www.w3.org/Consortium/Process/Drafts/#registry-section">Registry Section</a> incorporating the terms planned in this deliverable.
-                        </p>    
-                    </li>
-                    <li id="other_proofs">
-                        <p>
-                            Note on additional Linked Data Integrity techniques that are not necessarily relying, or only partially, on the specifications developed by this Working Group. (See also <a href="./explainer.html#bbs">the explainer for some examples</a>.)
-                        </p>
-                    </li>
-                    <li>
                         <p>Test suite and implementation report for the specification.</p>
-                    </li>
-                    <li>
-                        <p>
-                            Primer or Best Practice documents to support Web developers when designing applications. 
-                            These documents should also contain guidance and caveats on how to securely use and combine the building blocks provided 
-                            by the normative deliverables. In particular, the potential security issues related to the usage of remote 
-                            <a href="https://www.w3.org/TR/json-ld11/#the-context">JSON-LD Context</a> documents in the context of Linked Data integrity 
-                            should be addressed.
-                        </p>
                     </li>
                 </ul>
             </section>
@@ -385,16 +333,10 @@
                         WG-START +1 month: First teleconference
                     </li>
                     <li>
-                        WG-START +3 months: FPWD for RDC
+                        WG-START +3 months: FPWD for RDC and RDH
                     </li>
                     <li>
-                        WG-START +6 months: FPWD for RDH, LDI, and LDSV
-                    </li>
-                    <li>
-                        WG-START +15 months: CR for RDC
-                    </li>
-                    <li>
-                        WG-START +18 months: CR for RDH, LDI, and LDSV
+                        WG-START +15 months: CR for RDC and RDH
                     </li>
                     <li>
                         WG-START +24 months: REC for all standards-track documents
@@ -430,24 +372,19 @@
             <section>
                 <h3 id="w3c-coordination">W3C Groups</h3>
                 <dl>
-                    <dt><a href="https://www.w3.org/2019/did-wg/">Decentralized Identifier Working Group</a></dt>
-                    <dd>
-                        To synchronize on cryptography-related vocabularies and definitions.
-                    </dd>
-
                     <dt><a href="https://www.w3.org/2017/vc/WG/">Verifiable Credentials Working Group</a></dt>
                     <dd>
-                        To synchronize on cryptography-related vocabularies and definitions.
+                        To synchronize the definition and usage of the RDF Dataset Canonicalization and Hash, both needed for the ability to provide proofs for Verifiable Credentials.
                     </dd>
 
                     <dt><a href="https://www.w3.org/2017/dxwg/wiki/Main_Page">Dataset Exchange Working Group</a></dt>
                     <dd>
-                        To synchronize on the needs and requirements of dataset publications and exchange regarding canonicalization and digital signatures.
+                        To synchronize on the needs and requirements of dataset publications and exchange regarding canonicalization.
                     </dd>
 
                     <dt><a href="https://www.w3.org/WoT/WG/">Web of Things Working Group</a></dt>
                     <dd>
-                        To synchronize on the needs and requirements of the WoT community, in particular on the subject of WoT Thing Descriptions, regarding canonicalization and digital signatures.
+                        To synchronize on the needs and requirements of the WoT community, in particular on the subject of WoT Thing Descriptions, regarding canonicalization.
                     </dd>
 
                     <dt><a href="https://w3c-ccg.github.io/">Credentials Community Group</a></dt>
@@ -456,7 +393,7 @@
                     </dd>
                     <dt><a href="https://www.w3.org/community/rdf-dev/">RDF-DEV Community Group</a></dt>
                     <dd>
-                        To synchronize on the further evolution of the RDF Standard, such as digital proofs for <a href="https://www.w3.org/TR/rdf11-concepts/#section-generalized-rdf">Generalized</a> or <a href="https://w3c.github.io/rdf-star/cg-spec/">RDF-star</a> Graphs and Datasets. </dd>
+                        To synchronize on the further evolution of the RDF Standard, such as canonicalization and hash functions for <a href="https://www.w3.org/TR/rdf11-concepts/#section-generalized-rdf">Generalized</a> or <a href="https://w3c.github.io/rdf-star/cg-spec/">RDF-star</a> Graphs and Datasets. </dd>
                 </dl>
             </section>
 
@@ -465,21 +402,13 @@
                 <dl>
                     <dt><a href="https://datatracker.ietf.org/rg/cfrg/about/">Internet Engineering Task Force Crypto Forum Research Group </a> </dt>
                     <dd>
-                        To perform broad horizontal reviews on the output of the Working Group and to ensure that new pairing-based and post-quantum cryptographic algorithms and parameters can be integrated into the Linked Data Security ecosystem.
+                        To perform broad horizontal reviews on the output of the Working Group and to ensure that new pairing-based and post-quantum cryptographic algorithms and parameters can be integrated into the RDF Dataset Hash ecosystem.
                     </dd>
-                    <dt><a href="https://datatracker.ietf.org/group/artart/about/">Internet Engineering Task Force ART Area Review Team</a></dt>
-                    <dd>
-                        To coordinate on the work on the work of <a href="https://datatracker.ietf.org/doc/draft-jordan-jws-ct/">JWS Clear Text JSON Signature Option</a> to ensure that no obstacle should be created for further possible harmonization.
-                    </dd>
-                    <dt><a href="https://www.nist.gov/"> National Institute of Standards and Technology, U.S. Department of Commerce </a></dt>
-                    <dd>
-                        To coordinate in ensuring that new pairing-based and post-quantum cryptographic algorithms and parameters can be integrated into the Linked Data Security ecosystem.
-                    </dd>
-                    <dt><a href="https://www.hyperledger.org/use/aries"> Hyperledger Aries</a></dt>
+                    <dt><a href="https://www.hyperledger.org/use/aries">Hyperledger Aries</a></dt>
                     <dd>
                         To coordinate on broad horizontal reviews and implementations related to the specifications developed by the Working Group.
                     </dd>
-                    <dt><a href="https://identity.foundation/interop/"> Decentralized Identity Foundation Interoperability Working Group </a> </dt>
+                    <dt><a href="https://identity.foundation/interop/">Decentralized Identity Foundation Interoperability Working Group </a> </dt>
                     <dd>
                         To coordinate on broad horizontal review and integration of the specifications developed by the Working Group into the Decentralized Identity Foundation's ecosystem.
                     </dd>
@@ -512,9 +441,9 @@
                 Technical discussions for this Working Group are conducted in <a href="https://www.w3.org/Consortium/Process/#confidentiality-levels">public</a>: the meeting minutes from teleconference and face-to-face meetings will be archived for public review, and technical discussions and issue tracking will be conducted in a manner that can be both read and written to by the general public. Working Drafts and Editor's Drafts of specifications will be developed in public repositories and may permit direct public contribution requests. The meetings themselves are not open to public participation, however.
             </p>
             <p>
-                Information about the group (including details about deliverables, issues, actions, status, participants, and meetings) will be available from the <a href="" class=todo>Linked Data Signatures Working Group home page.</a> </p>
+                Information about the group (including details about deliverables, issues, actions, status, participants, and meetings) will be available from the <a href="" class=todo>RDF Dataset Canonicalization and Hash Working home page.</a> </p>
             <p>
-                Most Linked Data Signatures Working Group teleconferences will focus on discussion of particular specifications, and will be conducted on an as-needed basis.
+                Most RDF Dataset Canonicalization and Hash Working teleconferences will focus on discussion of particular specifications, and will be conducted on an as-needed basis.
             </p>
             <p>
                 This group primarily conducts its technical work on <a href="[link to Github repo]"><i class='todo'>GitHub issues</i></a>. The public is invited to review, discuss and contribute to this work.
