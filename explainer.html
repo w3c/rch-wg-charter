@@ -32,13 +32,36 @@ var respecConfig = {
   }],
   github: "w3c/rch-wg-charter",
   localBiblio: {
-    "aidan-2017" : {
+    "carroll-2003" : {
+      title: "Signing RDF Graphs",
+      authors: [
+        "Jeremy J. Carroll"
+      ],
+      href : "https://link.springer.com/chapter/10.1007/978-3-540-39718-2_24",
+      publisher: "International Semantic Web Conference — ISWC 2003, Springer Verlag",
+      pages: "369-384",
+      date : 2003
+    },
+    "kasten-et-al-2014": {
+      title: "Canonical Forms for Isomorphic and Equivalent RDF Graphs: Algorithms for Leaning and Labelling Blank Nodes",
+      authors: [
+        "Andreas Kasten",
+        "Ansgar Scherp",
+        "Peter Schauß"
+      ],
+      href : "https://link.springer.com/chapter/10.1007%2F978-3-319-07443-6_11",
+      publisher: "European Semantic Web Conference — ESWC 2014, Springer Verlag",
+      pages: "146-160",
+      date : 2014
+    },
+    "hogan-2017" : {
       title: "Canonical Forms for Isomorphic and Equivalent RDF Graphs: Algorithms for Leaning and Labelling Blank Nodes",
       authors: [
         "Aidan Hogan"
       ],
       href : "http://aidanhogan.com/docs/rdf-canonicalisation.pdf",
-      publisher: "ACM Transactions on the Web",
+      publisher: "ACM Transactions on the Web, vol. 11, no. 4",
+      pages: "22:1-22:62",
       date : 2017
     },
     "arnold-longley-2020": {
@@ -48,7 +71,7 @@ var respecConfig = {
         "Dave Longley"
       ],
       href: "https://lists.w3.org/Archives/Public/public-credentials/2021Mar/att-0220/RDFDatasetCanonicalization-2020-10-09.pdf",
-      status: "Technical Report",
+      status: "Report submitted to the W3C Credentials Community Group mailing list",
       date : "2020-10-09"
     }
   }
@@ -171,7 +194,10 @@ var respecConfig = {
 
       <ol>
         <li>
-          The algorithms defined by Aidan Hogan in [[aidan-2017]], reviewed through the anonymous scholarly peer review process, and also implemented by the author.
+          Algorithms for signing RDF data have been proposed in [[carroll-2003]] and [[kasten-et-al-2014]], both reviewed through the anonymous scholarly peer review process. However, these approaches are not sound and complete with respect to isomorphism.
+        </li>
+        <li>
+          The algorithms defined by Aidan Hogan in [[hogan-2017]], reviewed through the anonymous scholarly peer review process, and also implemented by the author.
         </li>
         <li>
           The algorithm defined by Rachel Arnold and Dave Longley, see [[arnold-longley-2020]], <a href="https://lists.w3.org/Archives/Public/public-credentials/2021Apr/att-0032/Mirabolic_Graph_Iso_Report_2020_10_19.pdf">reviewed</a> by <a href="https://lists.w3.org/Archives/Public/public-credentials/2021Apr/0032.html">experts at Mirabolic Consulting</a>, implemented and deployed via, e.g., the <a href="https://github.com/digitalbazaar/jsonld-signatures">JSON-LD Signatures package</a> used in several JSON-LD Signature suites.
@@ -179,7 +205,7 @@ var respecConfig = {
       </ol>
 
       <p>
-        The introduction of <a href="http://aidanhogan.com/docs/rdf-canonicalisation.pdf">Aidan Hogan’s paper</a>&nbsp;[[aidan-2017]] also contains a more thorough description of the underlying mathematical challenges.
+        The introduction of <a href="http://aidanhogan.com/docs/rdf-canonicalisation.pdf">Aidan Hogan’s paper</a>&nbsp;[[hogan-2017]] also contains a more thorough description of the underlying mathematical challenges.
       </p>
     </section>
     
