@@ -1,564 +1,576 @@
 <!DOCTYPE html>
 <html lang="en-US">
-
-<head>
+  <head>
     <meta charset="utf-8">
 
     <title>RDF Dataset Canonicalization and Hash Working Group Charter</title>
 
-    <link rel="stylesheet" type="text/css" media="screen" href="https://www.w3.org/2005/10/w3cdoc.css">
+    <link rel="stylesheet" href="https://www.w3.org/2005/10/w3cdoc.css" type="text/css" media="screen">
     <link rel="stylesheet" type="text/css" href="https://www.w3.org/OldGuide/pubrules-style.css">
     <link rel="stylesheet" type="text/css" href="https://www.w3.org/2006/02/charter-style.css">
     <style>
-        .warning {
-            box-shadow: 10px 5px 3px 0px darkgrey;
-            border-top-width: thin;
-            border-right-width: thin;
-            border-bottom-width: thin;
-            border-left-width: thin;
-            border-top-style: solid;
-            border-right-style: solid;
-            border-bottom-style: solid;
-            border-left-style: solid;
-            border-radius: 3px;
-            width: 80%;
-            padding-top: 0.5em;
-            padding-right: 0.5em;
-            padding-bottom: 0.5em;
-            padding-left: 0.5em;
-        }
-        
-        .warning h1 {
-            font-size: 120%;
-            font-style: italic;
-            font-weight: bold;
-            text-align: center;
-        }
-        
-        main {
-            max-width: 60em;
-            margin: 0 auto;
-        }
-        
-        ul#navbar {
-            font-size: small;
-        }
-        
-        dt.spec {
-            font-weight: bold;
-        }
-        
-        dt.spec new {
-            background: yellow;
-        }
-        
-        ul.out-of-scope>li {
-            font-weight: bold;
-        }
-        
-        ul.out-of-scope>li>ul>li {
-            font-weight: normal;
-        }
-        
-        .issue {
-            background: teal !important;
-            color: #FFC !important;
-        }
-        
-        .issue::before {
-            content: "\2009";
-        }
-        
-        .issue::after {
-            content: "\2009";
-        }
-        
-        .todo {
-            color: #900 !important;
-            background-color: #FFC !important;
-        }
-        
-        .note {
-		        border-color: #52e052;
-		        background: #e9fbe9;
-		        color: black;
-		        overflow: auto;
-            padding: .5em;
-            border: .5em;
-            border-left-style: solid;
-            border-color: #52e052;
-            page-break-inside: avoid;
-            margin: 1em auto;
-	      }
-        
-        .rdf {
-            font-style: italic;
-            font-family: cursive;
-        }
-        
-        footer {
-            font-size: small;
-        }
-        
-        aside.comment {
-            color: #900;
-            background: oldlace;
-            border: 1px solid black;
-            padding: 0.5em;
-            margin: 1em;
-            float: right;
-        }
-    </style>
-</head>
+      main {
+        max-width: 60em;
+        margin: 0 auto;
+      }
 
-<body>
+      ul#navbar {
+        font-size: small;
+      }
+
+      dt.spec {
+        font-weight: bold;
+      }
+
+      dt.spec new {
+        background: yellow;
+      }
+
+      ul.out-of-scope > li {
+        font-weight: bold;
+      }
+
+      ul.out-of-scope > li > ul > li{
+        font-weight: normal;
+      }
+
+      .issue {
+        background: cornsilk;
+        font-style: italic;
+      }
+
+      .todo {
+        color: #900;
+      }
+
+      footer {
+        font-size: small;
+      }
+
+      .note {
+	        border-color: #52e052;
+	        background: #e9fbe9;
+	        color: black;
+	        overflow: auto;
+          padding: .5em;
+          border: .5em;
+          border-left-style: solid;
+          border-color: #52e052;
+          page-break-inside: avoid;
+          margin: 1em auto;
+      }
+    </style>
+  </head>
+  <body>
     <header id="header">
-        <aside>
-            <ul id="navbar">
-                <li><a href="#scope">Scope</a></li>
-                <li><a href="#deliverables">Deliverables</a></li>
-                <li><a href="#success-criteria">Success Criteria</a></li>
-                <li><a href="#coordination">Coordination</a></li>
-                <li><a href="#participation">Participation</a></li>
-                <li><a href="#communication">Communication</a></li>
-                <li><a href="#decisions">Decision Policy</a></li>
-                <li><a href="#patentpolicy">Patent Policy</a></li>
-                <li><a href="#licensing">Licensing</a></li>
-                <li><a href="#about">About this Charter</a></li>
-            </ul>
-        </aside>
-        <p>
-            <a href="https://www.w3.org/">
-                <img src="https://www.w3.org/Icons/w3c_home" alt="W3C" height="48" width="72">
-            </a>
-        </p>
+      <aside>
+        <ul id="navbar">
+          <li><a href="#background">Background</a></li>
+          <li><a href="#scope">Scope</a></li>
+          <li><a href="#deliverables">Deliverables</a></li>
+		  <li><a href="#success-criteria">Success Criteria</a></li>
+          <li><a href="#coordination">Coordination</a></li>
+          <li><a href="#participation">Participation</a></li>
+          <li><a href="#communication">Communication</a></li>
+          <li><a href="#decisions">Decision Policy</a></li>
+          <!-- <li><a href="#patentpolicy">Patent Policy</a></li> -->
+          <li><a href="#patentpolicy">Patent Disclosures</a></li>
+          <li><a href="#licensing">Licensing</a></li>
+          <li><a href="#about">About this Charter</a></li>
+        </ul>
+      </aside>
+      <p>
+        <a href="https://www.w3.org/"><img alt="W3C" height="48" src="https://www.w3.org/Icons/w3c_home" width="72"></a>
+      </p>
     </header>
 
 
     <main>
-        <h1 id="title">
-            <i class=todo>PROPOSED</i> RDF Dataset Canonicalization and Hash Working Group Charter
-        </h1>
+      <h1 id="title">
+        <i class=todo>PROPOSED</i> RDF Dataset Canonicalization and Hash Working Group Charter
+      </h1>
 
-        <p class="mission">
-            The <strong>mission</strong> of the <a href="https://www.w3.org/groups/wg/rch">RDF Dataset Canonicalization and Hash Working Group</a> is to define a standard to uniquely and deterministically calculate a hash of RDF Datasets for use cases such as <a href="explainer.html#detectingChanges">Detecting changes in Datasets</a>. The work will include defining <a href="explainer.html#canonicalization"> RDF Dataset Canonicalization</a> algorithms.
+      <p class="mission">
+        The <strong>mission</strong> of the <a href="https://www.w3.org/groups/wg/rch">RDF Dataset Canonicalization and Hash Working Group</a> is to define a standard to uniquely and deterministically calculate a hash of RDF Datasets for use cases such as <a href="explainer.html#detectingChanges">Detecting changes in Datasets</a>. The work will include defining <a href="explainer.html#canonicalization"> RDF Dataset Canonicalization</a> algorithms.
+      </p>
+
+      <div class="noprint">
+        <p class="join"><a href="https://www.w3.org/groups/wg/rch/join">Join the RDF Dataset Canonicalization and Hash Working Group</a></p>
+      </div>
+
+      <p style="padding: 0.5ex; border: 1px solid green" class="todo">
+        This proposed charter is available on <a href="https://github.com/w3c/rch-wg-charter">GitHub</a>.
+        Feel free to raise <a href="https://github.com/w3c/rch-wg-charter/issues">issues</a>.
+      </p>
+
+      <div id="details">
+        <table class="summary-table">
+          <tr id="Status">
+            <th>
+              Charter Status
+            </th>
+            <td>
+              <i class="todo">See the <a href="https://www.w3.org/groups/wg/rch/charters/">group status page</A> and <a href="#history">detailed change history</a>.</i>
+            </td>
+          </tr>
+          <tr id="Duration">
+            <th>
+              Start date
+            </th>
+            <td>
+              <i class="todo">[dd monthname yyyy] (date of the "Call for Participation", when the charter is approved)</i>
+            </td>
+          </tr>
+          <tr id="CharterEnd">
+            <th>
+              End date
+            </th>
+            <td>
+              <i class="todo">[dd monthname yyyy]</i> (Start date + 2 years)
+            </td>
+          </tr>
+          <tr>
+            <th>
+              Chairs
+            </th>
+            <td>
+              <a href="mailto:phil.archer@gs1.org">Phil Archer</a>, <a href="https://www.gs1.org/">GS1</a><br>
+              <a href="mailto:markus@danubetech.com">Markus Sabadello</a>, <a href="https://danubetech.com">Danube Tech</a>
+            </td>
+          </tr>
+          <tr>
+            <th>
+              Team Contacts
+            </th>
+            <td>
+              <a href="mailto:pierre-antoine@w3.org">Pierre-Antoine Champin</a> (0.05 <abbr title="Full-Time Equivalent">FTE</abbr>)
+            </td>
+          </tr>
+          <tr>
+            <th>
+              Meeting Schedule
+            </th>
+            <td>
+              <strong>Teleconferences:</strong> topic-specific calls will be held on a per need basis. <br> <strong>Face-to-face:</strong> face-to-face meetings may be scheduled by consent of the participants, usually no more than 3 per year.
+            </td>
+          </tr>
+        </table>
+
+      </div>
+
+      <div id="background" class="background">
+        <h2>Motivation and Background</h2>
+        <p>
+          There are a variety of use cases that depend on the ability to calculate a unique and deterministic hash value of RDF Datasets, such as <a href="https://www.w3.org/TR/vc-data-model">Verifiable Credentials</a>, the publication of biological and pharmaceutical data, or consumption of mission critical RDF vocabularies that depend on the ability to verify the authenticity and integrity of the data being consumed. See the <a href="explainer.html#usage">use cases</a> for more examples. These use cases require a standard way to process the underlying graphs contained in <a href="https://www.w3.org/TR/rdf11-concepts/#section-dataset">RDF Datasets</a> that is independent of the serialization itself.
+        </p>
+      </div>
+
+      <section id="scope" class="scope">
+        <h2>Scope</h2>
+        <p>
+          The scope of this Working Group is to define standards to <a href="./explainer.html#canonicalization">canonicalize</a> and <a href="./explainer.html#hash"> cryptographically hash</a> an <a href="https://www.w3.org/TR/rdf11-concepts/#section-dataset">RDF Dataset</a>. This includes the definition of a standard <a href='./explainer.html#canonicalization'>canonicalization algorithm</a>. (See the separate <a href="./explainer.html">explainer document</a> for more detailed technical backgrounds and for the terminology used in this context.)
         </p>
 
-        <p><a href="https://www.w3.org/groups/wg/rch/join">Join the RDF Dataset Canonicalization and Hash Working Group</a></p>
+        <div class="note">
+          <p class="draft-status">
+            See also some publications for RDF Dataset Canonicalization that will serve as inputs for the specification work:
+          </p>
+          <ol>
+            <li>
+              <a href="https://lists.w3.org/Archives/Public/public-credentials/2021Mar/att-0220/RDFDatasetCanonicalization-2020-10-09.pdf">RDF Dataset Canonicalization</a>, Rachel Arnold, Dave Longley, Report submitted to the W3C Credentials Community Group mailing list, 2020.
+            </li>
+            <li>
+              <a href="http://aidanhogan.com/docs/rdf-canonicalisation.pdf">Canonical Forms for Isomorphic and Equivalent RDF Graphs: Algorithms for Leaning and Labelling Blank Nodes</a>, Aidan Hogan, ACM Trans. Web, vol. 11, no. 4, p. 22:1-22:62, 2017.
+            </li>
+            <li>
+              <a href="https://link.springer.com/chapter/10.1007%2F978-3-319-07443-6_11">A Framework for Iterative Signing of Graph Data on the Web</a>, Andreas Kasten, Ansgar Scherp, Peter Schauß, European Semantic Web Conference — ESWC 2014, Springer Verlag, pp. 146-160, 2014.
+            </li>
+            <li>
+              <a href="https://link.springer.com/chapter/10.1007/978-3-540-39718-2_24">Signing RDF Graphs</a>, Jeremy J. Carroll, International Semantic Web Conference — ISWC 2003, Springer Verlag, pp. 369-384, 2003.
+            </li>
+          </ol>
+        </div>
 
-        <p class=todo style="padding: 0.5ex; border: 1px solid green">
-          This proposed charter is available on <a href="https://github.com/w3c/rch-wg-charter">GitHub</a>.
-          Feel free to raise <a href="https://github.com/w3c/rch-wg-charter/issues">issues</a>.
+        <section id="section-out-of-scope">
+          <h3 id="out-of-scope">Out of Scope</h3>
+          <p>
+            The following items are out of scope, and will not be addressed by this Working group.
+          </p>
+
+          <ul>
+            <li>
+              Definition of new cryptographic hashing algorithms. This Working Group will only define the usage of  algorithms such as, for example, BLAKE3 or SHA-3.
+            </li>
+            <li>
+              Definition of higher level protocols, like signature schemes, which is left to other groups.
+            </li>
+          </ul>
+        </section>
+
+      </section>
+
+      <section id="deliverables">
+        <h2>
+          Deliverables
+        </h2>
+
+        <p>Updated document status is available on the <a href="https://www.w3.org/groups/wg/rch/publications/">group publication status page</a>.</p>
+
+        <p><i>Draft state</i> indicates the state of the deliverable at the time of the charter approval. <i>Expected completion</i> indicates when the deliverable is projected to become a Recommendation, or otherwise reach a stable state
         </p>
 
-        <section id="details">
-            <table class="summary-table">
-                <tr id="Duration">
-                    <th>
-                        Start date
-                    </th>
-                    <td>
-                      <i class=todo>TBD</i>
-                    </td>
-                </tr>
-                <tr id="CharterEnd">
-                    <th>
-                        End date
-                    </th>
-                    <td>
-                        <i class=todo>Start date + 2 years</i>
-                    </td>
-                </tr>
-                <tr>
-                    <th>Charter extension</th>
-                    <td>
-                      See <a href="#history">Change History</a>.
-                    </td>
-                </tr>
-                <tr>
-                    <th>
-                        Chairs
-                    </th>
-                    <td>
-			    <a href="mailto:phil.archer@gs1.org">Phil Archer</a>, <a href="https://www.gs1.org/">GS1</a><br>
-			    <a href="mailto:markus@danubetech.com">Markus Sabadello</a>, <a href="https://danubetech.com">Danube Tech</a>
-                    </td>
-                </tr>
-                <tr>
-                    <th>
-                        Team Contacts
-                    </th>
-                    <td>
-                        <a href="mailto:pierre-antoine@w3.org">Pierre-Antoine Champin</a> (0.05 <abbr title="Full-Time Equivalent">FTE</abbr>)
-                    </td>
-                </tr>
-                <tr>
-                    <th>
-                        Meeting Schedule
-                    </th>
-                    <td>
-                        <strong>Teleconferences:</strong> topic-specific calls will be held on a per need basis. <br> <strong>Face-to-face:</strong> face-to-face
-                        meetings may be scheduled by consent of the participants, usually no more than 3 per year.
-                    </td>
-                </tr>
-            </table>
+        <section id="normative">
+          <h3>
+            Normative Specifications
+          </h3>
+
+          <p>
+            The Working Group will maintain the following W3C normative specifications:
+          </p>
+          <dl>
+            <dt id="canonicalization" class="spec">RDF Dataset Canonicalization (rdf-canon)</dt>
+            <dd>
+                Latest publication: 21 May 2024 <br/>
+                Draft State: W3C Recommendation <br/>
+                Reference Draft: <a href="https://www.w3.org/TR/2024/REC-rdf-canon-20240521/">https://www.w3.org/TR/2024/REC-rdf-canon-20240521/</a> <br/>
+                Associated <a href="https://lists.w3.org/Archives/Member/member-cfe/2023Oct/0018.html">Call for Exclusion</a> 31 October 2023, ended on 30 December 2023 <br/>
+                Produced under Working Group Charter: <a href="https://www.w3.org/2022/07/rch-wg-charter/">https://www.w3.org/2022/07/rch-wg-charter/</a>
+            </dd>
+          </dl>
         </section>
 
-        <section id="scope" class="scope">
-            <h2>Scope</h2>
-
-            <p>
-                There are a variety of use cases that depend on the ability to calculate a unique and deterministic hash value of RDF Datasets, such as <a href="https://www.w3.org/TR/vc-data-model">Verifiable Credentials</a>, the publication of biological and pharmaceutical data, or consumption of mission critical RDF vocabularies that depend on the ability to verify the authenticity and integrity of the data being consumed. See the <a href="explainer.html#usage">use cases</a> for more examples. These use cases require a standard way to process the underlying graphs contained in <a href="https://www.w3.org/TR/rdf11-concepts/#section-dataset">RDF Datasets</a> that is independent of the serialization itself.
-            </p>
-
-            <p>
-                The scope of this Working Group is to define standards to <a href="./explainer.html#canonicalization">canonicalize</a> and <a href="./explainer.html#hash"> cryptographically hash</a> an <a href="https://www.w3.org/TR/rdf11-concepts/#section-dataset">RDF Dataset</a>. This includes the definition of a standard <a href='./explainer.html#canonicalization'>canonicalization algorithm</a>. (See the separate <a href="./explainer.html">explainer document</a> for more detailed technical backgrounds and for the terminology used in this context.)
-            </p>
-
-            <div class="note">
-                <p class="draft-status">
-                    See also some publications for RDF Dataset Canonicalization that will serve as inputs for the specification work:
-                </p>
-                <ol>
-                    <li>
-                        <a href="https://lists.w3.org/Archives/Public/public-credentials/2021Mar/att-0220/RDFDatasetCanonicalization-2020-10-09.pdf">RDF Dataset Canonicalization</a>, Rachel Arnold, Dave Longley, Report submitted to the W3C Credentials Community Group mailing list, 2020.
-                    </li>
-                    <li>
-                        <a href="http://aidanhogan.com/docs/rdf-canonicalisation.pdf">Canonical Forms for Isomorphic and Equivalent RDF Graphs: Algorithms for Leaning and Labelling Blank Nodes</a>, Aidan Hogan, ACM Trans. Web, vol. 11, no. 4, p. 22:1-22:62, 2017.
-                    </li>
-                    <li>
-                        <a href="https://link.springer.com/chapter/10.1007%2F978-3-319-07443-6_11">A Framework for Iterative Signing of Graph Data on the Web</a>, Andreas Kasten, Ansgar Scherp, Peter Schauß, European Semantic Web Conference — ESWC 2014, Springer Verlag, pp. 146-160, 2014.
-                    </li>
-                    <li>
-                        <a href="https://link.springer.com/chapter/10.1007/978-3-540-39718-2_24">Signing RDF Graphs</a>, Jeremy J. Carroll, International Semantic Web Conference — ISWC 2003, Springer Verlag, pp. 369-384, 2003.
-                    </li>
-                </ol>
-            </div>
-
-            <section id="section-out-of-scope">
-                <h3 id="out-of-scope">Out of Scope</h3>
-                <p>
-                    The following items are out of scope, and will not be addressed by this Working group:
-                </p>
-
-                <ul>
-                    <li>
-                        Definition of new cryptographic hashing algorithms. This Working Group will only define the usage of  algorithms such as, for example, BLAKE3 or SHA-3.
-                    </li>
-                    <li>
-                        Definition of higher level protocols, like signature schemes, which is left to other groups.
-                    </li>
-                </ul>
-            </section>
-
+        <section id="ig-other-deliverables">
+          <h3>
+            Other Deliverables
+          </h3>
+          <p>
+            Other non-normative documents may be created such as:
+          </p>
+          <ul>
+            <li>
+              <p>The Working Group will maintain the Test suite and implementation report for the RDF Dataset Canonicalization specification.</p>
+            </li>
+          </ul>
         </section>
 
-        <section id="deliverables">
-            <h2>Deliverables</h2>
-            <p>
-                More detailed milestones and updated publication schedules are available on the
-                <a href="https://www.w3.org/groups/wg/rch/publications">group publication status page</a>.
-            </p>
-            <p>
-                <i><b>Expected completion</b></i> indicates when the deliverable is projected to become a Recommendation, or otherwise reach a stable state.
-            </p>
+      </section>
 
+	<section id="success-criteria">
+	  <h2>Success Criteria</h2>
 
-            <p>
-                Note that the titles of the documents are tentative and not final. The Working Group may also decide to either split some of those documents or, conversely, merge them.
-            </p>
+    <!-- Testing and interop -->
+	  <p>
+      In order to advance to
+		  <a href="https://www.w3.org/policies/process/#RecsPR" title="Proposed Recommendation">Proposed Recommendation</a>, each normative specification is expected to have
+		  <a href="https://www.w3.org/policies/process/#implementation-experience">at least two independent interoperable
+			  implementations</a> of every feature defined in the specification, where
+interoperability can be verified by passing open test suites.</p>
+	  <p>
+      There should be testing plans for each specification, starting from the earliest drafts.
+    </p>
+    <p>
+      To promote interoperability, all changes made to specifications in Candidate Recommendation or to features that have deployed implementations should have
+      <a href='https://www.w3.org/2019/02/testing-policy.html'>tests</a>.
+    </p>
 
-            <section id="normative">
-                <h3>Normative Specifications</h3>
-                <p>
-                    The Working Group will maintain the following W3C normative specifications:
-                </p>
-                <dl>
-                    <dt id="canonicalization" class="spec">RDF Dataset Canonicalization (rdf-canon)</dt>
-                    <dd>
-                        Latest publication: 21 May 2024 <br/>
-                        Draft State: W3C Recommendation <br/>
-                        Reference Draft: <a href="https://www.w3.org/TR/2024/REC-rdf-canon-20240521/">https://www.w3.org/TR/2024/REC-rdf-canon-20240521/</a> <br/>
-                        Associated <a href="https://lists.w3.org/Archives/Member/member-cfe/2023Oct/0018.html">Call for Exclusion</a> 31 October 2023, ended on 30 December 2023 <br/>
-                        Produced under Working Group Charter: <a href="https://www.w3.org/2022/07/rch-wg-charter/">https://www.w3.org/2022/07/rch-wg-charter/</a>
-                    </dd>
-              </dl>
-            </section>
+    <!-- Horizontal review -->
 
-            <section id="ig-other-deliverables">
-                <h3>Other Deliverables</h3>
-                <p>
-                    Other non-normative documents may be created such as:
-                </p>
-                <ul>
-                    <li>
-                        <p>The Working Group will maintain the Test suite and implementation report for the RDF Dataset Canonicalization specification.</p>
-                    </li>
-                </ul>
-            </section>
+    <p>Each specification should contain sections detailing all known security and
+      privacy implications for implementers, Web authors, and end users.</p>
+
+    <!-- Design principles -->
+    <p>This Working Group expects to follow the
+    TAG <a href="https://www.w3.org/TR/design-principles/">Web Platform Design Principles</a>.
+    </p>
+
+	</section>
+
+      <section id="coordination">
+        <h2>Coordination</h2>
+        <p>For all specifications, this Working Group will seek <a href="https://www.w3.org/Guide/documentreview/#how_to_get_horizontal_review">horizontal review</a> for
+          accessibility, internationalization, privacy, and security with the relevant Working and
+          Interest Groups, and with the <a href="https://www.w3.org/groups/other/tag/" title="Technical Architecture Group">TAG</a>.
+          Invitation for review must be issued during each major standards-track document transition, including
+          <a href="https://www.w3.org/policies/process/#RecsWD" title="First Public Working Draft">FPWD</a>.  The
+          Working Group is encouraged to engage collaboratively with the horizontal review groups throughout development of
+          each specification.  The Working Group is advised to seek a review at least 3 months before first entering
+          <a href="https://www.w3.org/policies/process/#RecsCR" title="Candidate Recommendation">CR</a> and is encouraged
+          to proactively notify the horizontal review groups when major changes occur in a specification following a review.</p>
+
+        <p>Additional technical coordination with the following Groups will be made, per the <a href="https://www.w3.org/policies/process/#WGCharter">W3C Process Document</a>:</p>
+
+        <section>
+          <h3 id="w3c-coordination">W3C Groups</h3>
+          <dl>
+          <dt><a href="https://www.w3.org/2017/vc/WG/">Verifiable Credentials Working Group</a></dt>
+          <dd>
+            To synchronize the definition and usage of the RDF Dataset Canonicalization and Hash, both needed for the ability to provide proofs for Verifiable Credentials.
+          </dd>
+
+          <dt><a href="https://www.w3.org/2017/dxwg/wiki/Main_Page">Dataset Exchange Working Group</a></dt>
+          <dd>
+            To synchronize on the needs and requirements of dataset publications and exchange regarding canonicalization.
+          </dd>
+
+          <dt><a href="https://www.w3.org/2011/webappsec/">Web Application Security Working Group</a></dt>
+          <dd>
+            To ensure that the canonicalization and hashing mechanisms defined in this group have similar security properties to the rest of the Web, and to take advantage of lessons learned while designing other canonicalization systems.
+          </dd>
+
+          <dt><a href="https://www.w3.org/WoT/WG/">Web of Things Working Group</a></dt>
+          <dd>
+            To synchronize on the needs and requirements of the WoT community, in particular on the subject of WoT Thing Descriptions, regarding canonicalization.
+          </dd>
+
+          <dt><a href="https://w3c-ccg.github.io/">Credentials Community Group</a></dt>
+          <dd>
+            Coordination on other specifications incubated and maintained the Credentials Community Group at W3C.
+          </dd>
+
+          <dt><a href="https://www.w3.org/community/rdf-dev/">RDF-DEV Community Group</a></dt>
+          <dd>
+            To synchronize on the further evolution of the RDF Standard, such as canonicalization and hash functions for <a href="https://www.w3.org/TR/rdf11-concepts/#section-generalized-rdf">Generalized</a> or <a href="https://w3c.github.io/rdf-star/cg-spec/">RDF-star</a> Graphs and Datasets. </dd>
+        </dl>
         </section>
 
-        <section id="success-criteria">
-            <h2>Success Criteria</h2>
-            <p>
-                In order to advance to <a href="https://www.w3.org/Consortium/Process/#RecsPR" title="Proposed Recommendation">Proposed Recommendation</a>, each normative specification is expected to have <a href="https://www.w3.org/Consortium/Process/#implementation-experience">at least two independent implementations</a> of every feature defined in the specification.
-            </p>
-            <p>
-                Each specification should contain separate sections detailing all known security and privacy implications for implementers, Web authors, and end users.
-            </p>
-            <p>
-                There should be testing plans for each specification, starting from the earliest drafts.
-            </p>
-            <p>
-                To promote interoperability, all changes made to specifications should have <a href='https://www.w3.org/2019/02/testing-policy.html'>tests</a>.
-            </p>
+        <section>
+          <h3 id="external-coordination">External Organizations</h3>
+          <dl>
+            <dt><a href="https://datatracker.ietf.org/rg/cfrg/about/">Internet Engineering Task Force Crypto Forum Research Group </a> </dt>
+            <dd>
+              To perform broad horizontal reviews on the output of the Working Group and to ensure that new pairing-based and post-quantum cryptographic algorithms and parameters can be integrated into the RDF Dataset Hash ecosystem.
+            </dd>
+            <dt><a href="https://www.hyperledger.org/use/aries">Hyperledger Aries</a></dt>
+            <dd>
+              To coordinate on broad horizontal reviews and implementations related to the specifications developed by the Working Group.
+            </dd>
+            <dt><a href="https://identity.foundation/interop/">Decentralized Identity Foundation Interoperability Working Group </a> </dt>
+            <dd>
+              To coordinate on broad horizontal review and integration of the specifications developed by the Working Group into the Decentralized Identity Foundation's ecosystem.
+            </dd>
+          </dl>
+        </section>
+      </section>
+
+
+
+      <section class="participation">
+        <h2 id="participation">
+          Participation
+        </h2>
+        <p>
+          To be successful, this Working Group is expected to have 6 or more active participants for its duration, including representatives from the key implementors of this specification, and active Editors and Test Leads for each specification. The Chairs, specification Editors, and Test Leads are expected to contribute half of a working day per week towards the Working Group. There is no minimum requirement for other Participants.
+        </p>
+        <p>
+          The group encourages questions, comments and issues on its public mailing lists and document repositories, as described in <a href='#communication'>Communication</a>.
+        </p>
+        <p>
+          The group also welcomes non-Members to contribute technical submissions for consideration upon their agreement to the terms of the <a href="https://www.w3.org/policies/patent-policy/">W3C Patent Policy</a>.
+        </p>
+        <p>Participants in the group are required (by the <a href="https://www.w3.org/policies/process/#ParticipationCriteria">W3C Process</a>) to follow the
+          W3C <a href="https://www.w3.org/policies/code-of-conduct/">Code of Conduct</a>.</p>
+      </section>
+
+
+
+      <section id="communication">
+        <h2>
+          Communication
+        </h2>
+        <p id="public">
+          Technical discussions for this Working Group are conducted in <a href="https://www.w3.org/policies/process/#confidentiality-levels">public</a>: the meeting minutes from teleconference and face-to-face meetings will be archived for public review, and technical discussions and issue tracking will be conducted in a manner that can be both read and written to by the general public. Working Drafts and Editor's Drafts of specifications will be developed in public repositories and may permit direct public contribution requests.
+        The meetings themselves are not open to public participation, however.
+        </p>
+        <p>
+          Information about the group (including details about deliverables, issues, actions, status, participants, and meetings) will be available from the <a href="">RDF Dataset Canonicalization and Hash Working Group home page.</a>
+        </p>
+        <p>
+          Most RDF Dataset Canonicalization and Hash Working Group teleconferences will focus on discussion of particular specifications, and will be conducted on an as-needed basis.
+        </p>
+        <p>
+          This group primarily conducts its technical work on
+          <a id="public-github" href="https://github.com/w3c/rdf-canon">GitHub issues</a>.
+          The public is invited to review, discuss and contribute to this work.
+        </p>
+        <p>
+          The group may use a Member-confidential mailing list for administrative purposes and, at the discretion of the Chairs and members of the group, for member-only discussions in special cases when a participant requests such a discussion.
+        </p>
+      </section>
+
+
+
+      <section id="decisions">
+        <h2>
+          Decision Policy
+        </h2>
+        <p>
+          This group will seek to make decisions through consensus and due process, per the <a href="https://www.w3.org/policies/process/#Consensus">W3C Process Document (section 5.2.1, Consensus)</a>. Typically, an editor or other participant makes an initial proposal, which is then refined in discussion with members of the group and other reviewers, and consensus emerges with little formal voting being required.</p>
+        <p>
+           However, if a decision is necessary for timely progress and consensus is not achieved after careful consideration of the range of views presented, the Chairs may call for a group vote and record a decision along with any objections.
+        </p>
+        <p>
+          To afford asynchronous decisions and organizational deliberation, any resolution (including publication decisions) taken in a face-to-face meeting or teleconference will be considered provisional.
+
+          A call for consensus (CfC) will be issued for all resolutions (for example, via email, GitHub issue or web-based survey), with a response period from <span id='cfc'>10 working days</span>, depending on the chair's evaluation of the group consensus on the issue.
+
+          If no objections are raised by the end of the response period, the resolution will be considered to have consensus as a resolution of the Working Group.
+        </p>
+        <p>
+          All decisions made by the group should be considered resolved unless and until new information becomes available or unless reopened at the discretion of the Chairs.
+        </p>
+        <p>
+          This charter is written in accordance with the <a href="https://www.w3.org/policies/process/#Votes">W3C Process Document (Section 5.2.3, Deciding by Vote)</a> and includes no voting procedures beyond what the Process Document requires.
+        </p>
+      </section>
+
+
+
+      <section id="patentpolicy">
+        <h2>
+          Patent Policy
+        </h2>
+        <p>
+          This Working Group operates under the <a href="https://www.w3.org/policies/patent-policy/">W3C Patent Policy</a> (Version of 15 September 2020). To promote the widest adoption of Web standards, W3C seeks to issue Web specifications that can be implemented, according to this policy, on a Royalty-Free basis.
+
+          For more information about disclosure obligations for this group, please see the <a href="https://www.w3.org/groups/wg/rch/ipr/">licensing information</a>.
+        </p>
+
+      </section>
+
+
+
+      <section id="licensing">
+        <h2>Licensing</h2>
+        <p>This Working Group will use the <a href="https://www.w3.org/copyright/software-license/">W3C Software and Document license</a> for all its deliverables.</p>
+      </section>
+
+
+
+      <section id="about">
+        <h2>
+          About this Charter
+        </h2>
+        <p>
+          This charter has been created according to <a href="https://www.w3.org/policies/process/#GAGeneral">section 3.4</a> of the <a href="https://www.w3.org/policies/process/">Process Document</a>. In the event of a conflict between this document or the provisions of any charter and the W3C Process, the W3C Process shall take precedence.
+        </p>
+
+        <section id="history">
+          <h3>
+            Charter History
+          </h3>
+          <p>The following table lists details of all changes from the initial charter, per the <a href="https://www.w3.org/policies/process/#CharterReview">W3C Process Document (section 4.3, Advisory Committee Review of a Charter)</a>:</p>
+
+          <table class="history">
+            <thead>
+              <tr>
+                <th>
+                  Charter Period
+                </th>
+                <th>
+                  Start Date
+                </th>
+                <th>
+                  End Date
+                </th>
+                <th>
+                  Changes
+                </th>
+              </tr>
+            <tbody>
+              <tr>
+                <th>
+                  <a href="https://www.w3.org/2022/07/rch-wg-charter/">Initial Charter</a>
+                </th>
+                <td>
+                  21 July 2022
+                </td>
+                <td>
+                  20 July 2024
+                </td>
+                <td>-
+                </td>
+              </tr>
+              <tr>
+                <th>
+                  <a href="https://lists.w3.org/Archives/Public/public-rch-wg/2024Jul/0001.html">Charter Extension</a>
+                </th>
+                <td>
+                  21 July 2022
+                </td>
+                <td>
+                  20 November 2024
+                </td>
+                <td>-
+                </td>
+              </tr>
+              <tr>
+                <th>
+                  <a href="">Maintenance WG Charter</a>
+                </th>
+                <td>
+                  <i class=todo>TBD</i>
+                </td>
+                <td>
+                  <i class=todo>Start date + 2 years</i>
+                </td>
+                <td>
+                  Turn to maintenance mode
+                </td>
+              </tr>
+              <!--
+              <tr>
+                <th>
+                  <a class="todo" href="">Charter Extension</a>
+                </th>
+                <td>
+                  <i class="todo">[dd monthname yyyy]</i>
+                </td>
+                <td>
+                  <i class="todo">[dd monthname yyyy]</i>
+                </td>
+                <td>
+                  <i class="todo">none</i>
+                </td>
+              </tr>
+              <tr>
+                <th>
+                  <a class="todo" href="">Rechartered</a>
+                </th>
+                <td>
+                  <i class="todo">[dd monthname yyyy]</i>
+                </td>
+                <td>
+                  <i class="todo">[dd monthname yyyy]</i>
+                </td>
+                <td>
+                  <p class="todo">[description of change to charter, with link to new deliverable item in charter] <b>Note:</b> use the class <code>new</code> for all new deliverables, for ease of recognition.</p>
+                </td>
+              </tr>
+              -->
+            </tbody>
+          </table>
         </section>
 
-        <section id="coordination">
-            <h2>Coordination</h2>
-            <p>
-                For all specifications, this Working Group will seek <a href="https://www.w3.org/Guide/process/charter.html#horizontal-review">horizontal review</a> for accessibility, internationalization, performance, privacy, and security with the relevant Working and Interest Groups, and with the <a href="https://www.w3.org/2001/tag/" title="Technical Architecture Group">TAG</a>. Invitation for review must be issued during each major standards-track document transition, including <a href="https://www.w3.org/Consortium/Process/#RecsWD" title="First Public Working Draft">FPWD</a>. The Working Group is encouraged to engage collaboratively with the horizontal review groups throughout development of each specification. The Working Group is advised to seek a review at least 3 months before first entering <a href="https://www.w3.org/Consortium/Process/#RecsCR" title="Candidate Recommendation">CR</a> and is encouraged to proactively notify the horizontal review groups when major changes occur in a specification following a review.
-            </p>
-            <p>
-                Additional technical coordination with the following Groups will be made, per the <a href="https://www.w3.org/Consortium/Process/#WGCharter">W3C Process Document</a>:
-            </p>
-            <section>
-                <h3 id="w3c-coordination">W3C Groups</h3>
-                <dl>
-                    <dt><a href="https://www.w3.org/2017/vc/WG/">Verifiable Credentials Working Group</a></dt>
-                    <dd>
-                        To synchronize the definition and usage of the RDF Dataset Canonicalization and Hash, both needed for the ability to provide proofs for Verifiable Credentials.
-                    </dd>
-
-                    <dt><a href="https://www.w3.org/2017/dxwg/wiki/Main_Page">Dataset Exchange Working Group</a></dt>
-                    <dd>
-                        To synchronize on the needs and requirements of dataset publications and exchange regarding canonicalization.
-                    </dd>
-
-                    <dt><a href="https://www.w3.org/2011/webappsec/">Web Application Security Working Group</a></dt>
-                    <dd>
-                        To ensure that the canonicalization and hashing mechanisms defined in this group have similar security properties to the rest of the Web, and to take advantage of lessons learned while designing other canonicalization systems.
-                    </dd>
-
-                    <dt><a href="https://www.w3.org/WoT/WG/">Web of Things Working Group</a></dt>
-                    <dd>
-                        To synchronize on the needs and requirements of the WoT community, in particular on the subject of WoT Thing Descriptions, regarding canonicalization.
-                    </dd>
-
-                    <dt><a href="https://w3c-ccg.github.io/">Credentials Community Group</a></dt>
-                    <dd>
-                        Coordination on other specifications incubated and maintained the Credentials Community Group at W3C.
-                    </dd>
-
-                    <dt><a href="https://www.w3.org/community/rdf-dev/">RDF-DEV Community Group</a></dt>
-                    <dd>
-                        To synchronize on the further evolution of the RDF Standard, such as canonicalization and hash functions for <a href="https://www.w3.org/TR/rdf11-concepts/#section-generalized-rdf">Generalized</a> or <a href="https://w3c.github.io/rdf-star/cg-spec/">RDF-star</a> Graphs and Datasets. </dd>
-                </dl>
-            </section>
-
-            <section>
-                <h3 id="external-coordination">External Organizations</h3>
-                <dl>
-                    <dt><a href="https://datatracker.ietf.org/rg/cfrg/about/">Internet Engineering Task Force Crypto Forum Research Group </a> </dt>
-                    <dd>
-                        To perform broad horizontal reviews on the output of the Working Group and to ensure that new pairing-based and post-quantum cryptographic algorithms and parameters can be integrated into the RDF Dataset Hash ecosystem.
-                    </dd>
-                    <dt><a href="https://www.hyperledger.org/use/aries">Hyperledger Aries</a></dt>
-                    <dd>
-                        To coordinate on broad horizontal reviews and implementations related to the specifications developed by the Working Group.
-                    </dd>
-                    <dt><a href="https://identity.foundation/interop/">Decentralized Identity Foundation Interoperability Working Group </a> </dt>
-                    <dd>
-                        To coordinate on broad horizontal review and integration of the specifications developed by the Working Group into the Decentralized Identity Foundation's ecosystem.
-                    </dd>
-                </dl>
-            </section>
-        </section>
-
-        <section class="participation">
-            <h2 id="participation">Participation</h2>
-            <p>
-                To be successful, this Working Group is expected to have 6 or more active participants for its duration, including representatives from the key implementors of this specification, and active Editors and Test Leads for each specification. The Chairs, specification
-                Editors, and Test Leads are expected to contribute half of a working day per week towards the Working Group. There is no minimum requirement for other Participants.
-            </p>
-            <p>
-                The group encourages questions, comments and issues on its public mailing lists and document repositories, as described in <a href='#communication'>Communication</a>.
-            </p>
-            <p>
-                The group also welcomes non-Members to contribute technical submissions for consideration upon their agreement to the terms of the <a href="https://www.w3.org/Consortium/Patent-Policy/">W3C Patent Policy</a>.
-            </p>
-            <p>
-                Participants in the group are required (by the <a href="https://www.w3.org/Consortium/Process/#ParticipationCriteria">W3C Process</a>) to follow the W3C <a href="https://www.w3.org/Consortium/cepc/">Code of Ethics and Professional Conduct</a>.
-            </p>
-        </section>
-
-
-
-        <section id="communication">
-            <h2>Communication</h2>
-            <p id="public">
-                Technical discussions for this Working Group are conducted in <a href="https://www.w3.org/Consortium/Process/#confidentiality-levels">public</a>: the meeting minutes from teleconference and face-to-face meetings will be archived for public review, and technical discussions and issue tracking will be conducted in a manner that can be both read and written to by the general public. Working Drafts and Editor's Drafts of specifications will be developed in public repositories and may permit direct public contribution requests. The meetings themselves are not open to public participation, however.
-            </p>
-            <p>
-                Information about the group (including details about deliverables, issues, actions, status, participants, and meetings) will be available from the <a href="https://www.w3.org/groups/wg/rch">RDF Dataset Canonicalization and Hash Working home page.</a> </p>
-            <p>
-                Most RDF Dataset Canonicalization and Hash Working teleconferences will focus on discussion of particular specifications, and will be conducted on an as-needed basis.
-            </p>
-            <p>
-                This group primarily conducts its technical work on <a href="https://github.com/w3c/rch-wg">GitHub issues</a>. The public is invited to review, discuss and contribute to this work.
-            </p>
-            <p>
-                The group may use a Member-confidential mailing list for administrative purposes and, at the discretion of the Chairs and members of the group, for member-only discussions in special cases when a participant requests such a discussion.
-            </p>
-        </section>
-
-        <section id="decisions">
-            <h2>Decision Policy</h2>
-            <p>
-                This group will seek to make decisions through consensus and due process, per the <a href="https://www.w3.org/Consortium/Process/#Consensus"> W3C Process Document (section 5.2.1, Consensus</a>). Typically, an editor or other participant makes an initial proposal, which is then refined in discussion with members of the group and other reviewers, and consensus emerges with little formal voting being required.
-            </p>
-            <p>
-                However, if a decision is necessary for timely progress and consensus is not achieved after careful consideration of the range of views presented, the Chairs may call for a group vote and record a decision along with any objections.
-            </p>
-            <p>
-                To afford asynchronous decisions and organizational deliberation, any resolution (including publication decisions) taken in a face-to-face meeting or teleconference will be considered provisional. A call for consensus (CfC) will be issued for all resolutions (for example, via email and/or web-based survey), with a response period from <span id='cfc'>one week to 10 working days</span>, depending on the chair's evaluation of the group consensus on the issue. If no objections are raised on the mailing list by the end of the response period, the resolution will be considered to have consensus as a resolution of the Working Group.
-            </p>
-            <p>
-                All decisions made by the group should be considered resolved unless and until new information becomes available or unless reopened at the discretion of the Chairs or the Director.
-            </p>
-            <p>
-                This charter is written in accordance with the <a href="https://www.w3.org/Consortium/Process/#Votes">W3C Process Document (Section 5.2.3, Deciding by Vote)</a> and includes no voting procedures beyond what the Process Document requires.
-            </p>
-        </section>
-
-        <section id="patentpolicy">
-            <h2>Patent Policy</h2>
-            <p>
-                This Working Group operates under the <a href="https://www.w3.org/Consortium/Patent-Policy/">W3C Patent Policy</a> (Version of 15 September 2020). To promote the widest adoption of Web standards, W3C seeks to issue Recommendations that can be implemented, according to this policy, on a Royalty-Free basis. For more information about disclosure obligations for this group, please see the <a href="https://www.w3.org/2004/01/pp-impl/">W3C Patent Policy Implementation</a>.
-            </p>
-        </section>
-
-        <section id="licensing">
-            <h2>Licensing</h2>
-            <p>
-                This Working Group will use the <a href="https://www.w3.org/Consortium/Legal/copyright-software">W3C Software and Document license</a> for all its deliverables.
-            </p>
-        </section>
-
-        <section id="about">
-            <h2>About this Charter</h2>
-            <p>
-                This charter has been created according to <a href="https://www.w3.org/Consortium/Process/#WG-and-IG">section 3.4</a> of the <a href="https://www.w3.org/Consortium/Process/">Process Document</a>. In the event of a conflict between this document or the provisions of any charter and the W3C Process, the W3C Process shall take precedence.
-            </p>
-
-            <section id="history">
-                <h3>Charter History</h3>
-                <p>
-                    The following table lists details of all changes from the initial charter, per the <a href="https://www.w3.org/Consortium/Process/#CharterReview">W3C Process Document (section 4.3)</a>:
-                </p>
-                <table class="history">
-                    <tbody>
-                        <tr>
-                            <th>
-                                Charter Period
-                            </th>
-                            <th>
-                                Start Date
-                            </th>
-                            <th>
-                                End Date
-                            </th>
-                            <th>
-                                Changes
-                            </th>
-                        </tr>
-                        <tr>
-                            <th>
-                                <a href="https://www.w3.org/2022/07/rch-wg-charter/">Initial Charter</a>
-                            </th>
-                            <td>
-                                21 July 2022
-                            </td>
-                            <td>
-                                20 July 2024
-                            </td>
-                            <td>-
-                            </td>
-                        </tr>
-                        <tr>
-                            <th>
-                                <a href="https://lists.w3.org/Archives/Public/public-rch-wg/2024Jul/0001.html">Charter Extension</a>
-                            </th>
-                            <td>
-                                21 July 2022
-                            </td>
-                            <td>
-                                20 November 2024
-                            </td>
-                            <td>-
-                            </td>
-                        </tr>
-                        <tr>
-                            <th>
-                                <a href="">Maintenance WG Charter</a>
-                            </th>
-                            <td>
-                                <i class=todo>TBD</i>
-                            </td>
-                            <td>
-                                <i class=todo>Start date + 2 years</i>
-                            </td>
-                            <td>
-                                Turn to maintenance mode
-                            </td>
-                        </tr>
-                        <!-- <tr>
-              <th>
-                <a class="todo" href="">Charter Extension</a>
-              </th>
-              <td>
-                <i class="todo">[dd monthname yyyy]</i>
-              </td>
-              <td>
-                <i class="todo">[dd monthname yyyy]</i>
-              </td>
-              <td>
-                <i class="todo">none</i>
-              </td>
-            </tr>
-            <tr>
-              <th>
-                <a class="todo" href="">Rechartered</a>
-              </th>
-              <td>
-                <i class="todo">[dd monthname yyyy]</i>
-              </td>
-              <td>
-                <i class="todo">[dd monthname yyyy]</i>
-              </td>
-              <td>
-                <p class="todo">[description of change to charter, with link to new deliverable item in charter] <b>Note:</b> use the class <code>new</code> for all new deliverables, for ease of recognition.</p>
-              </td>
-            </tr> -->
-                    </tbody>
-                </table>
-            </section>
-        </section>
+      </section>
     </main>
 
     <hr>
 
     <footer>
-        <address><a href="mailto:ivan@w3.org">Ivan Herman</a>, <a href="mailto:pierre-antoine@w3.org">Pierre-Antoine Champin</a></address>
-        <p class="copyright">
-            <a href="https://www.w3.org/Consortium/Legal/ipr-notice#Copyright">Copyright</a> © 2021 <a href="https://www.w3.org/"><abbr title="World Wide Web Consortium">W3C</abbr></a><sup>®</sup> (<a href="https://www.csail.mit.edu/"><abbr title="Massachusetts Institute of Technology">MIT</abbr></a>, <a href="https://www.ercim.eu/"><abbr title="European Research Consortium for Informatics and Mathematics">ERCIM</abbr></a>, <a href="https://www.keio.ac.jp/">Keio</a>, <a href="https://ev.buaa.edu.cn">Beihang</a>), All Rights Reserved. <abbr title="World Wide Web Consortium">W3C</abbr> <a href="https://www.w3.org/Consortium/Legal/ipr-notice#Legal_Disclaimer"> liability</a>, <a href="https://www.w3.org/Consortium/Legal/ipr-notice#W3C_Trademarks"> trademark</a> and <a href="https://www.w3.org/Consortium/Legal/copyright-documents">document use</a> rules apply.
-        </p>
-        <hr>
-        <p>
-            <a href="https://github.com/w3c/lds-wg-charter">Yes, it's on GitHub!</a>.
-        </p>
+      <address>
+        <a href="mailto:ivan@w3.org">Ivan Herman</a>, <a href="mailto:pierre-antoine@w3.org">Pierre-Antoine Champin</a>
+      </address>
+
+      <p class="copyright">Copyright © 2021-2024<a href="https://www.w3.org/">World Wide Web Consortium</a>.<br>
+        <abbr title="World Wide Web Consortium">W3C</abbr><sup>®</sup>
+        <a href="https://www.w3.org/policies/#disclaimers">liability</a>,
+        <a href="https://www.w3.org/policies/#trademarks">trademark</a> and
+        <a rel="license" href="https://www.w3.org/copyright/software-license/" title="W3C Software and Document Notice and License">permissive document license</a> rules apply.</p>
+      <hr>
+      <p>
+        <a href="https://github.com/w3c/lds-wg-charter">Yes, it's on GitHub!</a>.
+      </p>
     </footer>
 
-</body>
-
+  </body>
 </html>
